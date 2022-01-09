@@ -1,7 +1,7 @@
 ﻿
 namespace NTP_Projekt
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -29,35 +29,37 @@ namespace NTP_Projekt
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblEmail = new System.Windows.Forms.Label();
+            this.cbxGrades = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // lblEmail
+            // cbxGrades
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(170, 115);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(32, 13);
-            this.lblEmail.TabIndex = 0;
-            this.lblEmail.Text = "Email";
-            this.lblEmail.Click += new System.EventHandler(this.label1_Click);
+            this.cbxGrades.FormattingEnabled = true;
+            this.cbxGrades.Items.AddRange(new object[] {
+            "Trenutne ocjene",
+            "Popis predmeta",
+            "Sve ocjene"});
+            this.cbxGrades.Location = new System.Drawing.Point(12, 12);
+            this.cbxGrades.Name = "cbxGrades";
+            this.cbxGrades.Size = new System.Drawing.Size(121, 21);
+            this.cbxGrades.TabIndex = 6;
+            this.cbxGrades.Text = "Ocjene";
+            this.cbxGrades.SelectedIndexChanged += new System.EventHandler(this.cbxGrades_SelectedIndexChanged);
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblEmail);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Controls.Add(this.cbxGrades);
+            this.Name = "Main";
+            this.Text = "E-Dnevnik";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.ComboBox cbxGrades;
     }
 }
-
