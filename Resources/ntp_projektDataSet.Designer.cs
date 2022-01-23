@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace NTP_Projekt {
+namespace NTP_Projekt.Resources {
     
     
     /// <summary>
@@ -4323,7 +4323,7 @@ namespace NTP_Projekt {
         }
     }
 }
-namespace NTP_Projekt.ntp_projektDataSetTableAdapters {
+namespace NTP_Projekt.Resources.ntp_projektDataSetTableAdapters {
     
     
     /// <summary>

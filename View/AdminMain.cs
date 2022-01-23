@@ -33,7 +33,7 @@ namespace NTP_Projekt
             string connectionString;
             SqlConnection cnn;
 
-            connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ntp_ednevnik;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            connectionString = NTP_Projekt.Properties.Settings.Default.ntp_projektConnectionString;
 
             cnn = new SqlConnection(connectionString);
 

@@ -46,53 +46,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminMain.cs">
+    <Compile Include="View\AdminMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminMain.Designer.cs">
+    <Compile Include="View\AdminMain.Designer.cs">
       <DependentUpon>AdminMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="IniFile.cs" />
-    <Compile Include="LoginEncryption.cs" />
-    <Compile Include="Main.cs">
+    <Compile Include="Logic\IniFile.cs" />
+    <Compile Include="Logic\LoginEncryption.cs" />
+    <Compile Include="View\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="View\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="View\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\User.cs" />
-    <Compile Include="ntp_projektDataSet.Designer.cs">
+    <Compile Include="Resources\ntp_projektDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ntp_projektDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Logic\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs">
+    <Compile Include="View\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings.Designer.cs">
+    <Compile Include="View\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdminMain.resx">
+    <EmbeddedResource Include="View\AdminMain.resx">
       <DependentUpon>AdminMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.en.resx">
+    <EmbeddedResource Include="View\Login.en.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.hr.resx">
+    <EmbeddedResource Include="View\Login.hr.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="View\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -105,18 +105,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Settings.resx">
+    <EmbeddedResource Include="View\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ntp_projektDataSet.xsc">
+    <None Include="Resources\ntp_projektDataSet.xsc">
       <DependentUpon>ntp_projektDataSet.xsd</DependentUpon>
     </None>
-    <None Include="ntp_projektDataSet.xsd">
+    <None Include="Resources\ntp_projektDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ntp_projektDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ntp_projektDataSet.xss">
+    <None Include="Resources\ntp_projektDataSet.xss">
       <DependentUpon>ntp_projektDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
@@ -137,6 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Notes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controller\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
