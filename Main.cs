@@ -19,9 +19,29 @@ namespace NTP_Projekt
 
         private void cbxGrades_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(e);
-            Grades grade = new Grades();
-            grade.Show();
+            switch (cbxGrades.SelectedIndex)
+            {
+                case 0:
+                    HideAll();
+                    pnlGrades.Visible = true;
+                    break;
+                case 1:
+                    HideAll();
+                    pnlSubjects.Visible = true;
+                    break;
+                case 2:
+                    HideAll();
+                    pnlAllGrades.Visible = true;
+                    break;
+            }
+        }
+
+        private void HideAll()
+        {
+            pnlGrades.Visible = false;
+            pnlSubjects.Visible = false;
+            pnlAllGrades.Visible = false;
+            pnlHome.Visible = false;
         }
     }
 }

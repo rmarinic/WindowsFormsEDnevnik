@@ -1,0 +1,5 @@
+﻿16.) http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?op=FullCountryInfo - slika zastave
+
+22.) https://www.youtube.com/watch?v=J3BbVzzfR3g - lozinka sha 256
+
+CRYPTOGRAPHY - https://docs.microsoft.com/en-us/dotnet/standard/security/cryptographic-services
