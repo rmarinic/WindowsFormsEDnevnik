@@ -20,51 +20,33 @@ namespace NTP_Projekt
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<string> fonts = new List<string>();
-
-            foreach (FontFamily font in System.Drawing.FontFamily.Families)
+            string connectionString = NTP_Projekt.Properties.Settings.Default.ntp_projektConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                comboBox1.Items.Add(font.Name);
+                try
+                {
+                    String sql = "SELECT Users.JMBAG, FirstName as [Name], LastName as [Surname], Email, Dob as [Date of birth]," +
+                        " Address, City, EnrollmentDate as [Enrollment Date] FROM Users" +
+                        " INNER JOIN Students on Users.JMBAG = Students.JMBAG WHERE Users.RoleID = 1";
+                    conn.Open();
+                    SqlCommand cmd;
+                    SqlDataAdapter adapter;
+                    cmd = new SqlCommand(sql, conn);
+                    adapter = new SqlDataAdapter(sql, connectionString);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                    cmd.Dispose();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), "ERROR Loading");
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
-
-            pictureBox1.ImageLocation = "http://www.oorsprong.org/WebSamples.CountryInfo/Flags/Croatia.jpg";
-            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
-
-            string connectionString;
-            SqlConnection cnn;
-
-            connectionString = NTP_Projekt.Properties.Settings.Default.ntp_projektConnectionString;
-
-            cnn = new SqlConnection(connectionString);
-
-            cnn.Open();
-
-
-            SqlCommand cmd;
-            SqlDataAdapter adapter;
-            String sql = "SELECT * FROM USERS";
-
-            cmd = new SqlCommand(sql, cnn);
-            adapter = new SqlDataAdapter(sql, connectionString);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-
-            dataGridView1.DataSource = dt;
-
-            cmd.Dispose();
-            cnn.Close();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.Font = new System.Drawing.Font(
-                      comboBox1.SelectedItem.ToString(),
-                      8.5F,
-                      System.Drawing.FontStyle.Regular,
-                      System.Drawing.GraphicsUnit.Point,
-                      ((byte)(0)));
-
-
         }
     }
 }
