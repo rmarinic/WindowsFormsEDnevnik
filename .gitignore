@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Settings
+Properties/Settings.settings
+Properties/Settings.Designer.cs
+
 # User-specific files
 *.suo
 *.user
