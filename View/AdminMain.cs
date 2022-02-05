@@ -20,6 +20,11 @@ namespace NTP_Projekt
 
         private void button1_Click(object sender, EventArgs e)
         {
+            HideAll();
+            pnlStudents.Visible = true;
+          
+
+
             List<string> fonts = new List<string>();
 
             foreach (FontFamily font in System.Drawing.FontFamily.Families)
@@ -65,6 +70,18 @@ namespace NTP_Projekt
                       ((byte)(0)));
 
 
+        }
+
+        private void HideAll()
+        {
+            pnlStudents.Visible = false;
+            pnlProf.Visible = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            HideAll();
+            pnlProf.Visible = true;
         }
     }
 }

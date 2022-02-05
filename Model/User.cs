@@ -8,7 +8,15 @@ namespace NTP_Projekt.Model
 {
     class User
     {
-        public int Id;
-        public string Name;
+        public int JMBAG;
+        public string FirstName;
+        public string LastName;
+        public string Address;
+        public string City;
+        public string Country;
+        public DateTime DoB;
+        public int RoleID;
+        public string Email;
+        public string Password;
     }
 }

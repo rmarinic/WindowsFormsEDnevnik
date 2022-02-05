@@ -2346,6 +2346,8 @@ namespace NTP_Projekt.Resources {
             
             private global::System.Data.DataColumn columnEnrollmentDate;
             
+            private global::System.Data.DataColumn columnImage;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public StudentsDataTable() {
@@ -2405,6 +2407,14 @@ namespace NTP_Projekt.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ImageColumn {
+                get {
+                    return this.columnImage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2440,12 +2450,13 @@ namespace NTP_Projekt.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public StudentsRow AddStudentsRow(string JMBAG, int RoleID, System.DateTime EnrollmentDate) {
+            public StudentsRow AddStudentsRow(string JMBAG, int RoleID, System.DateTime EnrollmentDate, byte[] Image) {
                 StudentsRow rowStudentsRow = ((StudentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         JMBAG,
                         RoleID,
-                        EnrollmentDate};
+                        EnrollmentDate,
+                        Image};
                 rowStudentsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowStudentsRow);
                 return rowStudentsRow;
@@ -2478,6 +2489,7 @@ namespace NTP_Projekt.Resources {
                 this.columnJMBAG = base.Columns["JMBAG"];
                 this.columnRoleID = base.Columns["RoleID"];
                 this.columnEnrollmentDate = base.Columns["EnrollmentDate"];
+                this.columnImage = base.Columns["Image"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2489,6 +2501,8 @@ namespace NTP_Projekt.Resources {
                 base.Columns.Add(this.columnRoleID);
                 this.columnEnrollmentDate = new global::System.Data.DataColumn("EnrollmentDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnrollmentDate);
+                this.columnImage = new global::System.Data.DataColumn("Image", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImage);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnJMBAG}, true));
                 this.columnJMBAG.AllowDBNull = false;
@@ -2648,10 +2662,6 @@ namespace NTP_Projekt.Resources {
             
             private global::System.Data.DataColumn columnPassword;
             
-            private global::System.Data.DataColumn columnPasswordHash;
-            
-            private global::System.Data.DataColumn columnPasswordSalt;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public UsersDataTable() {
@@ -2767,22 +2777,6 @@ namespace NTP_Projekt.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PasswordHashColumn {
-                get {
-                    return this.columnPasswordHash;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PasswordSaltColumn {
-                get {
-                    return this.columnPasswordSalt;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2818,7 +2812,7 @@ namespace NTP_Projekt.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public UsersRow AddUsersRow(string JMBAG, string FirstName, string LastName, string Address, string City, string Country, System.DateTime DoB, RolesRow parentRolesRowByFK__Users__RoleID__44FF419A, string Email, string Password, string PasswordHash, string PasswordSalt) {
+            public UsersRow AddUsersRow(string JMBAG, string FirstName, string LastName, string Address, string City, string Country, System.DateTime DoB, RolesRow parentRolesRowByFK__Users__RoleID__44FF419A, string Email, string Password) {
                 UsersRow rowUsersRow = ((UsersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         JMBAG,
@@ -2830,9 +2824,7 @@ namespace NTP_Projekt.Resources {
                         DoB,
                         null,
                         Email,
-                        Password,
-                        PasswordHash,
-                        PasswordSalt};
+                        Password};
                 if ((parentRolesRowByFK__Users__RoleID__44FF419A != null)) {
                     columnValuesArray[7] = parentRolesRowByFK__Users__RoleID__44FF419A[0];
                 }
@@ -2875,8 +2867,6 @@ namespace NTP_Projekt.Resources {
                 this.columnRoleID = base.Columns["RoleID"];
                 this.columnEmail = base.Columns["Email"];
                 this.columnPassword = base.Columns["Password"];
-                this.columnPasswordHash = base.Columns["PasswordHash"];
-                this.columnPasswordSalt = base.Columns["PasswordSalt"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2902,10 +2892,6 @@ namespace NTP_Projekt.Resources {
                 base.Columns.Add(this.columnEmail);
                 this.columnPassword = new global::System.Data.DataColumn("Password", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPassword);
-                this.columnPasswordHash = new global::System.Data.DataColumn("PasswordHash", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPasswordHash);
-                this.columnPasswordSalt = new global::System.Data.DataColumn("PasswordSalt", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPasswordSalt);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnJMBAG}, true));
                 this.columnJMBAG.AllowDBNull = false;
@@ -2922,10 +2908,6 @@ namespace NTP_Projekt.Resources {
                 this.columnEmail.MaxLength = 50;
                 this.columnPassword.AllowDBNull = false;
                 this.columnPassword.MaxLength = 30;
-                this.columnPasswordHash.AllowDBNull = false;
-                this.columnPasswordHash.MaxLength = 255;
-                this.columnPasswordSalt.AllowDBNull = false;
-                this.columnPasswordSalt.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3718,6 +3700,22 @@ namespace NTP_Projekt.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public byte[] Image {
+                get {
+                    try {
+                        return ((byte[])(this[this.tableStudents.ImageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Image\' in table \'Students\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudents.ImageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public UsersRow UsersRowParent {
                 get {
                     return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK__Students__4AB81AF0"])));
@@ -3749,6 +3747,18 @@ namespace NTP_Projekt.Resources {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetEnrollmentDateNull() {
                 this[this.tableStudents.EnrollmentDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsImageNull() {
+                return this.IsNull(this.tableStudents.ImageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetImageNull() {
+                this[this.tableStudents.ImageColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3920,28 +3930,6 @@ namespace NTP_Projekt.Resources {
                 }
                 set {
                     this[this.tableUsers.PasswordColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string PasswordHash {
-                get {
-                    return ((string)(this[this.tableUsers.PasswordHashColumn]));
-                }
-                set {
-                    this[this.tableUsers.PasswordHashColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string PasswordSalt {
-                get {
-                    return ((string)(this[this.tableUsers.PasswordSaltColumn]));
-                }
-                set {
-                    this[this.tableUsers.PasswordSaltColumn] = value;
                 }
             }
             
@@ -6521,7 +6509,7 @@ SELECT JMBAG, RoleID, EnrollmentDate FROM Students WHERE (JMBAG = @JMBAG)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT JMBAG, RoleID, EnrollmentDate FROM dbo.Students";
+            this._commandCollection[0].CommandText = "SELECT JMBAG, RoleID, EnrollmentDate FROM Students";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6835,12 +6823,10 @@ SELECT JMBAG, RoleID, EnrollmentDate FROM Students WHERE (JMBAG = @JMBAG)";
             tableMapping.ColumnMappings.Add("RoleID", "RoleID");
             tableMapping.ColumnMappings.Add("Email", "Email");
             tableMapping.ColumnMappings.Add("Password", "Password");
-            tableMapping.ColumnMappings.Add("PasswordHash", "PasswordHash");
-            tableMapping.ColumnMappings.Add("PasswordSalt", "PasswordSalt");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Users] WHERE (([JMBAG] = @Original_JMBAG) AND ([FirstName] = @Original_FirstName) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNull_City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_DoB = 1 AND [DoB] IS NULL) OR ([DoB] = @Original_DoB)) AND ([RoleID] = @Original_RoleID) AND ([Email] = @Original_Email) AND ([Password] = @Original_Password) AND ([PasswordHash] = @Original_PasswordHash) AND ([PasswordSalt] = @Original_PasswordSalt))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Users] WHERE (([JMBAG] = @Original_JMBAG) AND ([FirstName] = @Original_FirstName) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNull_City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_DoB = 1 AND [DoB] IS NULL) OR ([DoB] = @Original_DoB)) AND ([RoleID] = @Original_RoleID) AND ([Email] = @Original_Email) AND ([Password] = @Original_Password))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JMBAG", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JMBAG", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FirstName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6857,12 +6843,10 @@ SELECT JMBAG, RoleID, EnrollmentDate FROM Students WHERE (JMBAG = @JMBAG)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PasswordHash", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PasswordHash", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PasswordSalt", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PasswordSalt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Users] ([JMBAG], [FirstName], [LastName], [Address], [City], [Country], [DoB], [RoleID], [Email], [Password], [PasswordHash], [PasswordSalt]) VALUES (@JMBAG, @FirstName, @LastName, @Address, @City, @Country, @DoB, @RoleID, @Email, @Password, @PasswordHash, @PasswordSalt);
-SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, Password, PasswordHash, PasswordSalt FROM Users WHERE (JMBAG = @JMBAG)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Users] ([JMBAG], [FirstName], [LastName], [Address], [City], [Country], [DoB], [RoleID], [Email], [Password]) VALUES (@JMBAG, @FirstName, @LastName, @Address, @City, @Country, @DoB, @RoleID, @Email, @Password);
+SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, Password FROM Users WHERE (JMBAG = @JMBAG)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JMBAG", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JMBAG", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6874,12 +6858,10 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PasswordHash", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PasswordHash", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PasswordSalt", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PasswordSalt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Users] SET [JMBAG] = @JMBAG, [FirstName] = @FirstName, [LastName] = @LastName, [Address] = @Address, [City] = @City, [Country] = @Country, [DoB] = @DoB, [RoleID] = @RoleID, [Email] = @Email, [Password] = @Password, [PasswordHash] = @PasswordHash, [PasswordSalt] = @PasswordSalt WHERE (([JMBAG] = @Original_JMBAG) AND ([FirstName] = @Original_FirstName) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNull_City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_DoB = 1 AND [DoB] IS NULL) OR ([DoB] = @Original_DoB)) AND ([RoleID] = @Original_RoleID) AND ([Email] = @Original_Email) AND ([Password] = @Original_Password) AND ([PasswordHash] = @Original_PasswordHash) AND ([PasswordSalt] = @Original_PasswordSalt));
-SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, Password, PasswordHash, PasswordSalt FROM Users WHERE (JMBAG = @JMBAG)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Users] SET [JMBAG] = @JMBAG, [FirstName] = @FirstName, [LastName] = @LastName, [Address] = @Address, [City] = @City, [Country] = @Country, [DoB] = @DoB, [RoleID] = @RoleID, [Email] = @Email, [Password] = @Password WHERE (([JMBAG] = @Original_JMBAG) AND ([FirstName] = @Original_FirstName) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNull_City = 1 AND [City] IS NULL) OR ([City] = @Original_City)) AND ((@IsNull_Country = 1 AND [Country] IS NULL) OR ([Country] = @Original_Country)) AND ((@IsNull_DoB = 1 AND [DoB] IS NULL) OR ([DoB] = @Original_DoB)) AND ([RoleID] = @Original_RoleID) AND ([Email] = @Original_Email) AND ([Password] = @Original_Password));
+SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, Password FROM Users WHERE (JMBAG = @JMBAG)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JMBAG", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JMBAG", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6891,8 +6873,6 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PasswordHash", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PasswordHash", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PasswordSalt", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PasswordSalt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JMBAG", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JMBAG", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FirstName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LastName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -6908,8 +6888,6 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PasswordHash", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PasswordHash", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PasswordSalt", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PasswordSalt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6926,7 +6904,7 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, Pa" +
-                "ssword, PasswordHash, PasswordSalt FROM dbo.Users";
+                "ssword FROM Users";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6987,7 +6965,7 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_JMBAG, string Original_FirstName, string Original_LastName, string Original_Address, string Original_City, string Original_Country, global::System.Nullable<global::System.DateTime> Original_DoB, int Original_RoleID, string Original_Email, string Original_Password, string Original_PasswordHash, string Original_PasswordSalt) {
+        public virtual int Delete(string Original_JMBAG, string Original_FirstName, string Original_LastName, string Original_Address, string Original_City, string Original_Country, global::System.Nullable<global::System.DateTime> Original_DoB, int Original_RoleID, string Original_Email, string Original_Password) {
             if ((Original_JMBAG == null)) {
                 throw new global::System.ArgumentNullException("Original_JMBAG");
             }
@@ -7053,18 +7031,6 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
             else {
                 this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_Password));
             }
-            if ((Original_PasswordHash == null)) {
-                throw new global::System.ArgumentNullException("Original_PasswordHash");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((string)(Original_PasswordHash));
-            }
-            if ((Original_PasswordSalt == null)) {
-                throw new global::System.ArgumentNullException("Original_PasswordSalt");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_PasswordSalt));
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7085,7 +7051,7 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string JMBAG, string FirstName, string LastName, string Address, string City, string Country, global::System.Nullable<global::System.DateTime> DoB, int RoleID, string Email, string Password, string PasswordHash, string PasswordSalt) {
+        public virtual int Insert(string JMBAG, string FirstName, string LastName, string Address, string City, string Country, global::System.Nullable<global::System.DateTime> DoB, int RoleID, string Email, string Password) {
             if ((JMBAG == null)) {
                 throw new global::System.ArgumentNullException("JMBAG");
             }
@@ -7141,18 +7107,6 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Password));
             }
-            if ((PasswordHash == null)) {
-                throw new global::System.ArgumentNullException("PasswordHash");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(PasswordHash));
-            }
-            if ((PasswordSalt == null)) {
-                throw new global::System.ArgumentNullException("PasswordSalt");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(PasswordSalt));
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7184,8 +7138,6 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
                     int RoleID, 
                     string Email, 
                     string Password, 
-                    string PasswordHash, 
-                    string PasswordSalt, 
                     string Original_JMBAG, 
                     string Original_FirstName, 
                     string Original_LastName, 
@@ -7195,9 +7147,7 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
                     global::System.Nullable<global::System.DateTime> Original_DoB, 
                     int Original_RoleID, 
                     string Original_Email, 
-                    string Original_Password, 
-                    string Original_PasswordHash, 
-                    string Original_PasswordSalt) {
+                    string Original_Password) {
             if ((JMBAG == null)) {
                 throw new global::System.ArgumentNullException("JMBAG");
             }
@@ -7253,94 +7203,70 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Password));
             }
-            if ((PasswordHash == null)) {
-                throw new global::System.ArgumentNullException("PasswordHash");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(PasswordHash));
-            }
-            if ((PasswordSalt == null)) {
-                throw new global::System.ArgumentNullException("PasswordSalt");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(PasswordSalt));
-            }
             if ((Original_JMBAG == null)) {
                 throw new global::System.ArgumentNullException("Original_JMBAG");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_JMBAG));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_JMBAG));
             }
             if ((Original_FirstName == null)) {
                 throw new global::System.ArgumentNullException("Original_FirstName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_FirstName));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_FirstName));
             }
             if ((Original_LastName == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_LastName));
+            }
+            if ((Original_Address == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_LastName));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Address));
             }
-            if ((Original_Address == null)) {
+            if ((Original_City == null)) {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_Address));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_City));
             }
-            if ((Original_City == null)) {
+            if ((Original_Country == null)) {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_City));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_Country));
             }
-            if ((Original_Country == null)) {
+            if ((Original_DoB.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((System.DateTime)(Original_DoB.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_Country));
-            }
-            if ((Original_DoB.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((System.DateTime)(Original_DoB.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_RoleID));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_RoleID));
             if ((Original_Email == null)) {
                 throw new global::System.ArgumentNullException("Original_Email");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Email));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_Email));
             }
             if ((Original_Password == null)) {
                 throw new global::System.ArgumentNullException("Original_Password");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_Password));
-            }
-            if ((Original_PasswordHash == null)) {
-                throw new global::System.ArgumentNullException("Original_PasswordHash");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_PasswordHash));
-            }
-            if ((Original_PasswordSalt == null)) {
-                throw new global::System.ArgumentNullException("Original_PasswordSalt");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_PasswordSalt));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Password));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -7372,8 +7298,6 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
                     int RoleID, 
                     string Email, 
                     string Password, 
-                    string PasswordHash, 
-                    string PasswordSalt, 
                     string Original_JMBAG, 
                     string Original_FirstName, 
                     string Original_LastName, 
@@ -7383,10 +7307,8 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
                     global::System.Nullable<global::System.DateTime> Original_DoB, 
                     int Original_RoleID, 
                     string Original_Email, 
-                    string Original_Password, 
-                    string Original_PasswordHash, 
-                    string Original_PasswordSalt) {
-            return this.Update(Original_JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, Password, PasswordHash, PasswordSalt, Original_JMBAG, Original_FirstName, Original_LastName, Original_Address, Original_City, Original_Country, Original_DoB, Original_RoleID, Original_Email, Original_Password, Original_PasswordHash, Original_PasswordSalt);
+                    string Original_Password) {
+            return this.Update(Original_JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, Password, Original_JMBAG, Original_FirstName, Original_LastName, Original_Address, Original_City, Original_Country, Original_DoB, Original_RoleID, Original_Email, Original_Password);
         }
     }
     

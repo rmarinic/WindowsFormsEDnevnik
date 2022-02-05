@@ -40,27 +40,32 @@ namespace NTP_Projekt
             this.pnlLogin = new System.Windows.Forms.Panel();
             this.btnRegister = new System.Windows.Forms.Button();
             this.pnlRegister = new System.Windows.Forms.Panel();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.txtLastName = new System.Windows.Forms.TextBox();
-            this.txtEmailReg = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtCountry = new System.Windows.Forms.TextBox();
-            this.txtCity = new System.Windows.Forms.TextBox();
-            this.txtDob = new System.Windows.Forms.TextBox();
-            this.lblFirstName = new System.Windows.Forms.Label();
-            this.lblSurname = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblAddress = new System.Windows.Forms.Label();
-            this.lblCountry = new System.Windows.Forms.Label();
-            this.lblDob = new System.Windows.Forms.Label();
-            this.lblCity = new System.Windows.Forms.Label();
-            this.lblPass = new System.Windows.Forms.Label();
-            this.lblPass2 = new System.Windows.Forms.Label();
-            this.txtPassReg = new System.Windows.Forms.TextBox();
-            this.txtPassReg2 = new System.Windows.Forms.TextBox();
-            this.btnReg = new System.Windows.Forms.Button();
-            this.JMBAG = new System.Windows.Forms.Label();
+            this.btnBackToLogin = new System.Windows.Forms.Button();
             this.txtJmbag = new System.Windows.Forms.TextBox();
+            this.JMBAG = new System.Windows.Forms.Label();
+            this.btnReg = new System.Windows.Forms.Button();
+            this.txtPassReg2 = new System.Windows.Forms.TextBox();
+            this.txtPassReg = new System.Windows.Forms.TextBox();
+            this.lblPass2 = new System.Windows.Forms.Label();
+            this.lblPass = new System.Windows.Forms.Label();
+            this.lblCity = new System.Windows.Forms.Label();
+            this.lblDob = new System.Windows.Forms.Label();
+            this.lblCountry = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.txtDob = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtEmailReg = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.btnSoap = new System.Windows.Forms.Button();
+            this.btnRest = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlLogin.SuspendLayout();
             this.pnlRegister.SuspendLayout();
             this.SuspendLayout();
@@ -126,6 +131,7 @@ namespace NTP_Projekt
             // 
             // pnlRegister
             // 
+            this.pnlRegister.Controls.Add(this.btnBackToLogin);
             this.pnlRegister.Controls.Add(this.txtJmbag);
             this.pnlRegister.Controls.Add(this.JMBAG);
             this.pnlRegister.Controls.Add(this.btnReg);
@@ -150,95 +156,22 @@ namespace NTP_Projekt
             resources.ApplyResources(this.pnlRegister, "pnlRegister");
             this.pnlRegister.Name = "pnlRegister";
             // 
-            // txtFirstName
+            // btnBackToLogin
             // 
-            resources.ApplyResources(this.txtFirstName, "txtFirstName");
-            this.txtFirstName.Name = "txtFirstName";
+            resources.ApplyResources(this.btnBackToLogin, "btnBackToLogin");
+            this.btnBackToLogin.Name = "btnBackToLogin";
+            this.btnBackToLogin.UseVisualStyleBackColor = true;
+            this.btnBackToLogin.Click += new System.EventHandler(this.btnBackToLogin_Click);
             // 
-            // txtLastName
+            // txtJmbag
             // 
-            resources.ApplyResources(this.txtLastName, "txtLastName");
-            this.txtLastName.Name = "txtLastName";
+            resources.ApplyResources(this.txtJmbag, "txtJmbag");
+            this.txtJmbag.Name = "txtJmbag";
             // 
-            // txtEmailReg
+            // JMBAG
             // 
-            resources.ApplyResources(this.txtEmailReg, "txtEmailReg");
-            this.txtEmailReg.Name = "txtEmailReg";
-            // 
-            // txtAddress
-            // 
-            resources.ApplyResources(this.txtAddress, "txtAddress");
-            this.txtAddress.Name = "txtAddress";
-            // 
-            // txtCountry
-            // 
-            resources.ApplyResources(this.txtCountry, "txtCountry");
-            this.txtCountry.Name = "txtCountry";
-            // 
-            // txtCity
-            // 
-            resources.ApplyResources(this.txtCity, "txtCity");
-            this.txtCity.Name = "txtCity";
-            // 
-            // txtDob
-            // 
-            resources.ApplyResources(this.txtDob, "txtDob");
-            this.txtDob.Name = "txtDob";
-            // 
-            // lblFirstName
-            // 
-            resources.ApplyResources(this.lblFirstName, "lblFirstName");
-            this.lblFirstName.Name = "lblFirstName";
-            // 
-            // lblSurname
-            // 
-            resources.ApplyResources(this.lblSurname, "lblSurname");
-            this.lblSurname.Name = "lblSurname";
-            // 
-            // lblEmail
-            // 
-            resources.ApplyResources(this.lblEmail, "lblEmail");
-            this.lblEmail.Name = "lblEmail";
-            // 
-            // lblAddress
-            // 
-            resources.ApplyResources(this.lblAddress, "lblAddress");
-            this.lblAddress.Name = "lblAddress";
-            // 
-            // lblCountry
-            // 
-            resources.ApplyResources(this.lblCountry, "lblCountry");
-            this.lblCountry.Name = "lblCountry";
-            // 
-            // lblDob
-            // 
-            resources.ApplyResources(this.lblDob, "lblDob");
-            this.lblDob.Name = "lblDob";
-            // 
-            // lblCity
-            // 
-            resources.ApplyResources(this.lblCity, "lblCity");
-            this.lblCity.Name = "lblCity";
-            // 
-            // lblPass
-            // 
-            resources.ApplyResources(this.lblPass, "lblPass");
-            this.lblPass.Name = "lblPass";
-            // 
-            // lblPass2
-            // 
-            resources.ApplyResources(this.lblPass2, "lblPass2");
-            this.lblPass2.Name = "lblPass2";
-            // 
-            // txtPassReg
-            // 
-            resources.ApplyResources(this.txtPassReg, "txtPassReg");
-            this.txtPassReg.Name = "txtPassReg";
-            // 
-            // txtPassReg2
-            // 
-            resources.ApplyResources(this.txtPassReg2, "txtPassReg2");
-            this.txtPassReg2.Name = "txtPassReg2";
+            resources.ApplyResources(this.JMBAG, "JMBAG");
+            this.JMBAG.Name = "JMBAG";
             // 
             // btnReg
             // 
@@ -247,20 +180,130 @@ namespace NTP_Projekt
             this.btnReg.UseVisualStyleBackColor = true;
             this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
-            // JMBAG
+            // txtPassReg2
             // 
-            resources.ApplyResources(this.JMBAG, "JMBAG");
-            this.JMBAG.Name = "JMBAG";
+            resources.ApplyResources(this.txtPassReg2, "txtPassReg2");
+            this.txtPassReg2.Name = "txtPassReg2";
             // 
-            // txtJmbag
+            // txtPassReg
             // 
-            resources.ApplyResources(this.txtJmbag, "txtJmbag");
-            this.txtJmbag.Name = "txtJmbag";
+            resources.ApplyResources(this.txtPassReg, "txtPassReg");
+            this.txtPassReg.Name = "txtPassReg";
+            // 
+            // lblPass2
+            // 
+            resources.ApplyResources(this.lblPass2, "lblPass2");
+            this.lblPass2.Name = "lblPass2";
+            // 
+            // lblPass
+            // 
+            resources.ApplyResources(this.lblPass, "lblPass");
+            this.lblPass.Name = "lblPass";
+            // 
+            // lblCity
+            // 
+            resources.ApplyResources(this.lblCity, "lblCity");
+            this.lblCity.Name = "lblCity";
+            // 
+            // lblDob
+            // 
+            resources.ApplyResources(this.lblDob, "lblDob");
+            this.lblDob.Name = "lblDob";
+            // 
+            // lblCountry
+            // 
+            resources.ApplyResources(this.lblCountry, "lblCountry");
+            this.lblCountry.Name = "lblCountry";
+            // 
+            // lblAddress
+            // 
+            resources.ApplyResources(this.lblAddress, "lblAddress");
+            this.lblAddress.Name = "lblAddress";
+            // 
+            // lblEmail
+            // 
+            resources.ApplyResources(this.lblEmail, "lblEmail");
+            this.lblEmail.Name = "lblEmail";
+            // 
+            // lblSurname
+            // 
+            resources.ApplyResources(this.lblSurname, "lblSurname");
+            this.lblSurname.Name = "lblSurname";
+            // 
+            // lblFirstName
+            // 
+            resources.ApplyResources(this.lblFirstName, "lblFirstName");
+            this.lblFirstName.Name = "lblFirstName";
+            // 
+            // txtDob
+            // 
+            resources.ApplyResources(this.txtDob, "txtDob");
+            this.txtDob.Name = "txtDob";
+            // 
+            // txtCity
+            // 
+            resources.ApplyResources(this.txtCity, "txtCity");
+            this.txtCity.Name = "txtCity";
+            // 
+            // txtCountry
+            // 
+            resources.ApplyResources(this.txtCountry, "txtCountry");
+            this.txtCountry.Name = "txtCountry";
+            // 
+            // txtAddress
+            // 
+            resources.ApplyResources(this.txtAddress, "txtAddress");
+            this.txtAddress.Name = "txtAddress";
+            // 
+            // txtEmailReg
+            // 
+            resources.ApplyResources(this.txtEmailReg, "txtEmailReg");
+            this.txtEmailReg.Name = "txtEmailReg";
+            // 
+            // txtLastName
+            // 
+            resources.ApplyResources(this.txtLastName, "txtLastName");
+            this.txtLastName.Name = "txtLastName";
+            // 
+            // txtFirstName
+            // 
+            resources.ApplyResources(this.txtFirstName, "txtFirstName");
+            this.txtFirstName.Name = "txtFirstName";
+            // 
+            // btnSoap
+            // 
+            resources.ApplyResources(this.btnSoap, "btnSoap");
+            this.btnSoap.Name = "btnSoap";
+            this.btnSoap.UseVisualStyleBackColor = true;
+            this.btnSoap.Click += new System.EventHandler(this.btnSoap_Click);
+            // 
+            // btnRest
+            // 
+            resources.ApplyResources(this.btnRest, "btnRest");
+            this.btnRest.Name = "btnRest";
+            this.btnRest.UseVisualStyleBackColor = true;
+            this.btnRest.Click += new System.EventHandler(this.btnRest_Click);
+            // 
+            // button3
+            // 
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // Login
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnRest);
+            this.Controls.Add(this.btnSoap);
             this.Controls.Add(this.pnlRegister);
             this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.button2);
@@ -273,6 +316,7 @@ namespace NTP_Projekt
             this.pnlRegister.ResumeLayout(false);
             this.pnlRegister.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -309,6 +353,11 @@ namespace NTP_Projekt
         private System.Windows.Forms.Label lblPass;
         private System.Windows.Forms.TextBox txtJmbag;
         private System.Windows.Forms.Label JMBAG;
+        private System.Windows.Forms.Button btnBackToLogin;
+        private System.Windows.Forms.Button btnSoap;
+        private System.Windows.Forms.Button btnRest;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label1;
     }
 }
 

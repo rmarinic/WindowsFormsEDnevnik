@@ -240,7 +240,7 @@
     <value>4</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>414, -1</value>
+    <value>457, 2</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -261,7 +261,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
     <value>-4, -1</value>
@@ -285,7 +285,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;btnRegister.Name" xml:space="preserve">
     <value>btnRegister</value>
@@ -318,7 +318,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pnlLogin.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="btnRegister.Location" type="System.Drawing.Point, System.Drawing">
     <value>344, 198</value>
@@ -344,6 +344,318 @@
   <data name="&gt;&gt;btnRegister.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;btnBackToLogin.Name" xml:space="preserve">
+    <value>btnBackToLogin</value>
+  </data>
+  <data name="&gt;&gt;btnBackToLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBackToLogin.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;btnBackToLogin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtJmbag.Name" xml:space="preserve">
+    <value>txtJmbag</value>
+  </data>
+  <data name="&gt;&gt;txtJmbag.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtJmbag.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;txtJmbag.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;JMBAG.Name" xml:space="preserve">
+    <value>JMBAG</value>
+  </data>
+  <data name="&gt;&gt;JMBAG.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;JMBAG.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;JMBAG.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnReg.Name" xml:space="preserve">
+    <value>btnReg</value>
+  </data>
+  <data name="&gt;&gt;btnReg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnReg.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;btnReg.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;txtPassReg2.Name" xml:space="preserve">
+    <value>txtPassReg2</value>
+  </data>
+  <data name="&gt;&gt;txtPassReg2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPassReg2.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;txtPassReg2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txtPassReg.Name" xml:space="preserve">
+    <value>txtPassReg</value>
+  </data>
+  <data name="&gt;&gt;txtPassReg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPassReg.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;txtPassReg.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;lblPass2.Name" xml:space="preserve">
+    <value>lblPass2</value>
+  </data>
+  <data name="&gt;&gt;lblPass2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPass2.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;lblPass2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;lblPass.Name" xml:space="preserve">
+    <value>lblPass</value>
+  </data>
+  <data name="&gt;&gt;lblPass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPass.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;lblPass.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;lblCity.Name" xml:space="preserve">
+    <value>lblCity</value>
+  </data>
+  <data name="&gt;&gt;lblCity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCity.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;lblCity.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;lblDob.Name" xml:space="preserve">
+    <value>lblDob</value>
+  </data>
+  <data name="&gt;&gt;lblDob.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblDob.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;lblDob.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;lblCountry.Name" xml:space="preserve">
+    <value>lblCountry</value>
+  </data>
+  <data name="&gt;&gt;lblCountry.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCountry.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;lblCountry.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;lblAddress.Name" xml:space="preserve">
+    <value>lblAddress</value>
+  </data>
+  <data name="&gt;&gt;lblAddress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAddress.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;lblAddress.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;lblEmail.Name" xml:space="preserve">
+    <value>lblEmail</value>
+  </data>
+  <data name="&gt;&gt;lblEmail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblEmail.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;lblEmail.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;lblSurname.Name" xml:space="preserve">
+    <value>lblSurname</value>
+  </data>
+  <data name="&gt;&gt;lblSurname.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSurname.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;lblSurname.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;lblFirstName.Name" xml:space="preserve">
+    <value>lblFirstName</value>
+  </data>
+  <data name="&gt;&gt;lblFirstName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFirstName.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;lblFirstName.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;txtDob.Name" xml:space="preserve">
+    <value>txtDob</value>
+  </data>
+  <data name="&gt;&gt;txtDob.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtDob.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;txtDob.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;txtCity.Name" xml:space="preserve">
+    <value>txtCity</value>
+  </data>
+  <data name="&gt;&gt;txtCity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCity.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;txtCity.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;txtCountry.Name" xml:space="preserve">
+    <value>txtCountry</value>
+  </data>
+  <data name="&gt;&gt;txtCountry.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCountry.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;txtCountry.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;txtAddress.Name" xml:space="preserve">
+    <value>txtAddress</value>
+  </data>
+  <data name="&gt;&gt;txtAddress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtAddress.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;txtAddress.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;txtEmailReg.Name" xml:space="preserve">
+    <value>txtEmailReg</value>
+  </data>
+  <data name="&gt;&gt;txtEmailReg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtEmailReg.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;txtEmailReg.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;txtLastName.Name" xml:space="preserve">
+    <value>txtLastName</value>
+  </data>
+  <data name="&gt;&gt;txtLastName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtLastName.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;txtLastName.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;txtFirstName.Name" xml:space="preserve">
+    <value>txtFirstName</value>
+  </data>
+  <data name="&gt;&gt;txtFirstName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFirstName.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;txtFirstName.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="pnlRegister.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-4, 31</value>
+  </data>
+  <data name="pnlRegister.Size" type="System.Drawing.Size, System.Drawing">
+    <value>493, 306</value>
+  </data>
+  <data name="pnlRegister.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="pnlRegister.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlRegister.Name" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;pnlRegister.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlRegister.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlRegister.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnBackToLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 271</value>
+  </data>
+  <data name="btnBackToLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnBackToLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="btnBackToLogin.Text" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="&gt;&gt;btnBackToLogin.Name" xml:space="preserve">
+    <value>btnBackToLogin</value>
+  </data>
+  <data name="&gt;&gt;btnBackToLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBackToLogin.Parent" xml:space="preserve">
+    <value>pnlRegister</value>
+  </data>
+  <data name="&gt;&gt;btnBackToLogin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="txtJmbag.Location" type="System.Drawing.Point, System.Drawing">
     <value>381, 26</value>
   </data>
@@ -363,7 +675,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;txtJmbag.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="JMBAG.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -390,7 +702,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;JMBAG.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnReg.Location" type="System.Drawing.Point, System.Drawing">
     <value>402, 272</value>
@@ -414,7 +726,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;btnReg.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="txtPassReg2.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 256</value>
@@ -435,7 +747,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;txtPassReg2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="txtPassReg.Location" type="System.Drawing.Point, System.Drawing">
     <value>254, 214</value>
@@ -456,7 +768,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;txtPassReg.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="lblPass2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -483,7 +795,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;lblPass2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="lblPass.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -510,7 +822,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;lblPass.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="lblCity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -537,7 +849,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;lblCity.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="lblDob.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -564,7 +876,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;lblDob.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="lblCountry.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -591,7 +903,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;lblCountry.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="lblAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -618,7 +930,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;lblAddress.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="lblEmail.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -649,7 +961,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;lblEmail.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="lblSurname.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -676,7 +988,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;lblSurname.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="lblFirstName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -703,7 +1015,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;lblFirstName.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="txtDob.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 179</value>
@@ -724,7 +1036,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;txtDob.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="txtCity.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 151</value>
@@ -745,7 +1057,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;txtCity.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="txtCountry.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 124</value>
@@ -766,7 +1078,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;txtCountry.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="txtAddress.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 91</value>
@@ -787,7 +1099,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;txtAddress.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="txtEmailReg.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 64</value>
@@ -808,7 +1120,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;txtEmailReg.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="txtLastName.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 36</value>
@@ -829,7 +1141,7 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;txtLastName.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="txtFirstName.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 10</value>
@@ -850,30 +1162,105 @@
     <value>pnlRegister</value>
   </data>
   <data name="&gt;&gt;txtFirstName.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
-  <data name="pnlRegister.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-4, 31</value>
+  <data name="btnSoap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 2</value>
   </data>
-  <data name="pnlRegister.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 306</value>
+  <data name="btnSoap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="pnlRegister.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="btnSoap.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="pnlRegister.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="btnSoap.Text" xml:space="preserve">
+    <value>SOAP Test</value>
   </data>
-  <data name="&gt;&gt;pnlRegister.Name" xml:space="preserve">
-    <value>pnlRegister</value>
+  <data name="&gt;&gt;btnSoap.Name" xml:space="preserve">
+    <value>btnSoap</value>
   </data>
-  <data name="&gt;&gt;pnlRegister.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnSoap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pnlRegister.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnSoap.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;pnlRegister.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnSoap.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnRest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 2</value>
+  </data>
+  <data name="btnRest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnRest.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnRest.Text" xml:space="preserve">
+    <value>REST Test</value>
+  </data>
+  <data name="&gt;&gt;btnRest.Name" xml:space="preserve">
+    <value>btnRest</value>
+  </data>
+  <data name="&gt;&gt;btnRest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRest.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnRest.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>77, 2</value>
+  </data>
+  <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="button3.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="button3.Text" xml:space="preserve">
+    <value>HTTP Test</value>
+  </data>
+  <data name="&gt;&gt;button3.Name" xml:space="preserve">
+    <value>button3</value>
+  </data>
+  <data name="&gt;&gt;button3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>321, 7</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>00:00:00</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -883,7 +1270,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>492, 349</value>
+    <value>544, 387</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Login</value>

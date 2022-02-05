@@ -31,14 +31,14 @@ namespace NTP_Projekt
         {
             this.cbxGrades = new System.Windows.Forms.ComboBox();
             this.pnlGrades = new System.Windows.Forms.Panel();
-            this.pnlSubjects = new System.Windows.Forms.Panel();
-            this.pnlAllGrades = new System.Windows.Forms.Panel();
             this.lblGradesTitle = new System.Windows.Forms.Label();
-            this.lblAllGradesTitle = new System.Windows.Forms.Label();
+            this.pnlSubjects = new System.Windows.Forms.Panel();
             this.lblSubjectsTitle = new System.Windows.Forms.Label();
+            this.pnlAllGrades = new System.Windows.Forms.Panel();
+            this.lblAllGradesTitle = new System.Windows.Forms.Label();
             this.pnlHome = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlGrades.SuspendLayout();
             this.pnlSubjects.SuspendLayout();
             this.pnlAllGrades.SuspendLayout();
@@ -69,24 +69,6 @@ namespace NTP_Projekt
             this.pnlGrades.TabIndex = 7;
             this.pnlGrades.Visible = false;
             // 
-            // pnlSubjects
-            // 
-            this.pnlSubjects.Controls.Add(this.lblSubjectsTitle);
-            this.pnlSubjects.Location = new System.Drawing.Point(12, 39);
-            this.pnlSubjects.Name = "pnlSubjects";
-            this.pnlSubjects.Size = new System.Drawing.Size(776, 398);
-            this.pnlSubjects.TabIndex = 1;
-            this.pnlSubjects.Visible = false;
-            // 
-            // pnlAllGrades
-            // 
-            this.pnlAllGrades.Controls.Add(this.lblAllGradesTitle);
-            this.pnlAllGrades.Location = new System.Drawing.Point(12, 40);
-            this.pnlAllGrades.Name = "pnlAllGrades";
-            this.pnlAllGrades.Size = new System.Drawing.Size(776, 398);
-            this.pnlAllGrades.TabIndex = 0;
-            this.pnlAllGrades.Visible = false;
-            // 
             // lblGradesTitle
             // 
             this.lblGradesTitle.AutoSize = true;
@@ -96,14 +78,14 @@ namespace NTP_Projekt
             this.lblGradesTitle.TabIndex = 0;
             this.lblGradesTitle.Text = "Trenutne ocjene";
             // 
-            // lblAllGradesTitle
+            // pnlSubjects
             // 
-            this.lblAllGradesTitle.AutoSize = true;
-            this.lblAllGradesTitle.Location = new System.Drawing.Point(343, 15);
-            this.lblAllGradesTitle.Name = "lblAllGradesTitle";
-            this.lblAllGradesTitle.Size = new System.Drawing.Size(61, 13);
-            this.lblAllGradesTitle.TabIndex = 0;
-            this.lblAllGradesTitle.Text = "Sve ocjene";
+            this.pnlSubjects.Controls.Add(this.lblSubjectsTitle);
+            this.pnlSubjects.Location = new System.Drawing.Point(12, 39);
+            this.pnlSubjects.Name = "pnlSubjects";
+            this.pnlSubjects.Size = new System.Drawing.Size(776, 398);
+            this.pnlSubjects.TabIndex = 1;
+            this.pnlSubjects.Visible = false;
             // 
             // lblSubjectsTitle
             // 
@@ -114,6 +96,24 @@ namespace NTP_Projekt
             this.lblSubjectsTitle.TabIndex = 1;
             this.lblSubjectsTitle.Text = "Popis predmeta";
             // 
+            // pnlAllGrades
+            // 
+            this.pnlAllGrades.Controls.Add(this.lblAllGradesTitle);
+            this.pnlAllGrades.Location = new System.Drawing.Point(12, 40);
+            this.pnlAllGrades.Name = "pnlAllGrades";
+            this.pnlAllGrades.Size = new System.Drawing.Size(776, 398);
+            this.pnlAllGrades.TabIndex = 0;
+            this.pnlAllGrades.Visible = false;
+            // 
+            // lblAllGradesTitle
+            // 
+            this.lblAllGradesTitle.AutoSize = true;
+            this.lblAllGradesTitle.Location = new System.Drawing.Point(343, 15);
+            this.lblAllGradesTitle.Name = "lblAllGradesTitle";
+            this.lblAllGradesTitle.Size = new System.Drawing.Size(61, 13);
+            this.lblAllGradesTitle.TabIndex = 0;
+            this.lblAllGradesTitle.Text = "Sve ocjene";
+            // 
             // pnlHome
             // 
             this.pnlHome.Controls.Add(this.pictureBox1);
@@ -122,16 +122,6 @@ namespace NTP_Projekt
             this.pnlHome.Name = "pnlHome";
             this.pnlHome.Size = new System.Drawing.Size(776, 399);
             this.pnlHome.TabIndex = 8;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(239, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(282, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Dobrodošao/la Ime Prezime!";
             // 
             // pictureBox1
             // 
@@ -142,6 +132,16 @@ namespace NTP_Projekt
             this.pictureBox1.Size = new System.Drawing.Size(98, 101);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(239, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(282, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Dobrodošao/la Ime Prezime!";
             // 
             // Main
             // 
@@ -155,6 +155,8 @@ namespace NTP_Projekt
             this.Controls.Add(this.cbxGrades);
             this.Name = "Main";
             this.Text = "E-Dnevnik";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
+            this.Load += new System.EventHandler(this.Main_Load);
             this.pnlGrades.ResumeLayout(false);
             this.pnlGrades.PerformLayout();
             this.pnlSubjects.ResumeLayout(false);
