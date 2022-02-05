@@ -33,8 +33,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +63,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admins.cs">
+      <DependentUpon>ntpProjekt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Courses.cs">
+      <DependentUpon>ntpProjekt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Grades.cs">
+      <DependentUpon>ntpProjekt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Professor.cs" />
+    <Compile Include="Model\Student.cs" />
+    <Compile Include="ntpProjekt.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ntpProjekt.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ntpProjekt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ntpProjekt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ntpProjekt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ntpProjekt.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Professors.cs">
+      <DependentUpon>ntpProjekt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ntp_projektDataSet.cs">
+      <DependentUpon>ntp_projektDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Roles.cs">
+      <DependentUpon>ntpProjekt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Students.cs">
+      <DependentUpon>ntpProjekt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ntpProjekt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>ntpProjekt.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +115,12 @@
     </Compile>
     <Compile Include="Logic\IniFile.cs" />
     <Compile Include="Logic\LoginEncryption.cs" />
+    <Compile Include="View\EditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +150,9 @@
     <EmbeddedResource Include="View\AdminMain.resx">
       <DependentUpon>AdminMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Login.en.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +178,14 @@
     <EmbeddedResource Include="View\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="ntpProjekt.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ntpProjekt.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ntpProjekt.edmx.diagram">
+      <DependentUpon>ntpProjekt.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Resources\ntp_projektDataSet.xsc">
       <DependentUpon>ntp_projektDataSet.xsd</DependentUpon>
     </None>
@@ -137,9 +215,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Notes.txt" />
+    <Content Include="ntpProjekt.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ntpProjekt.edmx</DependentUpon>
+      <LastGenOutput>ntpProjekt.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ntpProjekt.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ntpProjekt.edmx</DependentUpon>
+      <LastGenOutput>ntpProjekt.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

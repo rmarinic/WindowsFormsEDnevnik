@@ -87,7 +87,7 @@ namespace NTP_Projekt
             return null;
         }
 
-        static string HashString(string passwordStr)
+        public static string HashString(string passwordStr)
         {
             StringBuilder sb = new StringBuilder();
             foreach (byte b in GetHash(passwordStr))
