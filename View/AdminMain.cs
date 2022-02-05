@@ -1,14 +1,19 @@
 ﻿using Newtonsoft.Json;
+using NTP_Projekt.Model;
 using NTP_Projekt.View;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace NTP_Projekt
 {
@@ -19,7 +24,6 @@ namespace NTP_Projekt
             InitializeComponent();
             HideAll();
             pnlStud.Visible = true;
-            fill_course_combobox();
         }
         private void HideAll()
         {
@@ -28,6 +32,8 @@ namespace NTP_Projekt
             DBPnl.Visible = false;
             DB2Pnl.Visible = false;
             ProfPnl.Visible = false;
+            CoursePnl.Visible = false;
+            check_for_extra_columns();
         }
 
         // ---------------------------------------- Tablica studenata / JSON buttons--------------------------------------
@@ -42,9 +48,10 @@ namespace NTP_Projekt
             dataGridView1.DataSource = null;
             button8.Enabled = false;
 
-            // DB buttons clear if we switch from DB to JSON 
+            // DB buttons clear if we switch to other scenario 
+            button15_Click(sender, e);
             button9_Click(sender, e);
-            button10.Text = "Add";
+            button20_Click(sender, e);
         }
         // Studenti iz JSON-a, prikazi panele i gumb pa importaj
         private void button2_Click(object sender, EventArgs e)
@@ -138,57 +145,7 @@ namespace NTP_Projekt
             }
         }
         // Edit user data transfer to form
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (Json2Pnl.Visible == true)
-            {
-                button8.Text = "Update";
-                textBox1.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                textBox2.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                textBox3.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                textBox4.Text = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                dateTimePicker1.Text = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                textBox5.Text = this.dataGridView1.CurrentRow.Cells[5].Value.ToString();
-                textBox6.Text = this.dataGridView1.CurrentRow.Cells[6].Value.ToString();
-                textBox7.Text = this.dataGridView1.CurrentRow.Cells[7].Value.ToString();
-                textBox8.Text = this.dataGridView1.CurrentRow.Cells[8].Value.ToString();
-                dateTimePicker2.Text = this.dataGridView1.CurrentRow.Cells[9].Value.ToString();
-            }
-            else if (DB2Pnl.Visible == true)
-            {
-                textBox9.ReadOnly = true;
-                button10.Text = "Update";
-                string connectionString = NTP_Projekt.Properties.Settings.Default.ntp_projektConnectionString;
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    try
-                    {
-                        textBox9.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                        textBox10.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                        textBox11.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                        textBox12.Text = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                        dateTimePicker3.Text = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                        textBox13.Text = this.dataGridView1.CurrentRow.Cells[5].Value.ToString();
-                        textBox14.Text = this.dataGridView1.CurrentRow.Cells[6].Value.ToString();
-                        textBox15.Text = this.dataGridView1.CurrentRow.Cells[7].Value.ToString();
-                        dateTimePicker4.Text = this.dataGridView1.CurrentRow.Cells[9].Value.ToString();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        conn.Close();
-                    }
-                }
-            }
-            else if (ProfPnl.Visible == true)
-            {
-
-            }
-        }
+        
         // Cancel button
         private void button7_Click_1(object sender, EventArgs e)
         {
@@ -266,7 +223,6 @@ namespace NTP_Projekt
                 finally
                 {
                     button7_Click_1(sender, e);
-                    button8.Text = "Add";
                 }
             }
         }
@@ -276,12 +232,13 @@ namespace NTP_Projekt
         {
             textBox9.ReadOnly = false;
             DB2Pnl.Visible = true;
+            dataGridView1.DataSource = null;
 
             HideAll();
             // JSON buttons
             button7_Click_1(sender, e);
-            button8.Text = "Add";
-
+            button15_Click(sender, e);
+            button20_Click(sender, e);
             pnlStud.Visible = true;
             DBPnl.Visible = true;
             DB2Pnl.Visible = true;
@@ -423,18 +380,288 @@ namespace NTP_Projekt
         {
             HideAll();
 
+            textBox17.ReadOnly = false;
             pnlStud.Visible = true;
             ProfPnl.Visible = true;
             dataGridView1.DataSource = null;
             button9_Click(sender, e);
-            button10.Text = "Add";
             button7_Click_1(sender, e);
-            button8.Text = "Add";
+            button20_Click(sender, e);
             fetch_professors_from_db();
             fill_course_combobox();
         }
 
+        private void button15_Click(object sender, EventArgs e)
+        {
+            textBox17.Text = null;
+            textBox18.Text = null;
+            textBox19.Text = null;
+            textBox20.Text = null;
+            dateTimePicker5.Text = DateTime.Today.ToString();
+            textBox21.Text = null;
+            textBox22.Text = null;
+            textBox23.Text = null;
+            textBox24.Text = null;
+            dateTimePicker4.Text = DateTime.Today.ToString();
+            if(ProfPnl.Visible)
+            {
+                courseCategory.SelectedIndex = 1;
+            } 
+            button16.Text = "Add";
+            textBox17.ReadOnly = false;
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (ntp_projektEntities1 db = new ntp_projektEntities1())
+                {
+                    if (textBox18.Text != "" && textBox19.Text != "" && textBox20.Text != "" && textBox21.Text != "" && textBox22.Text != "" && textBox23.Text != "")
+                    {
+                        if (button16.Text == "Add" && textBox17.Text != "" && textBox24.Text != "")
+                        {
+                            Users user = new Users();                            
+                            user.JMBAG = textBox17.Text;
+                            user.FirstName = textBox18.Text;
+                            user.LastName = textBox19.Text;
+                            user.Email = textBox20.Text;
+                            user.DoB = DateTime.Parse(dateTimePicker5.Text);
+                            user.Address = textBox21.Text;
+                            user.City = textBox22.Text;
+                            user.Country = textBox23.Text;
+                            user.Password = LoginEncryption.HashString(textBox24.Text);
+                            user.RoleID = 2;
+                            Professors professor = new Professors();
+                            professor.JMBAG = user.JMBAG;
+                            professor.RoleID = 2;
+                            professor.CourseID = (int)courseCategory.SelectedValue;
+                            professor.HireDate = DateTime.Parse(dateTimePicker6.Text);                  
+                            db.Users.Add(user);
+                            db.SaveChanges();
+                            db.Professors.Add(professor);
+                            db.SaveChanges();
+                            fetch_professors_from_db();
+
+                        }
+                        else if (button16.Text == "Update")
+                        {
+                            var user = db.Users.SingleOrDefault(u => u.JMBAG == textBox17.Text);
+                            var professor = db.Professors.SingleOrDefault(p => p.JMBAG == textBox17.Text);
+                            if(user != null)
+                            {
+                                user.FirstName = textBox18.Text;
+                                user.LastName = textBox19.Text;
+                                user.Email = textBox20.Text;
+                                user.DoB = DateTime.Parse(dateTimePicker5.Text);
+                                user.Address = textBox21.Text;
+                                user.City = textBox22.Text;
+                                user.Country = textBox23.Text;
+                                if(textBox24.Text != "")
+                                {
+                                    user.Password = textBox24.Text;
+                                }
+                                professor.HireDate = DateTime.Parse(dateTimePicker6.Text);
+                                professor.CourseID = (int)courseCategory.SelectedValue;
+                                db.SaveChanges();
+                                fetch_professors_from_db();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("All fields have to be filled.");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            using (ntp_projektEntities1 db = new ntp_projektEntities1())
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    string id = row.Cells[0].ToString().Trim();
+                    var prof_to_delete = db.Professors.SingleOrDefault(p => p.JMBAG == id);
+                    if (prof_to_delete != null)
+                    {
+                        db.Professors.Remove(prof_to_delete);
+                        db.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        // ---------------------------------------- Tablica Courses / XML Fje ----------------------------------------------
+        private void button13_Click(object sender, EventArgs e)
+        {
+            HideAll();
+            pnlStud.Visible = true;
+            dataGridView1.DataSource = null;
+            textBox25.ReadOnly = false;
+            CoursePnl.Visible = true;
+            fetch_courses_from_db();
+
+            button7_Click_1(sender, e);
+            button9_Click(sender, e);
+            button15_Click(sender, e);
+        }
+        //EXPORT/SAVE
+        private void button17_Click(object sender, EventArgs e)
+        {
+            export_courses_to_xml();
+        }
+        // IMPORT
+        private void button18_Click(object sender, EventArgs e)
+        {
+            import_courses_from_xml();
+        }
+        // CLEAR BUTTON
+        private void button20_Click(object sender, EventArgs e)
+        {
+            textBox25.Text = null;
+            textBox26.Text = null;
+            textBox27.Text = null;
+            button19.Text = "Add";
+            textBox25.ReadOnly = false;
+        }
+        // ADD
+        private void button19_Click(object sender, EventArgs e)
+        {
+            using(ntp_projektEntities1 db = new ntp_projektEntities1())
+            {
+                if(textBox26.Text != "" && textBox27.Text != "")
+                {
+                    if(button19.Text == "Add" && textBox25.Text != "")
+                    {
+                        Courses course = new Courses();                    
+                        course.CourseID = Convert.ToInt32(textBox25.Text.ToString().Trim());
+                        course.Name = textBox26.Text.ToString().Trim();
+                        course.Description = textBox27.Text.Trim();
+                        db.Courses.Add(course);
+                        db.SaveChanges();
+                        fetch_courses_from_db();
+                    }
+                    else if (button19.Text == "Update")
+                    {
+                        int id = Convert.ToInt32(textBox25.Text.ToString());
+                        var course = db.Courses.SingleOrDefault(c => c.CourseID == id);
+                        if(course != null)
+                        {
+                            course.Name = textBox26.Text.ToString().Trim();
+                            course.Description = textBox27.Text.ToString().Trim();
+                            db.SaveChanges();
+                        }
+                        fetch_courses_from_db();                       
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("All fields have to be filled.");
+                }
+
+            }
+        }
+        //DELETE
+        private void button21_Click(object sender, EventArgs e)
+        {
+            using(ntp_projektEntities1 db = new ntp_projektEntities1())
+            {
+                foreach(DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    int id = Convert.ToInt32(row.Cells[0].ToString().Trim());
+                    var course_to_delete = db.Courses.SingleOrDefault(c => c.CourseID==id);
+                    if(course_to_delete != null)
+                    {
+                        db.Courses.Remove(course_to_delete);
+                        db.SaveChanges();
+                    }
+                }
+            }
+        }
+
         // ---------------------------------------- Tablica studenata pomocne funkcije--------------------------------------
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Json2Pnl.Visible == true)
+            {
+                button8.Text = "Update";
+                textBox1.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                textBox2.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                textBox3.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                textBox4.Text = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                dateTimePicker1.Text = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                textBox5.Text = this.dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                textBox6.Text = this.dataGridView1.CurrentRow.Cells[6].Value.ToString();
+                textBox7.Text = this.dataGridView1.CurrentRow.Cells[7].Value.ToString();
+                textBox8.Text = this.dataGridView1.CurrentRow.Cells[8].Value.ToString();
+                dateTimePicker2.Text = this.dataGridView1.CurrentRow.Cells[9].Value.ToString();
+            }
+            else if (DB2Pnl.Visible == true)
+            {
+                textBox9.ReadOnly = true;
+                button10.Text = "Update";
+                string connectionString = NTP_Projekt.Properties.Settings.Default.ntp_projektConnectionString;
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    try
+                    {
+                        textBox9.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        textBox10.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                        textBox11.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                        textBox12.Text = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                        dateTimePicker3.Text = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                        textBox13.Text = this.dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                        textBox14.Text = this.dataGridView1.CurrentRow.Cells[6].Value.ToString();
+                        textBox15.Text = this.dataGridView1.CurrentRow.Cells[7].Value.ToString();
+                        dateTimePicker4.Text = this.dataGridView1.CurrentRow.Cells[9].Value.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+            else if (ProfPnl.Visible == true)
+            {
+                textBox17.ReadOnly = true;
+                button16.Text = "Update";
+                ILookup<int, Courses> looksup = fill_course_combobox();
+                textBox17.Text = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                textBox18.Text = this.dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                textBox19.Text = this.dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                textBox20.Text = this.dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                dateTimePicker5.Text = this.dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                textBox21.Text = this.dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                textBox22.Text = this.dataGridView1.CurrentRow.Cells[6].Value.ToString();
+                textBox23.Text = this.dataGridView1.CurrentRow.Cells[7].Value.ToString();
+                dateTimePicker4.Text = this.dataGridView1.CurrentRow.Cells[9].Value.ToString();
+                foreach (Courses course in looksup[(int)this.dataGridView1.CurrentRow.Cells[10].Value])
+                {
+                    courseCategory.SelectedValue = course.CourseID;
+                }
+            }
+            else if (CoursePnl.Visible == true)
+            {
+                textBox25.ReadOnly = true;
+                button19.Text = "Update";
+                textBox25.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString().Trim();
+                textBox26.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString().Trim();
+                textBox27.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString().Trim();
+            }
+        }
+
         private void fetch_students_from_db()
         {
             string connectionString = NTP_Projekt.Properties.Settings.Default.ntp_projektConnectionString;
@@ -468,34 +695,62 @@ namespace NTP_Projekt
 
         private void fetch_professors_from_db()
         {
-            //string connectionString = NTP_Projekt.Properties.Settings.Default.ntp_projektConnectionString;
-            //using (SqlConnection conn = new SqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        String sql = "SELECT Users.JMBAG, FirstName as [Name], LastName as [Surname], Email, Dob as [Date of birth]," +
-            //            " Address, City, Country, Password, HireDate as [Hire Date], Name as [Course Name] FROM Users" +
-            //            " INNER JOIN Professors on Users.JMBAG = Professors.JMBAG " +
-            //            " INNer JOIN Courses on Professors.CourseID = Courses.CourseID WHERE Users.RoleID = 2";
-            //        conn.Open();
-            //        SqlCommand cmd;
-            //        SqlDataAdapter adapter;
-            //        cmd = new SqlCommand(sql, conn);
-            //        adapter = new SqlDataAdapter(sql, connectionString);
-            //        DataTable dt = new DataTable();
-            //        adapter.Fill(dt);
-            //        dataGridView1.DataSource = dt;
-            //        cmd.Dispose();
-            //    }
-            //    catch (SqlException ex)
-            //    {
-            //        MessageBox.Show(ex.Message.ToString(), "ERROR Loading database.");
-            //    }
-            //    finally
-            //    {
-            //        conn.Close();
-            //    }
-            //}
+            ILookup<int, Courses> looksup = fill_course_combobox();
+            ntp_projektEntities1 db = new ntp_projektEntities1();
+            var query = from user in db.Users
+                        where user.RoleID == 2
+                        join professor in db.Professors
+                        on user.JMBAG equals professor.JMBAG
+                        select new
+                        {
+                            user.JMBAG,
+                            user.FirstName,
+                            user.LastName,
+                            user.Email,
+                            user.DoB,
+                            user.Address,
+                            user.City,
+                            user.Country,
+                            user.Password,
+                            professor.HireDate,
+                            professor.CourseID
+                        };
+
+            dataGridView1.DataSource = query.ToList();
+            DataGridViewColumn course_name_column = new DataGridViewColumn();
+            course_name_column.Name = "courseName";
+            course_name_column.HeaderText = "Course Name";
+            course_name_column.CellTemplate = new DataGridViewTextBoxCell();
+            dataGridView1.Columns.Insert(11, course_name_column);
+            dataGridView1.Columns[1].HeaderText = "Name";
+            dataGridView1.Columns[2].HeaderText = "Surname";
+            dataGridView1.Columns[4].HeaderText = "Date of birth";
+            dataGridView1.Columns[9].HeaderText = "Hire date";
+            dataGridView1.Columns[10].HeaderText = "Course ID";
+            courseCategory.DataBindings.Clear();
+            courseCategory.DataBindings.Add("SelectedValue", db.Professors.Local.ToList(), "CourseID");
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                int nbr = (int)row.Cells[10].Value;
+                foreach (Courses course in looksup[nbr])
+                {
+                    row.Cells[11].Value = course.Name;
+                }
+            }
+        }
+
+        private void fetch_courses_from_db()
+        {
+            ntp_projektEntities1 db = new ntp_projektEntities1();
+            var query = from course in db.Courses
+                        select new
+                        {
+                            course.CourseID,
+                            course.Name,
+                            course.Description
+                        };
+            dataGridView1.DataSource = query.ToList();
+            dataGridView1.AutoSize = true;
         }
 
         private void import_students_from_json()
@@ -519,7 +774,7 @@ namespace NTP_Projekt
         {
             String matchpattern = @"[ ]{6,}";
             String replacementpattern = @"";
-            string output = JsonConvert.SerializeObject(this.dataGridView1.DataSource, Formatting.Indented);
+            string output = JsonConvert.SerializeObject(this.dataGridView1.DataSource, Newtonsoft.Json.Formatting.Indented);
             output = Regex.Replace(output, matchpattern, replacementpattern);
             string filepath = get_json_path();
             if (!File.Exists(filepath))
@@ -542,21 +797,104 @@ namespace NTP_Projekt
             return filename;
         }
 
-        private void fill_course_combobox()
+        private string get_xml_path()
+        {
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
+            string filepath = Path.Combine(projectDirectory, @"\Resources\", "courses.xml");
+            string filename2 = Path.GetFullPath(projectDirectory + filepath);
+            return filename2;
+        }
+
+        private ILookup<int, Courses> fill_course_combobox()
         {
             try
             {
-                using(ntp_projektEntities db = new ntp_projektEntities())
+                using(ntp_projektEntities1 db = new ntp_projektEntities1())
                 {
-                    courseCategory.DataSource = db.Courses.ToList();
+                    var courses = db.Courses.ToList();
+                    foreach (Courses course in courses)
+                    {
+                        course.Name = course.Name.Trim();
+                    }
+                    courseCategory.DataSource = courses;
                     courseCategory.ValueMember = "CourseID";
-                    courseCategory.DisplayMember = "CourseName";
+                    courseCategory.DisplayMember = "Name";
+                    ILookup<int, Courses> lookups = courses.ToLookup(id => id.CourseID);
+                    return lookups;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                return null;
             }
+        }
+
+        private void export_courses_to_xml()
+        {
+            DataSet ds = new DataSet();
+            var dt = new DataTable();
+            DataColumn col1 = new DataColumn("CourseID");
+            DataColumn col2 = new DataColumn("Name");
+            DataColumn col3 = new DataColumn("Description");
+            dt.Columns.Add(col1);
+            dt.Columns.Add(col2);
+            dt.Columns.Add(col3);
+
+            object[] cells = new object[dataGridView1.Columns.Count];
+            foreach(DataGridViewRow row in dataGridView1.Rows)
+            {
+                cells[0] = row.Cells[0].Value;
+                cells[1] = row.Cells[1].Value.ToString().Trim();
+                cells[2] = row.Cells[2].Value.ToString().Trim();
+                dt.Rows.Add(cells);
+            }
+            dt.TableName = "course";
+            ds.DataSetName = "courses";
+            ds.Tables.Add(dt);
+            ds.WriteXml(get_xml_path());
+        }
+
+        private void import_courses_from_xml()
+        {
+            using(ntp_projektEntities1 db = new ntp_projektEntities1())
+            {
+                XElement xml = XElement.Load(get_xml_path());
+                IEnumerable<XElement> courses = from el in xml.Elements() select el;
+                foreach (XElement e in courses)
+                {
+                    var course_from_xml = e.Elements().ToList();
+                    Courses course = new Courses();
+                    course.CourseID = Convert.ToInt32(course_from_xml[0].Value);
+                    course.Name = course_from_xml[1].Value;
+                    course.Description = course_from_xml[2].Value;
+                    db.Courses.Add(course);
+                }
+
+                db.SaveChanges();
+                fetch_courses_from_db();
+            }
+        }
+
+        private void check_for_extra_columns()
+        {
+            if (dataGridView1.Columns.Contains("courseName"))
+            {
+                dataGridView1.Columns.Remove("courseName");
+            }
+        }
+
+        private void serializer_UnknownNode(object sender, XmlNodeEventArgs e)
+        {
+            Console.WriteLine("Unknown Node:" + e.Name + "\t" + e.Text);
+        }
+
+        private void serializer_UnknownAttribute(object sender, XmlAttributeEventArgs e)
+        {
+            System.Xml.XmlAttribute attr = e.Attr;
+            Console.WriteLine("Unknown attribute " +
+            attr.Name + "='" + attr.Value + "'");
         }
     }
 }
