@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<courses>
+  <course>
+    <CourseID>4</CourseID>
+    <Name>Mathematics</Name>
+    <Description>Basic mathematics and algebra</Description>
+  </course>
+  <course>
+    <CourseID>3</CourseID>
+    <Name>Biology</Name>
+    <Description>Course about everything living that surrounds us.</Description>
+  </course>
+</courses>
