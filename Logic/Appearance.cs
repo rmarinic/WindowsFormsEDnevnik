@@ -42,53 +42,34 @@ namespace NTP_Projekt.Logic
                 {
                     form.BackColor = Color.FromArgb(255, 48, 48, 48);
                     form.ForeColor = Color.White;
-                    SetButtonsDark(form);
+                    foreach (var button in GetAll(form, typeof(Button)))
+                    {
+                        (button as Button).BackColor = Color.FromArgb(255, 70, 70, 70);
+                        (button as Button).FlatStyle = FlatStyle.Flat;
+                        (button as Button).FlatAppearance.BorderColor = Color.FromArgb(255, 70, 70, 70);
+                    }
                 }
                 else
                 {
                     form.BackColor = Color.White;
                     form.ForeColor = Color.Black;
-                    SetButtonsLight(form);
+                    foreach (var button in GetAll(form, typeof(Button)))
+                    {
+                        (button as Button).BackColor = Color.FromArgb(255, 220, 220, 220);
+                        (button as Button).FlatStyle = FlatStyle.Flat;
+                        (button as Button).FlatAppearance.BorderColor = Color.FromArgb(255, 70, 70, 70);
+                    }
                 }
             }
         }
 
-        private static void SetButtonsDark(Form form)
+        public static IEnumerable<Control> GetAll(Control control, Type type)
         {
-            foreach (var button in form.Controls.OfType<Button>())
-            {
-                button.BackColor = Color.FromArgb(255, 70, 70, 70);
-                button.FlatStyle = FlatStyle.Flat;
-                button.FlatAppearance.BorderColor = Color.FromArgb(255, 70, 70, 70);
-            }
-            foreach (var panel in form.Controls.OfType<Panel>())
-            {
-                foreach (var button in panel.Controls.OfType<Button>())
-                {
-                    button.BackColor = Color.FromArgb(255, 70, 70, 70);
-                    button.FlatStyle = FlatStyle.Flat;
-                    button.FlatAppearance.BorderColor = Color.FromArgb(255, 70, 70, 70);
-                }
-            }
-        }
+            var controls = control.Controls.Cast<Control>();
 
-        private static void SetButtonsLight(Form form)
-        {
-            foreach (var button in form.Controls.OfType<Button>())
-            {
-                button.BackColor = Color.FromArgb(255, 220, 220, 220);
-                button.FlatStyle = FlatStyle.Flat;
-                button.FlatAppearance.BorderColor = Color.FromArgb(255, 70, 70, 70);
-            }
-            foreach (var panel in form.Controls.OfType<Panel>())
-            {
-                foreach (var button in panel.Controls.OfType<Button>())
-                {
-                    button.BackColor = Color.FromArgb(255, 220, 220, 220);
-                    button.FlatStyle = FlatStyle.Flat;
-                    button.FlatAppearance.BorderColor = Color.FromArgb(255, 70, 70, 70);
-                }
-            }
+            return controls.SelectMany(ctrl => GetAll(ctrl, type))
+                                      .Concat(controls)
+                                      .Where(c => c.GetType() == type);
         }
     }
 }
