@@ -1116,6 +1116,7 @@ namespace NTP_Projekt
             this.Controls.Add(this.button1);
             this.Name = "AdminMain";
             this.Text = "AdminMain";
+            this.Load += new System.EventHandler(this.AdminMain_Load);
             this.pnlStud.ResumeLayout(false);
             this.ProfPnl.ResumeLayout(false);
             this.ProfPnl.PerformLayout();

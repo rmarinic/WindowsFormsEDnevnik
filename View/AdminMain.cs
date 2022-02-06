@@ -1014,5 +1014,9 @@ namespace NTP_Projekt
             }
         }
 
+        private void AdminMain_Load(object sender, EventArgs e)
+        {
+            Logic.Appearance.RefreshForm(this);
+        }
     }
 }
