@@ -58,6 +58,18 @@ namespace NTP_Projekt
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.CoursePnl = new System.Windows.Forms.Panel();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
             this.DB2Pnl = new System.Windows.Forms.Panel();
             this.button11 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -72,7 +84,6 @@ namespace NTP_Projekt
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -120,20 +131,12 @@ namespace NTP_Projekt
             this.usersBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.CoursePnl = new System.Windows.Forms.Panel();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.textBox25 = new System.Windows.Forms.TextBox();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.button23 = new System.Windows.Forms.Button();
             this.pnlStud.SuspendLayout();
             this.ProfPnl.SuspendLayout();
+            this.CoursePnl.SuspendLayout();
             this.DB2Pnl.SuspendLayout();
             this.Json2Pnl.SuspendLayout();
             this.JsonPnl.SuspendLayout();
@@ -142,7 +145,6 @@ namespace NTP_Projekt
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource2)).BeginInit();
-            this.CoursePnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -196,7 +198,7 @@ namespace NTP_Projekt
             this.ProfPnl.Controls.Add(this.label18);
             this.ProfPnl.Controls.Add(this.label19);
             this.ProfPnl.Controls.Add(this.label20);
-            this.ProfPnl.Location = new System.Drawing.Point(1071, 3);
+            this.ProfPnl.Location = new System.Drawing.Point(1074, 3);
             this.ProfPnl.Name = "ProfPnl";
             this.ProfPnl.Size = new System.Drawing.Size(294, 644);
             this.ProfPnl.TabIndex = 46;
@@ -409,8 +411,128 @@ namespace NTP_Projekt
             this.label20.TabIndex = 22;
             this.label20.Text = "JMBAG";
             // 
+            // CoursePnl
+            // 
+            this.CoursePnl.Controls.Add(this.button21);
+            this.CoursePnl.Controls.Add(this.button20);
+            this.CoursePnl.Controls.Add(this.button19);
+            this.CoursePnl.Controls.Add(this.textBox27);
+            this.CoursePnl.Controls.Add(this.textBox26);
+            this.CoursePnl.Controls.Add(this.textBox25);
+            this.CoursePnl.Controls.Add(this.label23);
+            this.CoursePnl.Controls.Add(this.label22);
+            this.CoursePnl.Controls.Add(this.label21);
+            this.CoursePnl.Controls.Add(this.button18);
+            this.CoursePnl.Controls.Add(this.button17);
+            this.CoursePnl.Location = new System.Drawing.Point(1074, 3);
+            this.CoursePnl.Name = "CoursePnl";
+            this.CoursePnl.Size = new System.Drawing.Size(297, 644);
+            this.CoursePnl.TabIndex = 47;
+            // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(10, 538);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(141, 23);
+            this.button21.TabIndex = 10;
+            this.button21.Text = "Delete course";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(169, 311);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(75, 23);
+            this.button20.TabIndex = 9;
+            this.button20.Text = "Clear";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(56, 311);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(75, 23);
+            this.button19.TabIndex = 8;
+            this.button19.Text = "Add";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // textBox27
+            // 
+            this.textBox27.Location = new System.Drawing.Point(84, 110);
+            this.textBox27.Multiline = true;
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(198, 175);
+            this.textBox27.TabIndex = 7;
+            // 
+            // textBox26
+            // 
+            this.textBox26.Location = new System.Drawing.Point(84, 77);
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new System.Drawing.Size(198, 20);
+            this.textBox26.TabIndex = 6;
+            // 
+            // textBox25
+            // 
+            this.textBox25.Location = new System.Drawing.Point(84, 40);
+            this.textBox25.Name = "textBox25";
+            this.textBox25.Size = new System.Drawing.Size(198, 20);
+            this.textBox25.TabIndex = 5;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(18, 113);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(60, 13);
+            this.label23.TabIndex = 4;
+            this.label23.Text = "Description";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(20, 80);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(35, 13);
+            this.label22.TabIndex = 3;
+            this.label22.Text = "Name";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(20, 43);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(54, 13);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Course ID";
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(10, 567);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(141, 25);
+            this.button18.TabIndex = 1;
+            this.button18.Text = "Import courses from XML";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(10, 599);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(141, 23);
+            this.button17.TabIndex = 0;
+            this.button17.Text = "Export courses to XML";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
             // DB2Pnl
             // 
+            this.DB2Pnl.Controls.Add(this.button23);
+            this.DB2Pnl.Controls.Add(this.textBox28);
+            this.DB2Pnl.Controls.Add(this.button22);
             this.DB2Pnl.Controls.Add(this.button11);
             this.DB2Pnl.Controls.Add(this.button9);
             this.DB2Pnl.Controls.Add(this.button10);
@@ -424,7 +546,6 @@ namespace NTP_Projekt
             this.DB2Pnl.Controls.Add(this.textBox11);
             this.DB2Pnl.Controls.Add(this.textBox10);
             this.DB2Pnl.Controls.Add(this.textBox9);
-            this.DB2Pnl.Controls.Add(this.label1);
             this.DB2Pnl.Controls.Add(this.label2);
             this.DB2Pnl.Controls.Add(this.label3);
             this.DB2Pnl.Controls.Add(this.label4);
@@ -538,15 +659,6 @@ namespace NTP_Projekt
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(159, 20);
             this.textBox9.TabIndex = 32;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 311);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "Enrollment date";
             // 
             // label2
             // 
@@ -844,7 +956,7 @@ namespace NTP_Projekt
             // 
             this.DBPnl.Location = new System.Drawing.Point(3, 647);
             this.DBPnl.Name = "DBPnl";
-            this.DBPnl.Size = new System.Drawing.Size(1062, 44);
+            this.DBPnl.Size = new System.Drawing.Size(1067, 44);
             this.DBPnl.TabIndex = 6;
             // 
             // JsonPnl
@@ -902,12 +1014,14 @@ namespace NTP_Projekt
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.MaximumSize = new System.Drawing.Size(1067, 644);
+            this.dataGridView1.MinimumSize = new System.Drawing.Size(1067, 644);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1062, 644);
+            this.dataGridView1.Size = new System.Drawing.Size(1067, 644);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
             // 
             // button5
             // 
@@ -963,151 +1077,60 @@ namespace NTP_Projekt
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
-            // CoursePnl
+            // button22
             // 
-            this.CoursePnl.Controls.Add(this.button21);
-            this.CoursePnl.Controls.Add(this.button20);
-            this.CoursePnl.Controls.Add(this.button19);
-            this.CoursePnl.Controls.Add(this.textBox27);
-            this.CoursePnl.Controls.Add(this.textBox26);
-            this.CoursePnl.Controls.Add(this.textBox25);
-            this.CoursePnl.Controls.Add(this.label23);
-            this.CoursePnl.Controls.Add(this.label22);
-            this.CoursePnl.Controls.Add(this.label21);
-            this.CoursePnl.Controls.Add(this.button18);
-            this.CoursePnl.Controls.Add(this.button17);
-            this.CoursePnl.Location = new System.Drawing.Point(1068, 3);
-            this.CoursePnl.Name = "CoursePnl";
-            this.CoursePnl.Size = new System.Drawing.Size(297, 644);
-            this.CoursePnl.TabIndex = 47;
+            this.button22.Location = new System.Drawing.Point(218, 515);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(64, 25);
+            this.button22.TabIndex = 46;
+            this.button22.Text = "Filter";
+            this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
-            // button17
+            // textBox28
             // 
-            this.button17.Location = new System.Drawing.Point(10, 599);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(141, 23);
-            this.button17.TabIndex = 0;
-            this.button17.Text = "Export courses to XML";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
+            this.textBox28.Location = new System.Drawing.Point(10, 518);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(202, 20);
+            this.textBox28.TabIndex = 47;
             // 
-            // button18
+            // button23
             // 
-            this.button18.Location = new System.Drawing.Point(10, 567);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(141, 25);
-            this.button18.TabIndex = 1;
-            this.button18.Text = "Import courses from XML";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(20, 43);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(54, 13);
-            this.label21.TabIndex = 2;
-            this.label21.Text = "Course ID";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(20, 80);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(35, 13);
-            this.label22.TabIndex = 3;
-            this.label22.Text = "Name";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(18, 113);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(60, 13);
-            this.label23.TabIndex = 4;
-            this.label23.Text = "Description";
-            // 
-            // textBox25
-            // 
-            this.textBox25.Location = new System.Drawing.Point(84, 40);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(198, 20);
-            this.textBox25.TabIndex = 5;
-            // 
-            // textBox26
-            // 
-            this.textBox26.Location = new System.Drawing.Point(84, 77);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(198, 20);
-            this.textBox26.TabIndex = 6;
-            // 
-            // textBox27
-            // 
-            this.textBox27.Location = new System.Drawing.Point(84, 110);
-            this.textBox27.Multiline = true;
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(198, 175);
-            this.textBox27.TabIndex = 7;
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(56, 311);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(75, 23);
-            this.button19.TabIndex = 8;
-            this.button19.Text = "Add";
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // button20
-            // 
-            this.button20.Location = new System.Drawing.Point(169, 311);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(75, 23);
-            this.button20.TabIndex = 9;
-            this.button20.Text = "Clear";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
-            // 
-            // button21
-            // 
-            this.button21.Location = new System.Drawing.Point(10, 538);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(141, 23);
-            this.button21.TabIndex = 10;
-            this.button21.Text = "Delete course";
-            this.button21.UseVisualStyleBackColor = true;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
+            this.button23.Location = new System.Drawing.Point(218, 546);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(64, 25);
+            this.button23.TabIndex = 48;
+            this.button23.Text = "Clear filter";
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // AdminMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1392, 744);
+            this.ClientSize = new System.Drawing.Size(1389, 748);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.pnlStud);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
             this.Name = "AdminMain";
             this.Text = "AdminMain";
             this.pnlStud.ResumeLayout(false);
             this.ProfPnl.ResumeLayout(false);
             this.ProfPnl.PerformLayout();
+            this.CoursePnl.ResumeLayout(false);
+            this.CoursePnl.PerformLayout();
             this.DB2Pnl.ResumeLayout(false);
             this.DB2Pnl.PerformLayout();
             this.Json2Pnl.ResumeLayout(false);
             this.Json2Pnl.PerformLayout();
             this.JsonPnl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ntp_projektDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource2)).EndInit();
-            this.CoursePnl.ResumeLayout(false);
-            this.CoursePnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1215,5 +1238,8 @@ namespace NTP_Projekt
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button23;
     }
 }

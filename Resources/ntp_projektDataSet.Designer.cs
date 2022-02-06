@@ -2450,8 +2450,6 @@ namespace NTP_Projekt.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StudentsRow AddStudentsRow(string JMBAG, int RoleID, System.DateTime EnrollmentDate) {
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public StudentsRow AddStudentsRow(string JMBAG, int RoleID, System.DateTime EnrollmentDate, byte[] Image) {
                 StudentsRow rowStudentsRow = ((StudentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -2473,7 +2471,8 @@ namespace NTP_Projekt.Resources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 StudentsDataTable cln = ((StudentsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;

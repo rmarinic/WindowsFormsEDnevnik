@@ -374,6 +374,43 @@ namespace NTP_Projekt
                 }
             }
         }
+        // FILTER
+        private void button22_Click(object sender, EventArgs e)
+        {
+            int idx = dataGridView1.CurrentCell.ColumnIndex;
+            string filter = textBox28.Text;
+            if (idx < 3)
+            {
+                string clmnName = dataGridView1.Columns[idx].Name;
+                string column;
+                switch (clmnName)
+                {
+                    case "Name":
+                        column = "FirstName";
+                        break;
+                    case "Surname":
+                        column = "LastName";
+                        break;
+                    default:
+                        column = clmnName;
+                        break;
+                }
+                filter_students(column, filter);
+
+            }
+            else if (idx > 4 && idx < 8)
+            {
+                string clmnName = dataGridView1.Columns[idx].Name;
+                filter_students(clmnName, filter);
+            }
+        }
+
+        // CLEAR FILTER
+        private void button23_Click(object sender, EventArgs e)
+        {
+            fetch_students_from_db();
+            textBox28.Text = null;
+        }
 
         // ---------------------------------------- PROFESORI LOGIKA -------------------------------------------------------
         private void button12_Click(object sender, EventArgs e)
@@ -487,7 +524,7 @@ namespace NTP_Projekt
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
-                    string id = row.Cells[0].ToString().Trim();
+                    string id = row.Cells[0].Value.ToString();
                     var prof_to_delete = db.Professors.SingleOrDefault(p => p.JMBAG == id);
                     if (prof_to_delete != null)
                     {
@@ -495,12 +532,14 @@ namespace NTP_Projekt
                         db.SaveChanges();
                     }
                 }
+                fetch_professors_from_db();
             }
         }
 
         // ---------------------------------------- Tablica Courses / XML Fje ----------------------------------------------
         private void button13_Click(object sender, EventArgs e)
         {
+            CoursePnl.Visible = true;
             HideAll();
             pnlStud.Visible = true;
             dataGridView1.DataSource = null;
@@ -575,13 +614,14 @@ namespace NTP_Projekt
             {
                 foreach(DataGridViewRow row in dataGridView1.SelectedRows)
                 {
-                    int id = Convert.ToInt32(row.Cells[0].ToString().Trim());
+                    int id = (int)row.Cells[0].Value;                    
                     var course_to_delete = db.Courses.SingleOrDefault(c => c.CourseID==id);
                     if(course_to_delete != null)
                     {
                         db.Courses.Remove(course_to_delete);
                         db.SaveChanges();
                     }
+                    fetch_courses_from_db();
                 }
             }
         }
@@ -715,8 +755,8 @@ namespace NTP_Projekt
                             professor.HireDate,
                             professor.CourseID
                         };
-
             dataGridView1.DataSource = query.ToList();
+            check_for_extra_columns();
             DataGridViewColumn course_name_column = new DataGridViewColumn();
             course_name_column.Name = "courseName";
             course_name_column.HeaderText = "Course Name";
@@ -741,16 +781,31 @@ namespace NTP_Projekt
 
         private void fetch_courses_from_db()
         {
-            ntp_projektEntities1 db = new ntp_projektEntities1();
-            var query = from course in db.Courses
-                        select new
-                        {
-                            course.CourseID,
-                            course.Name,
-                            course.Description
-                        };
-            dataGridView1.DataSource = query.ToList();
-            dataGridView1.AutoSize = true;
+            string connectionString = NTP_Projekt.Properties.Settings.Default.ntp_projektConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    String sql = "SELECT CourseID, Name, Description FROM Courses";
+                    conn.Open();
+                    SqlCommand cmd;
+                    SqlDataAdapter adapter;
+                    cmd = new SqlCommand(sql, conn);
+                    adapter = new SqlDataAdapter(sql, connectionString);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                    cmd.Dispose();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), "ERROR Loading database.");
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
 
         private void import_students_from_json()
@@ -884,5 +939,80 @@ namespace NTP_Projekt
                 dataGridView1.Columns.Remove("courseName");
             }
         }
+
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = dataGridView1.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = dataGridView1.SortedColumn;
+            ListSortDirection direction;
+
+            // If oldColumn is null, then the DataGridView is not sorted.
+            if (oldColumn != null)
+            {
+                // Sort the same column again, reversing the SortOrder.
+                if (oldColumn == newColumn &&
+                    dataGridView1.SortOrder == System.Windows.Forms.SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    // Sort a new column and remove the old SortGlyph.
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = System.Windows.Forms.SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            // Sort the selected column.
+            dataGridView1.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ? System.Windows.Forms.SortOrder.Ascending : System.Windows.Forms.SortOrder.Descending;
+        }
+
+        private void dataGridView1_DataBindingComplete(object sender,
+            DataGridViewBindingCompleteEventArgs e)
+        {
+            // Put each of the columns into programmatic sort mode.
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+
+        private void filter_students(string field, string filter)
+        {
+            string connectionString = NTP_Projekt.Properties.Settings.Default.ntp_projektConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    String sql = "SELECT Users.JMBAG, FirstName as [Name], LastName as [Surname], Email, Dob as [Date of birth]," +
+                        " Address, City, Country, Password, EnrollmentDate as [Enrollment Date] FROM Users" +
+                        $" INNER JOIN Students on Users.JMBAG = Students.JMBAG WHERE Users.RoleID = 1 AND Users.{field} LIKE '{filter}%'";
+                    conn.Open();
+                    SqlCommand cmd;
+                    SqlDataAdapter adapter;
+                    cmd = new SqlCommand(sql, conn);
+                    adapter = new SqlDataAdapter(sql, connectionString);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                    cmd.Dispose();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), "ERROR Loading database.");
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
+
     }
 }

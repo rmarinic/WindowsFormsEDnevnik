@@ -36,6 +36,9 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.20.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.20\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp, Version=107.1.2.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>packages\RestSharp.107.1.2\lib\netstandard2.0\RestSharp.dll</HintPath>
     </Reference>
@@ -338,7 +341,6 @@
     <None Include="ntpProjekt.edmx.diagram">
       <DependentUpon>ntpProjekt.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
     <None Include="Resources\ntp_projektDataSet.xsc">
       <DependentUpon>ntp_projektDataSet.xsd</DependentUpon>
     </None>
