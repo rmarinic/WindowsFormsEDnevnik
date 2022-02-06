@@ -83,5 +83,10 @@ namespace NTP_Projekt
             HideAll();
             pnlProf.Visible = true;
         }
+
+        private void AdminMain_Load(object sender, EventArgs e)
+        {
+            Logic.Appearance.RefreshForm(this);
+        }
     }
 }

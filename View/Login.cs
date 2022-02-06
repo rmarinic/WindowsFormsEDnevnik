@@ -24,7 +24,13 @@ namespace NTP_Projekt
                 MessageBox.Show("Email or password is invalid", "Information",MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
-                bool loginFlag = loginEncrypt.LoginSelectData(txtEmail.Text, txtPassword.Text);
+                RestClient client = new RestClient("https://localhost:44387/Api");
+                var request = new RestRequest("Authentication");
+                request.AddParameter("email", txtEmail.Text);
+                request.AddParameter("pass", txtPassword.Text);
+                var response = client.ExecuteAsync(request);
+
+                bool loginFlag = bool.Parse(response.Result.Content.Replace("\"", ""));
 
                 if (loginFlag)
                 {
@@ -48,34 +54,10 @@ namespace NTP_Projekt
         // --------------------------------------------- SAVEANJE INI I REGISTRY ------------------------------------------------------
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ////Prilikom zatvaranja forme, saveaj visinu, širinu i poziciju prozora u Windows Registry
-            //RegistryKey test = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\\NTPEdnevnik");
-            //test.SetValue("Left", this.Left.ToString());
-            //test.SetValue("Top", this.Top.ToString());
-            //test.SetValue("Width", this.Width.ToString());
-            //test.SetValue("Height", this.Height.ToString());
         }
 
         public void Login_Load(object sender, EventArgs e)
         {
-            ////Prilikom učitavanja forme, loadaj settingse prozora iz registrya i spremi ih u globalne varijable
-            //RegistryKey registry = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\\NTPEdnevnik");
-            //if(registry.GetValue("Left") != null && registry.GetValue("Top") != null && 
-            //    registry.GetValue("Width") != null && registry.GetValue("Height") != null)
-            //{
-            //    Globals.WINDOW_POS_LEFT = registry.GetValue("Left").ToString();
-            //    Globals.WINDOW_POS_TOP = registry.GetValue("Top").ToString();
-            //    Globals.WINDOW_HEIGHT = registry.GetValue("Height").ToString();
-            //    Globals.WINDOW_WIDTH = registry.GetValue("Width").ToString();
-            //}
-
-            //if (!String.IsNullOrEmpty(Globals.WINDOW_POS_LEFT))
-            //{
-            //    this.Left = int.Parse(Globals.WINDOW_POS_LEFT);
-            //    this.Top = int.Parse(Globals.WINDOW_POS_TOP);
-            //    this.Width = int.Parse(Globals.WINDOW_HEIGHT);
-            //    this.Height = int.Parse(Globals.WINDOW_WIDTH);
-            //}
 
             Logic.Appearance.RefreshForm(this);
         }
@@ -158,6 +140,27 @@ namespace NTP_Projekt
                 return rawResponse;
             }
             return null;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            RestClient client = new RestClient(@"https://api.covid19api.com/");
+            var request = new RestRequest("summary");
+            var response = client.ExecuteAsync(request);
+
+            if(response.Result != null)
+            {
+                string rawResponse = response.Result.Content;
+                dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(rawResponse);
+                label1.Text = "COVID-19 Statistics\nNew cases: " + json["Global"]["NewConfirmed"] + "\nNew deaths: " + json["Global"]["NewDeaths"];
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Main mainForm = new Main();
+            this.Hide();
+            mainForm.ShowDialog();
         }
     }
 }

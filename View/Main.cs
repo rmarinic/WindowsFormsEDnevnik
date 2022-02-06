@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -79,6 +80,35 @@ namespace NTP_Projekt
             test.SetValue("Top", this.Top.ToString());
             test.SetValue("Width", this.Width.ToString());
             test.SetValue("Height", this.Height.ToString());
+        }
+
+        // ------------------------------ ENCRYPT / DECRYPT --------------------------
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "All files|*.*" })
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                    txtFileName.Text = ofd.FileName;
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string password = "+9j?5DvJ2&Qq@Fkh";
+            GCHandle gCHandle = GCHandle.Alloc(password, GCHandleType.Pinned);
+            Logic.FileEncryption.FileEncrypt(txtFileName.Text, password);
+            Logic.FileEncryption.ZeroMemory(gCHandle.AddrOfPinnedObject(), password.Length * 2);
+            gCHandle.Free();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string password = "+9j?5DvJ2&Qq@Fkh";
+            GCHandle gch = GCHandle.Alloc(password, GCHandleType.Pinned);
+            string outputFileName = txtFileName.Text;
+            outputFileName = outputFileName.Insert(txtFileName.Text.LastIndexOf('\\')+1, "decrypted_").Replace(".aes", "");
+            Logic.FileEncryption.FileDecrypt(txtFileName.Text, outputFileName, password);
+            Logic.FileEncryption.ZeroMemory(gch.AddrOfPinnedObject(), password.Length * 2);
+            gch.Free();
         }
     }
 }

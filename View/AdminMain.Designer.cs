@@ -139,6 +139,7 @@ namespace NTP_Projekt
             this.Controls.Add(this.label1);
             this.Name = "AdminMain";
             this.Text = "AdminMain";
+            this.Load += new System.EventHandler(this.AdminMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlStudents.ResumeLayout(false);

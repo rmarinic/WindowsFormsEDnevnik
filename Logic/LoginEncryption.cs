@@ -12,41 +12,6 @@ namespace NTP_Projekt
     class LoginEncryption
     {
 
-        public bool LoginSelectData(string email, string pass)
-            {
-            bool ret = false;
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.ntp_projektConnectionString);
-            conn.Open();
-            try
-            {
-                SqlCommand cmd;
-                SqlDataReader reader;
-                string sql = ("SELECT * FROM USERS WHERE Email = @email AND Password = @pass");
-                cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@pass", HashString(pass));
-                reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                    ret = true;
-                else
-                    ret = false;
-
-                reader.Close();
-                cmd.Dispose();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return ret;
-        }
-
         public string RegisterInsertData(string email, string pass, string firstName, string lastName, string city, string country,
             string address, string dob, string jmbag)
         {

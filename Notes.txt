@@ -3,3 +3,6 @@
 22.) https://www.youtube.com/watch?v=J3BbVzzfR3g - lozinka sha 256
 
 CRYPTOGRAPHY - https://docs.microsoft.com/en-us/dotnet/standard/security/cryptographic-services
+
+
+AES files - https://foxlearn.com/windows-forms/how-to-encrypt-and-decrypt-files-using-aes-encryption-algorithm-in-csharp-396.html
