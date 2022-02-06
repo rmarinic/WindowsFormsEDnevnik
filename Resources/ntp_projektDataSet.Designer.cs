@@ -2346,6 +2346,8 @@ namespace NTP_Projekt.Resources {
             
             private global::System.Data.DataColumn columnEnrollmentDate;
             
+            private global::System.Data.DataColumn columnImage;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public StudentsDataTable() {
@@ -2404,7 +2406,15 @@ namespace NTP_Projekt.Resources {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ImageColumn {
+                get {
+                    return this.columnImage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2441,11 +2451,14 @@ namespace NTP_Projekt.Resources {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public StudentsRow AddStudentsRow(string JMBAG, int RoleID, System.DateTime EnrollmentDate) {
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public StudentsRow AddStudentsRow(string JMBAG, int RoleID, System.DateTime EnrollmentDate, byte[] Image) {
                 StudentsRow rowStudentsRow = ((StudentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         JMBAG,
                         RoleID,
-                        EnrollmentDate};
+                        EnrollmentDate,
+                        Image};
                 rowStudentsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowStudentsRow);
                 return rowStudentsRow;
@@ -2478,6 +2491,7 @@ namespace NTP_Projekt.Resources {
                 this.columnJMBAG = base.Columns["JMBAG"];
                 this.columnRoleID = base.Columns["RoleID"];
                 this.columnEnrollmentDate = base.Columns["EnrollmentDate"];
+                this.columnImage = base.Columns["Image"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2489,6 +2503,8 @@ namespace NTP_Projekt.Resources {
                 base.Columns.Add(this.columnRoleID);
                 this.columnEnrollmentDate = new global::System.Data.DataColumn("EnrollmentDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnrollmentDate);
+                this.columnImage = new global::System.Data.DataColumn("Image", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImage);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnJMBAG}, true));
                 this.columnJMBAG.AllowDBNull = false;
@@ -2762,7 +2778,7 @@ namespace NTP_Projekt.Resources {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2797,7 +2813,7 @@ namespace NTP_Projekt.Resources {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public UsersRow AddUsersRow(string JMBAG, string FirstName, string LastName, string Address, string City, string Country, System.DateTime DoB, RolesRow parentRolesRowByFK__Users__RoleID__44FF419A, string Email, string Password) {
                 UsersRow rowUsersRow = ((UsersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -3685,7 +3701,23 @@ namespace NTP_Projekt.Resources {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public byte[] Image {
+                get {
+                    try {
+                        return ((byte[])(this[this.tableStudents.ImageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Image\' in table \'Students\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudents.ImageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public UsersRow UsersRowParent {
                 get {
                     return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK__Students__4AB81AF0"])));
@@ -3720,7 +3752,19 @@ namespace NTP_Projekt.Resources {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsImageNull() {
+                return this.IsNull(this.tableStudents.ImageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetImageNull() {
+                this[this.tableStudents.ImageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public EnrollmentsRow[] GetEnrollmentsRows() {
                 if ((this.Table.ChildRelations["FK__Enrollmen__Stude__5DCAEF64"] == null)) {
                     return new EnrollmentsRow[0];
@@ -3892,7 +3936,7 @@ namespace NTP_Projekt.Resources {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public RolesRow RolesRow {
                 get {
                     return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["FK__Users__RoleID__44FF419A"])));
@@ -6467,7 +6511,7 @@ SELECT JMBAG, RoleID, EnrollmentDate FROM Students WHERE (JMBAG = @JMBAG)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT JMBAG, RoleID, EnrollmentDate FROM dbo.Students";
+            this._commandCollection[0].CommandText = "SELECT JMBAG, RoleID, EnrollmentDate FROM Students";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

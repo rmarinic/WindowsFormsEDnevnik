@@ -1090,6 +1090,7 @@ namespace NTP_Projekt
             this.Controls.Add(this.button5);
             this.Controls.Add(this.pnlStud);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
             this.Name = "AdminMain";
             this.Text = "AdminMain";
             this.pnlStud.ResumeLayout(false);
@@ -1100,13 +1101,13 @@ namespace NTP_Projekt
             this.Json2Pnl.ResumeLayout(false);
             this.Json2Pnl.PerformLayout();
             this.JsonPnl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ntp_projektDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource2)).EndInit();
             this.CoursePnl.ResumeLayout(false);
             this.CoursePnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1163,7 +1164,6 @@ namespace NTP_Projekt
         public System.Windows.Forms.TextBox textBox11;
         public System.Windows.Forms.TextBox textBox10;
         public System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -1214,5 +1214,6 @@ namespace NTP_Projekt
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

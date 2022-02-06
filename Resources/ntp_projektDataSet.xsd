@@ -339,7 +339,7 @@ SELECT JMBAG, RoleID, EnrollmentDate FROM Students WHERE (JMBAG = @JMBAG)</Comma
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT JMBAG, RoleID, EnrollmentDate FROM dbo.Students</CommandText>
+                    <CommandText>SELECT JMBAG, RoleID, EnrollmentDate FROM Students</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -587,6 +587,7 @@ SELECT JMBAG, FirstName, LastName, Address, City, Country, DoB, RoleID, Email, P
               </xs:element>
               <xs:element name="RoleID" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="RoleIDColumn" msprop:Generator_ColumnPropNameInRow="RoleID" msprop:Generator_UserColumnName="RoleID" msprop:Generator_ColumnVarNameInTable="columnRoleID" type="xs:int" minOccurs="0" />
               <xs:element name="EnrollmentDate" msprop:Generator_ColumnPropNameInTable="EnrollmentDateColumn" msprop:Generator_ColumnPropNameInRow="EnrollmentDate" msprop:Generator_UserColumnName="EnrollmentDate" msprop:Generator_ColumnVarNameInTable="columnEnrollmentDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Image" msprop:Generator_ColumnVarNameInTable="columnImage" msprop:Generator_ColumnPropNameInRow="Image" msprop:Generator_ColumnPropNameInTable="ImageColumn" msprop:Generator_UserColumnName="Image" type="xs:base64Binary" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

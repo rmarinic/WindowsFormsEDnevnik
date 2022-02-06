@@ -12,8 +12,9 @@ namespace NTP_Projekt
     class LoginEncryption
     {
 
-        public string LoginSelectData(string email, string pass)
+        public bool LoginSelectData(string email, string pass)
             {
+            bool ret = false;
             SqlConnection conn = new SqlConnection(Properties.Settings.Default.ntp_projektConnectionString);
             conn.Open();
             try
@@ -27,13 +28,9 @@ namespace NTP_Projekt
                 reader = cmd.ExecuteReader();
 
                 if (reader.Read())
-                {
-                    MessageBox.Show("radi!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                    ret = true;
                 else
-                {
-                    MessageBox.Show("ne radi!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    ret = false;
 
                 reader.Close();
                 cmd.Dispose();
@@ -47,7 +44,7 @@ namespace NTP_Projekt
                 conn.Close();
             }
 
-            return null;
+            return ret;
         }
 
         public string RegisterInsertData(string email, string pass, string firstName, string lastName, string city, string country,

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ConvertXmlToJson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xmlString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertXmlToJsonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConvertXmlToJsonResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertJsonToXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jsonString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertJsonToXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConvertJsonToXmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConvertXmlToJsonSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertXmlToJson" />
+  </wsdl:message>
+  <wsdl:message name="ConvertXmlToJsonSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertXmlToJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertJsonToXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertJsonToXml" />
+  </wsdl:message>
+  <wsdl:message name="ConvertJsonToXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertJsonToXmlResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NTPSoapSoap">
+    <wsdl:operation name="ConvertXmlToJson">
+      <wsdl:input message="tns:ConvertXmlToJsonSoapIn" />
+      <wsdl:output message="tns:ConvertXmlToJsonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertJsonToXml">
+      <wsdl:input message="tns:ConvertJsonToXmlSoapIn" />
+      <wsdl:output message="tns:ConvertJsonToXmlSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NTPSoapSoap" type="tns:NTPSoapSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConvertXmlToJson">
+      <soap:operation soapAction="http://tempuri.org/ConvertXmlToJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertJsonToXml">
+      <soap:operation soapAction="http://tempuri.org/ConvertJsonToXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NTPSoapSoap12" type="tns:NTPSoapSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConvertXmlToJson">
+      <soap12:operation soapAction="http://tempuri.org/ConvertXmlToJson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertJsonToXml">
+      <soap12:operation soapAction="http://tempuri.org/ConvertJsonToXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NTPSoap">
+    <wsdl:port name="NTPSoapSoap" binding="tns:NTPSoapSoap">
+      <soap:address location="http://localhost:13578/NTPSoap.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NTPSoapSoap12" binding="tns:NTPSoapSoap12">
+      <soap12:address location="http://localhost:13578/NTPSoap.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
