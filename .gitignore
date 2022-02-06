@@ -6,6 +6,8 @@
 # Settings
 Properties/Settings.settings
 Properties/Settings.Designer.cs
+Properties/
+[Pp]roperties/
 
 # User-specific files
 *.suo
