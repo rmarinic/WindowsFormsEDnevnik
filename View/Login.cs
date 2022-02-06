@@ -30,13 +30,25 @@ namespace NTP_Projekt
                 request.AddParameter("pass", txtPassword.Text);
                 var response = client.ExecuteAsync(request);
 
-                bool loginFlag = bool.Parse(response.Result.Content.Replace("\"", ""));
+                int userRole = int.Parse(response.Result.Content.Replace("\"", ""));
 
-                if (loginFlag)
+                if (userRole == 1)
                 {
                     Main mainForm = new Main();
                     this.Hide();
                     mainForm.ShowDialog();
+                }
+                else if (userRole == 2)
+                {
+                    ProfMain profForm = new ProfMain();
+                    this.Hide();
+                    profForm.ShowDialog();
+                }
+                else if(userRole == 3)
+                {
+                    AdminMain adminForm = new AdminMain();
+                    this.Hide();
+                    adminForm.ShowDialog();
                 }
                 else
                 {

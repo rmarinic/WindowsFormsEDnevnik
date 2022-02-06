@@ -10,10 +10,10 @@ namespace NTPRestProject.Controllers
     public class AuthenticationController : ApiController
     {
         // GET api/<controller>
-        public string Get(string email, string pass)
+        public int Get(string email, string pass)
         {
             LoginHelper login = new LoginHelper();
-            return login.LoginSelectData(email, pass).ToString();
+            return login.LoginSelectData(email, pass);
         }
     }
 }

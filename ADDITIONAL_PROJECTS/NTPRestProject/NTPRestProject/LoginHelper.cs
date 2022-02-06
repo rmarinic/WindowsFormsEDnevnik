@@ -10,25 +10,23 @@ namespace NTPRestProject
 {
     public class LoginHelper
     {
-        public bool LoginSelectData(string email, string pass)
+        public int LoginSelectData(string email, string pass)
         {
-            bool ret = false;
+            int ret = 0;
             SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-9N8RF1B\SQLEXPRESS;Initial Catalog=ntp_projekt;Integrated Security=True");
             conn.Open();
             try
             {
                 SqlCommand cmd;
                 SqlDataReader reader;
-                string sql = ("SELECT * FROM USERS WHERE Email = @email AND Password = @pass");
+                string sql = ("SELECT RoleID FROM USERS WHERE Email = @email AND Password = @pass");
                 cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@pass", HashString(pass));
                 reader = cmd.ExecuteReader();
 
                 if (reader.Read())
-                    ret = true;
-                else
-                    ret = false;
+                    ret = int.Parse(reader.GetValue(0).ToString());
 
                 reader.Close();
                 cmd.Dispose();
