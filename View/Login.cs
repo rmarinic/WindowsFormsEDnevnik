@@ -64,13 +64,9 @@ namespace NTP_Projekt
         }
 
         // --------------------------------------------- SAVEANJE INI I REGISTRY ------------------------------------------------------
-        private void Login_FormClosed(object sender, FormClosedEventArgs e)
-        {
-        }
 
         public void Login_Load(object sender, EventArgs e)
         {
-
             Logic.Appearance.RefreshForm(this);
         }
         private void button2_Click(object sender, EventArgs e)

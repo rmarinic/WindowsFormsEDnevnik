@@ -42,6 +42,7 @@ namespace NTP_Projekt.Logic
                 {
                     form.BackColor = Color.FromArgb(255, 48, 48, 48);
                     form.ForeColor = Color.White;
+
                     foreach (var button in GetAll(form, typeof(Button)))
                     {
                         (button as Button).BackColor = Color.FromArgb(255, 70, 70, 70);
@@ -53,7 +54,8 @@ namespace NTP_Projekt.Logic
                 {
                     form.BackColor = Color.White;
                     form.ForeColor = Color.Black;
-                    foreach (var button in form.Controls.OfType<Button>())
+
+                    foreach (var button in GetAll(form, typeof(Button)))
                     {
                         (button as Button).BackColor = Color.FromArgb(255, 220, 220, 220);
                         (button as Button).FlatStyle = FlatStyle.Flat;

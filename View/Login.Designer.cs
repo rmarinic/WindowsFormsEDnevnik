@@ -327,7 +327,6 @@ namespace NTP_Projekt
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Login";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.Load += new System.EventHandler(this.Login_Load);
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
