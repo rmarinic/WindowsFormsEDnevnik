@@ -51,6 +51,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NTPDynamicLibrary">
+      <HintPath>Resources\NTPDynamicLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp, Version=107.1.2.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>packages\RestSharp.107.1.2\lib\netstandard2.0\RestSharp.dll</HintPath>
     </Reference>
@@ -123,6 +126,7 @@
     <Compile Include="Grades.cs">
       <DependentUpon>ntpProjekt.tt</DependentUpon>
     </Compile>
+    <Compile Include="Logic\DbHelper.cs" />
     <Compile Include="Model\Professor.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="ntpProjekt.Context.cs">

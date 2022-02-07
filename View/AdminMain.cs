@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using NTP_Projekt.Model;
-using NTP_Projekt.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,18 +6,16 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
+using NTPDynamicLibrary;
 
 namespace NTP_Projekt
 {
     public partial class AdminMain : Form
     {
+        DigitalSignature _digitalSignature = new DigitalSignature();
         public AdminMain()
         {
             InitializeComponent();
@@ -547,6 +543,7 @@ namespace NTP_Projekt
             textBox25.ReadOnly = false;
             CoursePnl.Visible = true;
             fetch_courses_from_db();
+            dataGridView1.AllowUserToAddRows = false;
 
             button7_Click_1(sender, e);
             button9_Click(sender, e);
@@ -910,26 +907,44 @@ namespace NTP_Projekt
             ds.DataSetName = "courses";
             ds.Tables.Add(dt);
             ds.WriteXml(get_xml_path());
+            _digitalSignature.SignXml(get_xml_path());
         }
 
         private void import_courses_from_xml()
         {
             using(ntp_projektEntities1 db = new ntp_projektEntities1())
             {
-                XElement xml = XElement.Load(get_xml_path());
-                IEnumerable<XElement> courses = from el in xml.Elements() select el;
-                foreach (XElement e in courses)
+                if (_digitalSignature.VerifyXml(get_xml_path()))
                 {
-                    var course_from_xml = e.Elements().ToList();
-                    Courses course = new Courses();
-                    course.CourseID = Convert.ToInt32(course_from_xml[0].Value);
-                    course.Name = course_from_xml[1].Value;
-                    course.Description = course_from_xml[2].Value;
-                    db.Courses.Add(course);
-                }
+                    XElement xml = XElement.Load(get_xml_path());
+                    IEnumerable<XElement> courses = from el in xml.Elements() where el.ToString().StartsWith("<course>") select el;
+                    foreach (XElement e in courses)
+                    {
+                        var course_from_xml = e.Elements().ToList();
+                        var course_id = Convert.ToInt32(course_from_xml[0].Value);
+                        var dbchecker = db.Courses.SingleOrDefault(c => c.CourseID == course_id);
+                        if (dbchecker == null)
+                        {
+                            Courses course = new Courses();
+                            course.CourseID = Convert.ToInt32(course_from_xml[0].Value);
+                            course.Name = course_from_xml[1].Value;
+                            course.Description = course_from_xml[2].Value;
+                            db.Courses.Add(course);
+                            Console.WriteLine($"Course {course_from_xml[1].Value} successfully imported!");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Course {course_from_xml[1].Value} already exists, skipping....");
+                        }
+                    }
 
-                db.SaveChanges();
-                fetch_courses_from_db();
+                    db.SaveChanges();
+                    fetch_courses_from_db();
+                }
+                else
+                {
+                    Console.WriteLine("digital signature verification failed.");
+                }
             }
         }
 

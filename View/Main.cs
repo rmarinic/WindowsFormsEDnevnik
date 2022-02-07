@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NTPDynamicLibrary;
 
 namespace NTP_Projekt
 {
@@ -109,6 +110,12 @@ namespace NTP_Projekt
             Logic.FileEncryption.FileDecrypt(txtFileName.Text, outputFileName, password);
             Logic.FileEncryption.ZeroMemory(gch.AddrOfPinnedObject(), password.Length * 2);
             gch.Free();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DigitalSignature digitalSignature = new DigitalSignature();
+            digitalSignature.SignXml(txtFileName.Text);
         }
     }
 }

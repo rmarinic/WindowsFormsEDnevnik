@@ -1,13 +1,13 @@
 <?xml version="1.0" standalone="yes"?>
 <courses>
   <course>
+    <CourseID>3</CourseID>
+    <Name>Biology</Name>
+    <Description>Course about everything living that surrounds us. lol</Description>
+  </course>
+  <course>
     <CourseID>4</CourseID>
     <Name>Mathematics</Name>
     <Description>Basic mathematics and algebra</Description>
   </course>
-  <course>
-    <CourseID>3</CourseID>
-    <Name>Biology</Name>
-    <Description>Course about everything living that surrounds us.</Description>
-  </course>
-</courses>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>Jc5kcpiM7BZnlJEYxJhiSLRjgghd8JLoQbQ3A7zX/ws=</DigestValue></Reference></SignedInfo><SignatureValue>luzZah9fd/E30wt0iiXQdPWtFIJrrrO047VT3BWl5sxB39QMzYpYAIZKPjH7BuHpnFxZEoW1+RIiwYlHtxiigyzhXf1+ElE1uz8cxIYavP0FFR7tXIe48RI8Cmyq1i0ZdB+yzmtyT58paz51bHBWd7UuXRgtT4B7mWyoOqfEsPg=</SignatureValue></Signature></courses>
