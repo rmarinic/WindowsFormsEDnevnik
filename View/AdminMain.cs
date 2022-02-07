@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -168,7 +169,7 @@ namespace NTP_Projekt
             {
                 if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "" && textBox6.Text != "" && textBox7.Text != "" && textBox8.Text != "")
                 {
-                    string jsonString = File.ReadAllText(get_json_path());
+                    string jsonString = Logic.FileEncryption.DecryptJson(get_json_path());
                     BindingList<Model.Student> students = JsonConvert.DeserializeObject<BindingList<Model.Student>>(jsonString);
                     dataGridView1.Columns[4].HeaderText = "Date of birth";
                     dataGridView1.Columns[9].HeaderText = "Enrollment Date";
@@ -812,7 +813,7 @@ namespace NTP_Projekt
         {
             try
             {
-                string jsonString = File.ReadAllText(get_json_path());
+                string jsonString = Logic.FileEncryption.DecryptJson(get_json_path());
                 BindingList<Model.Student> students = JsonConvert.DeserializeObject<BindingList<Model.Student>>(jsonString);
                 dataGridView1.DataSource = students;
                 dataGridView1.Columns[4].HeaderText = "Date of birth";
@@ -832,15 +833,20 @@ namespace NTP_Projekt
             string output = JsonConvert.SerializeObject(this.dataGridView1.DataSource, Newtonsoft.Json.Formatting.Indented);
             output = Regex.Replace(output, matchpattern, replacementpattern);
             string filepath = get_json_path();
-            if (!File.Exists(filepath))
-            {
-                File.Create(filepath);
-                File.WriteAllText(filepath, output);
-            }
-            else if (File.Exists(filepath))
-            {
-                File.WriteAllText(filepath, output);
-            }
+            File.Delete(filepath + ".aes");
+
+            if (File.Exists(filepath))
+                File.Delete(filepath);
+
+            using (StreamWriter stream = new StreamWriter(filepath))
+                stream.Write(output);
+
+            string password = "+9j?5DvJ2&Qq@Fkh";
+            GCHandle gCHandle = GCHandle.Alloc(password, GCHandleType.Pinned);
+            Logic.FileEncryption.FileEncrypt(filepath, password);
+            Logic.FileEncryption.ZeroMemory(gCHandle.AddrOfPinnedObject(), password.Length * 2);
+            gCHandle.Free();
+            File.Delete(filepath);
         }
 
         private string get_json_path()

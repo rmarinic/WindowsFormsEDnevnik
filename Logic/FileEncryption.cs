@@ -83,5 +83,20 @@ namespace NTP_Projekt.Logic
             }
             return data;
         }
+
+        public static string DecryptJson(string jsonPath)
+        {
+            string password = "+9j?5DvJ2&Qq@Fkh";
+            GCHandle gch = GCHandle.Alloc(password, GCHandleType.Pinned);
+            string path = jsonPath + ".aes";
+            string outputFileName = path.Replace(".aes", "");
+            Logic.FileEncryption.FileDecrypt(path, outputFileName, password);
+            Logic.FileEncryption.ZeroMemory(gch.AddrOfPinnedObject(), password.Length * 2);
+            gch.Free();
+            string jsonString = File.ReadAllText(outputFileName);
+            File.Delete(outputFileName);
+
+            return jsonString;
+        }
     }
 }
