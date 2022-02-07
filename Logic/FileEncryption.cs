@@ -98,5 +98,15 @@ namespace NTP_Projekt.Logic
 
             return jsonString;
         }
+
+        public static void EncryptJson(string filepath)
+        {
+            string password = "+9j?5DvJ2&Qq@Fkh";
+            GCHandle gCHandle = GCHandle.Alloc(password, GCHandleType.Pinned);
+            Logic.FileEncryption.FileEncrypt(filepath, password);
+            Logic.FileEncryption.ZeroMemory(gCHandle.AddrOfPinnedObject(), password.Length * 2);
+            gCHandle.Free();
+            File.Delete(filepath);
+        }
     }
 }

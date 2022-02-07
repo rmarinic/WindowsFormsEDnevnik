@@ -841,12 +841,7 @@ namespace NTP_Projekt
             using (StreamWriter stream = new StreamWriter(filepath))
                 stream.Write(output);
 
-            string password = "+9j?5DvJ2&Qq@Fkh";
-            GCHandle gCHandle = GCHandle.Alloc(password, GCHandleType.Pinned);
-            Logic.FileEncryption.FileEncrypt(filepath, password);
-            Logic.FileEncryption.ZeroMemory(gCHandle.AddrOfPinnedObject(), password.Length * 2);
-            gCHandle.Free();
-            File.Delete(filepath);
+            Logic.FileEncryption.EncryptJson(filepath);
         }
 
         private string get_json_path()
