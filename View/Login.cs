@@ -30,10 +30,10 @@ namespace NTP_Projekt
                 request.AddParameter("pass", txtPassword.Text);
                 var response = client.ExecuteAsync(request);
 
-                string userJmbag = response.Result.Content.Replace("\"", "");
+                Globals.USER_JMBAG = response.Result.Content.Replace("\"", "");
 
                 Users user = new Users();
-                user = DbHelper.GetUser(userJmbag);
+                user = DbHelper.GetUser(Globals.USER_JMBAG);
 
                 if (user.RoleID == 1)
                 {

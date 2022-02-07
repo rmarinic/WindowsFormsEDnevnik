@@ -35,7 +35,7 @@ namespace NTP_Projekt.Logic
                         user.Address = reader.GetValue(3).ToString();
                         user.City = reader.GetValue(4).ToString();
                         user.Country = reader.GetValue(5).ToString();
-                        user.DoB = DateTime.Now; // TEMP!
+                        user.DoB = Convert.ToDateTime(reader.GetValue(6).ToString()); // TEMP!
                         user.RoleID = int.Parse(reader.GetValue(7).ToString());
                         user.Email = reader.GetValue(8).ToString();
                         user.Password = reader.GetValue(9).ToString();

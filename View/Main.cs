@@ -69,7 +69,7 @@ namespace NTP_Projekt
                 this.Width = int.Parse(Globals.WINDOW_HEIGHT);
                 this.Height = int.Parse(Globals.WINDOW_WIDTH);
             }
-
+            label1.Text = Globals.USER_JMBAG;
             Logic.Appearance.RefreshForm(this);
         }
 

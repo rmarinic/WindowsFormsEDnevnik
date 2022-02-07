@@ -15,5 +15,6 @@ namespace NTP_Projekt.Logic
         public static string DARK_MODE;
         public static string FONT_NAME;
         public static string FONT_MULTIPLIER;
+        public static string USER_JMBAG;
     }
 }
