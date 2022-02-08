@@ -7,7 +7,7 @@
       <Diagram DiagramId="544f090e967f409e80b19f940fa83ee6" Name="Diagram1">
         <EntityTypeShape EntityType="ntp_projektModel.Admins" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ntp_projektModel.Courses" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ntp_projektModel.Grades" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ntp_projektModel.Grades" Width="1.5" PointX="3.625" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ntp_projektModel.Professors" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ntp_projektModel.Roles" Width="1.5" PointX="5.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ntp_projektModel.Students" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
@@ -17,6 +17,9 @@
         <AssociationConnector Association="ntp_projektModel.FK__Professor__Cours__5441852A" ManuallyRouted="false" />
         <AssociationConnector Association="ntp_projektModel.FK__Grades__StudentJ__628FA481" ManuallyRouted="false" />
         <AssociationConnector Association="ntp_projektModel.FK__Users__RoleID__44FF419A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ntp_projektModel.Enrollments" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="ntp_projektModel.FK__Enrollmen__Cours__0A9D95DB" />
+        <AssociationConnector Association="ntp_projektModel.FK__Enrollmen__Stude__0B91BA14" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

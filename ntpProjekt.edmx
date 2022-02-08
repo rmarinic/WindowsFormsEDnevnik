@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ntp_projektModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ntp_projektModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admins">
           <Key>
             <PropertyRef Name="JMBAG" />
@@ -17,16 +17,17 @@
             <PropertyRef Name="CourseID" />
           </Key>
           <Property Name="CourseID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
-          <Property Name="Description" Type="nchar" MaxLength="300" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'ntp_projekt.dbo.Enrollments' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="Enrollments">
-          <Property Name="EnrollmentID" Type="int" />
-          <Property Name="StudentJMBAG" Type="char" MaxLength="10" />
-          <Property Name="CourseID" Type="int" />
-        </EntityType>-->
+          <Key>
+            <PropertyRef Name="EnrollmentID" />
+          </Key>
+          <Property Name="EnrollmentID" Type="int" Nullable="false" />
+          <Property Name="StudentJMBAG" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Grades">
           <Key>
             <PropertyRef Name="ID" />
@@ -51,7 +52,7 @@ warning 6013: The table/view 'ntp_projekt.dbo.Enrollments' does not have a prima
             <PropertyRef Name="RoleID" />
           </Key>
           <Property Name="RoleID" Type="int" Nullable="false" />
-          <Property Name="Role" Type="nchar" MaxLength="20" />
+          <Property Name="Role" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Students">
           <Key>
@@ -76,25 +77,43 @@ warning 6013: The table/view 'ntp_projekt.dbo.Enrollments' does not have a prima
             <PropertyRef Name="JMBAG" />
           </Key>
           <Property Name="JMBAG" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="FirstName" Type="nchar" MaxLength="25" Nullable="false" />
-          <Property Name="LastName" Type="nchar" MaxLength="25" />
-          <Property Name="Address" Type="nchar" MaxLength="50" />
-          <Property Name="City" Type="nchar" MaxLength="50" />
-          <Property Name="Country" Type="nchar" MaxLength="4" />
+          <Property Name="FirstName" Type="varchar" MaxLength="25" />
+          <Property Name="LastName" Type="varchar" MaxLength="25" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="4" />
           <Property Name="DoB" Type="date" />
           <Property Name="RoleID" Type="int" Nullable="false" />
-          <Property Name="Email" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="256" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6035: The relationship 'FK__Admins__59FA5E80' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="FK__Admins__59FA5E80" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'ntp_projekt.dbo.Enrollments' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Enrollmen__Cours__5EBF139D" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'ntp_projekt.dbo.Enrollments' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Enrollmen__Stude__5DCAEF64" />-->
+        <Association Name="FK__Enrollmen__Cours__0A9D95DB">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="Enrollments" Type="Self.Enrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="Enrollments">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Enrollmen__Stude__0B91BA14">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Enrollments" Type="Self.Enrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="JMBAG" />
+            </Principal>
+            <Dependent Role="Enrollments">
+              <PropertyRef Name="StudentJMBAG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Grades__CourseID__6383C8BA">
           <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
           <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
@@ -152,12 +171,21 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
         <EntityContainer Name="ntp_projektModelStoreContainer">
           <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enrollments" EntityType="Self.Enrollments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grades" EntityType="Self.Grades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Professors" EntityType="Self.Professors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Enrollmen__Cours__0A9D95DB" Association="Self.FK__Enrollmen__Cours__0A9D95DB">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Enrollments" EntitySet="Enrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Enrollmen__Stude__0B91BA14" Association="Self.FK__Enrollmen__Stude__0B91BA14">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Enrollments" EntitySet="Enrollments" />
+          </AssociationSet>
           <AssociationSet Name="FK__Grades__CourseID__6383C8BA" Association="Self.FK__Grades__CourseID__6383C8BA">
             <End Role="Courses" EntitySet="Courses" />
             <End Role="Grades" EntitySet="Grades" />
@@ -175,8 +203,7 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ntp_projektModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -192,10 +219,11 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
             <PropertyRef Name="CourseID" />
           </Key>
           <Property Name="CourseID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Grades" Relationship="Self.FK__Grades__CourseID__6383C8BA" FromRole="Courses" ToRole="Grades" />
           <NavigationProperty Name="Professors" Relationship="Self.FK__Professor__Cours__5441852A" FromRole="Courses" ToRole="Professors" />
+          <NavigationProperty Name="Enrollments" Relationship="ntp_projektModel.FK__Enrollmen__Cours__0A9D95DB" FromRole="Courses" ToRole="Enrollments" />
         </EntityType>
         <EntityType Name="Grades">
           <Key>
@@ -224,7 +252,7 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
             <PropertyRef Name="RoleID" />
           </Key>
           <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <Property Name="Role" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Users__RoleID__44FF419A" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="Students">
@@ -235,6 +263,7 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
           <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="EnrollmentDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Grades" Relationship="Self.FK__Grades__StudentJ__628FA481" FromRole="Students" ToRole="Grades" />
+          <NavigationProperty Name="Enrollments" Relationship="ntp_projektModel.FK__Enrollmen__Stude__0B91BA14" FromRole="Students" ToRole="Enrollments" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -251,15 +280,15 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
             <PropertyRef Name="JMBAG" />
           </Key>
           <Property Name="JMBAG" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Country" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="DoB" Type="DateTime" Precision="0" />
           <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="256" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Roles" Relationship="Self.FK__Users__RoleID__44FF419A" FromRole="Users" ToRole="Roles" />
         </EntityType>
         <Association Name="FK__Grades__CourseID__6383C8BA">
@@ -335,7 +364,50 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Enrollments" EntityType="ntp_projektModel.Enrollments" />
+          <AssociationSet Name="FK__Enrollmen__Cours__0A9D95DB" Association="ntp_projektModel.FK__Enrollmen__Cours__0A9D95DB">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Enrollments" EntitySet="Enrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Enrollmen__Stude__0B91BA14" Association="ntp_projektModel.FK__Enrollmen__Stude__0B91BA14">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Enrollments" EntitySet="Enrollments" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Enrollments">
+          <Key>
+            <PropertyRef Name="EnrollmentID" />
+          </Key>
+          <Property Name="EnrollmentID" Type="Int32" Nullable="false" />
+          <Property Name="StudentJMBAG" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="ntp_projektModel.FK__Enrollmen__Cours__0A9D95DB" FromRole="Enrollments" ToRole="Courses" />
+          <NavigationProperty Name="Students" Relationship="ntp_projektModel.FK__Enrollmen__Stude__0B91BA14" FromRole="Enrollments" ToRole="Students" />
+        </EntityType>
+        <Association Name="FK__Enrollmen__Cours__0A9D95DB">
+          <End Type="ntp_projektModel.Courses" Role="Courses" Multiplicity="1" />
+          <End Type="ntp_projektModel.Enrollments" Role="Enrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="Enrollments">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Enrollmen__Stude__0B91BA14">
+          <End Type="ntp_projektModel.Students" Role="Students" Multiplicity="1" />
+          <End Type="ntp_projektModel.Enrollments" Role="Enrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="JMBAG" />
+            </Principal>
+            <Dependent Role="Enrollments">
+              <PropertyRef Name="StudentJMBAG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -421,6 +493,15 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enrollments">
+            <EntityTypeMapping TypeName="ntp_projektModel.Enrollments">
+              <MappingFragment StoreEntitySet="Enrollments">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="StudentJMBAG" ColumnName="StudentJMBAG" />
+                <ScalarProperty Name="EnrollmentID" ColumnName="EnrollmentID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
