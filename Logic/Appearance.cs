@@ -10,6 +10,7 @@ namespace NTP_Projekt.Logic
 {
     class Appearance
     {
+
         public static void RefreshForm(Form form)
         {
             //Učitavanje iz .ini datoteke

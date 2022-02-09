@@ -40,36 +40,33 @@ namespace NTP_Projekt
             this.pnlLogin = new System.Windows.Forms.Panel();
             this.btnRegister = new System.Windows.Forms.Button();
             this.pnlRegister = new System.Windows.Forms.Panel();
-            this.btnBackToLogin = new System.Windows.Forms.Button();
-            this.txtJmbag = new System.Windows.Forms.TextBox();
-            this.JMBAG = new System.Windows.Forms.Label();
-            this.btnReg = new System.Windows.Forms.Button();
-            this.txtPassReg2 = new System.Windows.Forms.TextBox();
-            this.txtPassReg = new System.Windows.Forms.TextBox();
-            this.lblPass2 = new System.Windows.Forms.Label();
-            this.lblPass = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblCity = new System.Windows.Forms.Label();
             this.lblDob = new System.Windows.Forms.Label();
-            this.lblCountry = new System.Windows.Forms.Label();
-            this.lblAddress = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblSurname = new System.Windows.Forms.Label();
-            this.lblFirstName = new System.Windows.Forms.Label();
-            this.txtDob = new System.Windows.Forms.TextBox();
+            this.lblPass = new System.Windows.Forms.Label();
+            this.lblPass2 = new System.Windows.Forms.Label();
             this.txtCity = new System.Windows.Forms.TextBox();
-            this.txtCountry = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtEmailReg = new System.Windows.Forms.TextBox();
-            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtDob = new System.Windows.Forms.TextBox();
+            this.txtPassReg = new System.Windows.Forms.TextBox();
+            this.txtPassReg2 = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblCountry = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.btnSoap = new System.Windows.Forms.Button();
-            this.btnRest = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.txtEmailReg = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.btnBackToLogin = new System.Windows.Forms.Button();
+            this.btnReg = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.pnlLogin.SuspendLayout();
             this.pnlRegister.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblEmailLogin
@@ -115,13 +112,13 @@ namespace NTP_Projekt
             // 
             // pnlLogin
             // 
+            resources.ApplyResources(this.pnlLogin, "pnlLogin");
             this.pnlLogin.Controls.Add(this.btnRegister);
             this.pnlLogin.Controls.Add(this.lblEmailLogin);
             this.pnlLogin.Controls.Add(this.lblPasswordLogin);
             this.pnlLogin.Controls.Add(this.txtEmail);
             this.pnlLogin.Controls.Add(this.btnLogin);
             this.pnlLogin.Controls.Add(this.txtPassword);
-            resources.ApplyResources(this.pnlLogin, "pnlLogin");
             this.pnlLogin.Name = "pnlLogin";
             // 
             // btnRegister
@@ -133,74 +130,25 @@ namespace NTP_Projekt
             // 
             // pnlRegister
             // 
-            this.pnlRegister.Controls.Add(this.btnBackToLogin);
-            this.pnlRegister.Controls.Add(this.txtJmbag);
-            this.pnlRegister.Controls.Add(this.JMBAG);
-            this.pnlRegister.Controls.Add(this.btnReg);
-            this.pnlRegister.Controls.Add(this.txtPassReg2);
-            this.pnlRegister.Controls.Add(this.txtPassReg);
-            this.pnlRegister.Controls.Add(this.lblPass2);
-            this.pnlRegister.Controls.Add(this.lblPass);
-            this.pnlRegister.Controls.Add(this.lblCity);
-            this.pnlRegister.Controls.Add(this.lblDob);
-            this.pnlRegister.Controls.Add(this.lblCountry);
-            this.pnlRegister.Controls.Add(this.lblAddress);
-            this.pnlRegister.Controls.Add(this.lblEmail);
-            this.pnlRegister.Controls.Add(this.lblSurname);
-            this.pnlRegister.Controls.Add(this.lblFirstName);
-            this.pnlRegister.Controls.Add(this.txtDob);
-            this.pnlRegister.Controls.Add(this.txtCity);
-            this.pnlRegister.Controls.Add(this.txtCountry);
-            this.pnlRegister.Controls.Add(this.txtAddress);
-            this.pnlRegister.Controls.Add(this.txtEmailReg);
-            this.pnlRegister.Controls.Add(this.txtLastName);
-            this.pnlRegister.Controls.Add(this.txtFirstName);
             resources.ApplyResources(this.pnlRegister, "pnlRegister");
+            this.pnlRegister.Controls.Add(this.tableLayoutPanel2);
+            this.pnlRegister.Controls.Add(this.tableLayoutPanel1);
+            this.pnlRegister.Controls.Add(this.btnBackToLogin);
+            this.pnlRegister.Controls.Add(this.btnReg);
             this.pnlRegister.Name = "pnlRegister";
             // 
-            // btnBackToLogin
+            // tableLayoutPanel2
             // 
-            resources.ApplyResources(this.btnBackToLogin, "btnBackToLogin");
-            this.btnBackToLogin.Name = "btnBackToLogin";
-            this.btnBackToLogin.UseVisualStyleBackColor = true;
-            this.btnBackToLogin.Click += new System.EventHandler(this.btnBackToLogin_Click);
-            // 
-            // txtJmbag
-            // 
-            resources.ApplyResources(this.txtJmbag, "txtJmbag");
-            this.txtJmbag.Name = "txtJmbag";
-            // 
-            // JMBAG
-            // 
-            resources.ApplyResources(this.JMBAG, "JMBAG");
-            this.JMBAG.Name = "JMBAG";
-            // 
-            // btnReg
-            // 
-            resources.ApplyResources(this.btnReg, "btnReg");
-            this.btnReg.Name = "btnReg";
-            this.btnReg.UseVisualStyleBackColor = true;
-            this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
-            // 
-            // txtPassReg2
-            // 
-            resources.ApplyResources(this.txtPassReg2, "txtPassReg2");
-            this.txtPassReg2.Name = "txtPassReg2";
-            // 
-            // txtPassReg
-            // 
-            resources.ApplyResources(this.txtPassReg, "txtPassReg");
-            this.txtPassReg.Name = "txtPassReg";
-            // 
-            // lblPass2
-            // 
-            resources.ApplyResources(this.lblPass2, "lblPass2");
-            this.lblPass2.Name = "lblPass2";
-            // 
-            // lblPass
-            // 
-            resources.ApplyResources(this.lblPass, "lblPass");
-            this.lblPass.Name = "lblPass";
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.lblCity, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lblDob, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblPass, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.lblPass2, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.txtCity, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtDob, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtPassReg, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.txtPassReg2, 1, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
             // lblCity
             // 
@@ -212,126 +160,139 @@ namespace NTP_Projekt
             resources.ApplyResources(this.lblDob, "lblDob");
             this.lblDob.Name = "lblDob";
             // 
-            // lblCountry
+            // lblPass
             // 
-            resources.ApplyResources(this.lblCountry, "lblCountry");
-            this.lblCountry.Name = "lblCountry";
+            resources.ApplyResources(this.lblPass, "lblPass");
+            this.lblPass.Name = "lblPass";
             // 
-            // lblAddress
+            // lblPass2
             // 
-            resources.ApplyResources(this.lblAddress, "lblAddress");
-            this.lblAddress.Name = "lblAddress";
-            // 
-            // lblEmail
-            // 
-            resources.ApplyResources(this.lblEmail, "lblEmail");
-            this.lblEmail.Name = "lblEmail";
-            // 
-            // lblSurname
-            // 
-            resources.ApplyResources(this.lblSurname, "lblSurname");
-            this.lblSurname.Name = "lblSurname";
-            // 
-            // lblFirstName
-            // 
-            resources.ApplyResources(this.lblFirstName, "lblFirstName");
-            this.lblFirstName.Name = "lblFirstName";
-            // 
-            // txtDob
-            // 
-            resources.ApplyResources(this.txtDob, "txtDob");
-            this.txtDob.Name = "txtDob";
+            resources.ApplyResources(this.lblPass2, "lblPass2");
+            this.lblPass2.Name = "lblPass2";
             // 
             // txtCity
             // 
             resources.ApplyResources(this.txtCity, "txtCity");
             this.txtCity.Name = "txtCity";
             // 
-            // txtCountry
+            // txtDob
             // 
-            resources.ApplyResources(this.txtCountry, "txtCountry");
-            this.txtCountry.Name = "txtCountry";
+            resources.ApplyResources(this.txtDob, "txtDob");
+            this.txtDob.Name = "txtDob";
             // 
-            // txtAddress
+            // txtPassReg
             // 
-            resources.ApplyResources(this.txtAddress, "txtAddress");
-            this.txtAddress.Name = "txtAddress";
+            resources.ApplyResources(this.txtPassReg, "txtPassReg");
+            this.txtPassReg.Name = "txtPassReg";
             // 
-            // txtEmailReg
+            // txtPassReg2
             // 
-            resources.ApplyResources(this.txtEmailReg, "txtEmailReg");
-            this.txtEmailReg.Name = "txtEmailReg";
+            resources.ApplyResources(this.txtPassReg2, "txtPassReg2");
+            this.txtPassReg2.Name = "txtPassReg2";
             // 
-            // txtLastName
+            // tableLayoutPanel1
             // 
-            resources.ApplyResources(this.txtLastName, "txtLastName");
-            this.txtLastName.Name = "txtLastName";
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.lblSurname, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblEmail, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblAddress, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblCountry, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtFirstName, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtLastName, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtCountry, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtEmailReg, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtAddress, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblFirstName, 0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // lblSurname
+            // 
+            resources.ApplyResources(this.lblSurname, "lblSurname");
+            this.lblSurname.Name = "lblSurname";
+            // 
+            // lblEmail
+            // 
+            resources.ApplyResources(this.lblEmail, "lblEmail");
+            this.lblEmail.Name = "lblEmail";
+            // 
+            // lblAddress
+            // 
+            resources.ApplyResources(this.lblAddress, "lblAddress");
+            this.lblAddress.Name = "lblAddress";
+            // 
+            // lblCountry
+            // 
+            resources.ApplyResources(this.lblCountry, "lblCountry");
+            this.lblCountry.Name = "lblCountry";
             // 
             // txtFirstName
             // 
             resources.ApplyResources(this.txtFirstName, "txtFirstName");
             this.txtFirstName.Name = "txtFirstName";
             // 
-            // btnSoap
+            // txtLastName
             // 
-            resources.ApplyResources(this.btnSoap, "btnSoap");
-            this.btnSoap.Name = "btnSoap";
-            this.btnSoap.UseVisualStyleBackColor = true;
-            this.btnSoap.Click += new System.EventHandler(this.btnSoap_Click);
+            resources.ApplyResources(this.txtLastName, "txtLastName");
+            this.txtLastName.Name = "txtLastName";
             // 
-            // btnRest
+            // txtCountry
             // 
-            resources.ApplyResources(this.btnRest, "btnRest");
-            this.btnRest.Name = "btnRest";
-            this.btnRest.UseVisualStyleBackColor = true;
-            this.btnRest.Click += new System.EventHandler(this.btnRest_Click);
+            resources.ApplyResources(this.txtCountry, "txtCountry");
+            this.txtCountry.Name = "txtCountry";
             // 
-            // button3
+            // txtEmailReg
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.txtEmailReg, "txtEmailReg");
+            this.txtEmailReg.Name = "txtEmailReg";
+            // 
+            // txtAddress
+            // 
+            resources.ApplyResources(this.txtAddress, "txtAddress");
+            this.txtAddress.Name = "txtAddress";
+            // 
+            // lblFirstName
+            // 
+            resources.ApplyResources(this.lblFirstName, "lblFirstName");
+            this.lblFirstName.Name = "lblFirstName";
+            // 
+            // btnBackToLogin
+            // 
+            resources.ApplyResources(this.btnBackToLogin, "btnBackToLogin");
+            this.btnBackToLogin.Name = "btnBackToLogin";
+            this.btnBackToLogin.UseVisualStyleBackColor = true;
+            this.btnBackToLogin.Click += new System.EventHandler(this.btnBackToLogin_Click);
+            // 
+            // btnReg
+            // 
+            resources.ApplyResources(this.btnReg, "btnReg");
+            this.btnReg.Name = "btnReg";
+            this.btnReg.UseVisualStyleBackColor = true;
+            this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // button4
-            // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // Login
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.btnRest);
-            this.Controls.Add(this.btnSoap);
-            this.Controls.Add(this.pnlRegister);
-            this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.pnlRegister);
+            this.Controls.Add(this.pnlLogin);
             this.Name = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
             this.pnlRegister.ResumeLayout(false);
             this.pnlRegister.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,15 +329,10 @@ namespace NTP_Projekt
         private System.Windows.Forms.TextBox txtPassReg;
         private System.Windows.Forms.Label lblPass2;
         private System.Windows.Forms.Label lblPass;
-        private System.Windows.Forms.TextBox txtJmbag;
-        private System.Windows.Forms.Label JMBAG;
         private System.Windows.Forms.Button btnBackToLogin;
-        private System.Windows.Forms.Button btnSoap;
-        private System.Windows.Forms.Button btnRest;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }
 

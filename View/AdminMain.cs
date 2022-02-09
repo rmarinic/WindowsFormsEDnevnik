@@ -30,6 +30,7 @@ namespace NTP_Projekt
             DB2Pnl.Visible = false;
             ProfPnl.Visible = false;
             CoursePnl.Visible = false;
+            pnlConversion.Visible = false;
             check_for_extra_columns();
         }
 
@@ -104,7 +105,7 @@ namespace NTP_Projekt
                                 add_user.Parameters.AddWithValue("@dob", row.Cells[4].Value);
                                 add_user.Parameters.AddWithValue("@jmbag", row.Cells[0].Value);
                                 add_user.Parameters.AddWithValue("@enrollmentdate", row.Cells[9].Value);
-                                add_user.Parameters.AddWithValue("@password", LoginEncryption.HashString((string)row.Cells[8].Value));
+                                add_user.Parameters.AddWithValue("@password", LoginEncryption.HashString((string)row.Cells[8].Value, row.Cells[3].Value.ToString()));
                                 add_user.Connection = conn;
                                 add_user.ExecuteNonQuery();
                             }
@@ -124,7 +125,7 @@ namespace NTP_Projekt
                                 update_user.Parameters.AddWithValue("@dob", row.Cells[4].Value);
                                 update_user.Parameters.AddWithValue("@jmbag", row.Cells[0].Value);
                                 update_user.Parameters.AddWithValue("@enrollmentdate", row.Cells[9].Value);
-                                update_user.Parameters.AddWithValue("@password", LoginEncryption.HashString((string)row.Cells[8].Value));
+                                update_user.Parameters.AddWithValue("@password", LoginEncryption.HashString((string)row.Cells[8].Value, row.Cells[3].Value.ToString()));
                                 update_user.Connection = conn;
                                 update_user.ExecuteNonQuery();
                             }
@@ -283,7 +284,7 @@ namespace NTP_Projekt
                             add_user.Parameters.AddWithValue("@city", textBox14.Text);
                             add_user.Parameters.AddWithValue("@country", textBox15.Text);
                             add_user.Parameters.AddWithValue("@enrollmentdate", DateTime.Parse(dateTimePicker4.Text.ToString()));
-                            add_user.Parameters.AddWithValue("@password", LoginEncryption.HashString((string)textBox16.Text));
+                            add_user.Parameters.AddWithValue("@password", LoginEncryption.HashString((string)textBox16.Text, textBox12.Text));
                             add_user.Connection = conn;
                             add_user.ExecuteNonQuery();
                             fetch_students_from_db();
@@ -310,7 +311,7 @@ namespace NTP_Projekt
                                 update_user.CommandText = "UPDATE users SET FirstName = @firstName, LastName = @lastName, Email = @email, " +
                                            "Address = @address, City = @city, Country = @country, DoB = @dob, Password = @password WHERE JMBAG = @jmbag;" +
                                            "UPDATE Students SET EnrollmentDate = @enrollmentdate WHERE JMBAG = @jmbag;";
-                                update_user.Parameters.AddWithValue("@password", LoginEncryption.HashString(textBox16.Text));
+                                update_user.Parameters.AddWithValue("@password", LoginEncryption.HashString(textBox16.Text, textBox12.Text));
                             }
                             update_user.Parameters.AddWithValue("@jmbag", textBox9.Text);
                             update_user.Parameters.AddWithValue("@firstName", textBox10.Text);
@@ -464,7 +465,7 @@ namespace NTP_Projekt
                             user.Address = textBox21.Text;
                             user.City = textBox22.Text;
                             user.Country = textBox23.Text;
-                            user.Password = LoginEncryption.HashString(textBox24.Text);
+                            user.Password = LoginEncryption.HashString(textBox24.Text, textBox20.Text);
                             user.RoleID = 2;
                             Professors professor = new Professors();
                             professor.JMBAG = user.JMBAG;
@@ -810,11 +811,14 @@ namespace NTP_Projekt
         {
             try
             {
+                Console.WriteLine(get_json_path());
                 string jsonString = Logic.FileEncryption.DecryptJson(get_json_path());
                 BindingList<Model.Student> students = JsonConvert.DeserializeObject<BindingList<Model.Student>>(jsonString);
                 dataGridView1.DataSource = students;
                 dataGridView1.Columns[4].HeaderText = "Date of birth";
                 dataGridView1.Columns[9].HeaderText = "Enrollment Date";
+                
+                File.Replace(get_json_path() + ".aes", get_json_path() + ".aes", get_json_path() + ".aes");
             }
             catch (Exception ex)
             {
@@ -1033,6 +1037,66 @@ namespace NTP_Projekt
         private void AdminMain_Load(object sender, EventArgs e)
         {
             Logic.Appearance.RefreshForm(this);
+            btnConvertToXml.Enabled = false;
+            btnConvertToJson.Enabled = false;
+        }
+
+        private void btnBrowseFile_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "XML Files|*.xml|JSON Files|*.json" })
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    txtFile.Text = ofd.FileName;
+                    if (ofd.FileName.Contains(".xml")){
+                        btnConvertToJson.Enabled = true;
+                        btnConvertToXml.Enabled = false;
+                    }   
+                    else if (ofd.FileName.Contains(".json")){
+                        btnConvertToXml.Enabled = true;
+                        btnConvertToJson.Enabled = false;
+                    }
+                        
+                }
+
+            }
+        }
+
+        private void btnConvertToJson_Click(object sender, EventArgs e)
+        {
+            if (txtFile.Text.Contains(".xml"))
+            {
+                NTPSoapService.NTPSoapSoapClient client = new NTPSoapService.NTPSoapSoapClient();
+                string xmlString = File.ReadAllText(txtFile.Text);
+                var response = client.ConvertXmlToJson(xmlString);
+
+                MessageBox.Show(response);
+            }
+            else
+                MessageBox.Show("Invalid file type.");
+            
+
+        }
+
+        private void btnConvertToXml_Click(object sender, EventArgs e)
+        {
+            if (txtFile.Text.Contains(".json"))
+            {
+                NTPSoapService.NTPSoapSoapClient client = new NTPSoapService.NTPSoapSoapClient();
+                string jsonString = File.ReadAllText(txtFile.Text);
+                Console.WriteLine(jsonString);
+                var response = client.ConvertJsonToXml(jsonString);
+
+                MessageBox.Show(response);
+            }
+            else
+                MessageBox.Show("Invalid file type.");
+        }
+
+        private void btnConversion_Click(object sender, EventArgs e)
+        {
+            HideAll();
+            pnlConversion.Visible = true;
         }
     }
 }

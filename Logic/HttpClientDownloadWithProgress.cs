@@ -12,6 +12,7 @@ namespace NTP_Projekt.Logic
     {
         private readonly string _downloadUrl;
         private readonly string _destinationFilePath;
+        private int _speed;
 
         private HttpClient _httpClient;
 
@@ -19,10 +20,11 @@ namespace NTP_Projekt.Logic
 
         public event ProgressChangedHandler ProgressChanged;
 
-        public HttpClientDownloadWithProgress(string downloadUrl, string destinationFilePath)
+        public HttpClientDownloadWithProgress(string downloadUrl, string destinationFilePath, int speed)
         {
             _downloadUrl = downloadUrl;
             _destinationFilePath = destinationFilePath;
+            _speed = speed;
         }
 
         public async Task StartDownload()
@@ -45,10 +47,10 @@ namespace NTP_Projekt.Logic
 
         private async Task ProcessContentStream(long? totalDownloadSize, Stream contentStream)
         {
-            var throttledStream = new ThrottledStream(contentStream, 4);
+            var throttledStream = new ThrottledStream(contentStream, _speed);
             var totalBytesRead = 0L;
             var readCount = 0L;
-            var buffer = new byte[1];
+            var buffer = new byte[8192];
             var isMoreToRead = true;
 
             using (var fileStream = new FileStream(_destinationFilePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
@@ -69,7 +71,7 @@ namespace NTP_Projekt.Logic
                     totalBytesRead += bytesRead;
                     readCount += 1;
 
-                    if (readCount % 100 == 0)
+                    if (readCount % 2 == 0)
                         TriggerProgressChanged(totalDownloadSize, totalBytesRead);
                 }
                 while (isMoreToRead);

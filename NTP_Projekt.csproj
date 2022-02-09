@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EditProfile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ADDITIONAL_PROJECTS\EditProfile\EditProfile\bin\Debug\EditProfile.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -203,6 +207,12 @@
     <Compile Include="View\DownloadTest.Designer.cs">
       <DependentUpon>DownloadTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EditStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditStudent.Designer.cs">
+      <DependentUpon>EditStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,8 +252,8 @@
     <EmbeddedResource Include="View\DownloadTest.resx">
       <DependentUpon>DownloadTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EditForm.resx">
-      <DependentUpon>EditForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\EditStudent.resx">
+      <DependentUpon>EditStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Login.en.resx">
       <DependentUpon>Login.cs</DependentUpon>

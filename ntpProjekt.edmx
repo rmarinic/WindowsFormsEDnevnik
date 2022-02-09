@@ -61,6 +61,7 @@
           <Property Name="JMBAG" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="RoleID" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="EnrollmentDate" Type="datetime" />
+          <Property Name="Image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -263,6 +264,7 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
           <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="EnrollmentDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Grades" Relationship="Self.FK__Grades__StudentJ__628FA481" FromRole="Students" ToRole="Grades" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Enrollments" Relationship="ntp_projektModel.FK__Enrollmen__Stude__0B91BA14" FromRole="Students" ToRole="Enrollments" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -463,6 +465,7 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="ntp_projektModel.Students">
               <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="JMBAG" ColumnName="JMBAG" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="EnrollmentDate" ColumnName="EnrollmentDate" />

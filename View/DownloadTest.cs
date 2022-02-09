@@ -20,93 +20,47 @@ namespace NTP_Projekt.View
 
         private async void button1_ClickAsync(object sender, EventArgs e)
         {
-            CountryInfoService.CountryInfoServiceSoapTypeClient SOAPclient = new CountryInfoService.CountryInfoServiceSoapTypeClient();
-            var response = SOAPclient.CountryFlag("HR");
+            label1.Text = "Preparing download...";
+            int speed = GetSpeed();
+            //string response = "https://cdn-129.anonfiles.com/l5c4U7Gax5/e38ebb3f-1644415053/covid_safety_measures.mp4";
+            string response = "https://filebin.net/yl2uv4h1c9folmsm/covid_safety_measures.mp4";
             string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, "Resources");
 
-            var destinationFilePath = Path.GetFullPath("Country.jpg");
+            var destinationFilePath = Path.GetFullPath("covid_safety.jpg");
 
-            using (var client = new HttpClientDownloadWithProgress(response, destinationFilePath))
+            using (var client = new HttpClientDownloadWithProgress(response, destinationFilePath, speed))
             {
                 client.ProgressChanged += (totalFileSize, totalBytesDownloaded, progressPercentage) => {
                     progressBar1.Maximum = (int)totalFileSize;
                     progressBar1.Value = (int)totalBytesDownloaded;
-                    label2.Text = $"{progressPercentage}% ({totalBytesDownloaded}/{totalFileSize})";
+                    label1.Text = $"{progressPercentage}% ({totalBytesDownloaded/1000}/{totalFileSize/1000})";
                 };
 
                 await client.StartDownload();
-                pictureBox1.Image = Image.FromFile(destinationFilePath);
-                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-
-                InsertImageToDb(pictureBox1);
             }
+            MessageBox.Show("Done!");
         }
 
-        public void InsertImageToDb(PictureBox picBox)
+        private int GetSpeed()
         {
-            MemoryStream memStream = new MemoryStream();
-            picBox.Image.Save(memStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-            byte[] pic = memStream.ToArray();
-
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.ntp_projektConnectionString);
-            conn.Open();
-
-            try
+            int speed = 0;
+            switch (comboBox1.SelectedIndex)
             {
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "UPDATE Students SET Image = @pic WHERE JMBAG=1234567888";
-                cmd.Parameters.AddWithValue("@pic", pic);
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("image inserted!");
+                case 0:
+                    speed = 10;
+                    break;
+                case 1:
+                    speed = 100;
+                    break;
+                case 2:
+                    speed = 1000;
+                    break;
+                case 3:
+                    speed = 5000;
+                    break;
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
+            return speed;
         }
 
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.ntp_projektConnectionString);
-            conn.Open();
-
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "select Image from Students WHERE JMBAG=1234567888";
-                cmd.Connection = conn;
-                SqlDataAdapter dp = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet("MyImages");
-                MessageBox.Show("image inserted!");
-
-                byte[] MyData = new byte[0];
-
-                dp.Fill(ds, "MyImages");
-                DataRow myRow;
-                myRow = ds.Tables["MyImages"].Rows[0];
-
-                MyData = (byte[])myRow["Image"];
-
-                MemoryStream stream = new MemoryStream(MyData);
-                //With the code below, you are in fact converting the byte array of image
-                //to the real image.
-                pictureBox2.Image = Image.FromStream(stream);
-                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
     }
 }
