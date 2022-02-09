@@ -1,59 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Web;
 
-namespace NTP_Projekt
+namespace NTPRestProject
 {
-    class LoginEncryption
+    public class LoginHelper
     {
-
-        public string RegisterInsertData(string email, string pass, string firstName, string lastName, string city, string country,
-            string address, string dob, string jmbag, int role)
+        public string LoginSelectData(string email, string pass)
         {
-            SqlConnection conn = new SqlConnection(Properties.Settings.Default.ntp_projektConnectionString);
+            string ret = "";
+            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-9N8RF1B\SQLEXPRESS;Initial Catalog=ntp_projekt;Integrated Security=True");
             conn.Open();
             try
             {
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "INSERT INTO users (FirstName, LastName, Email, Password, Address, City, Country, DoB, JMBAG, RoleID) " +
-                    "values (@firstName, @lastName,@email, @password, @address, @city, @country, @dob, @jmbag, @role);" +
-                    "INSERT INTO Students (JMBAG, EnrollmentDate) values (@jmbag, @dob)";
+                SqlCommand cmd;
+                SqlDataReader reader;
+                string sql = ("SELECT JMBAG FROM USERS WHERE Email = @email AND Password = @pass");
+                cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@firstName", firstName);
-                cmd.Parameters.AddWithValue("@lastName", lastName);
-                cmd.Parameters.AddWithValue("@address", address);
-                cmd.Parameters.AddWithValue("@city", city);
-                cmd.Parameters.AddWithValue("@country", country);
-                cmd.Parameters.AddWithValue("@dob", dob);
-                cmd.Parameters.AddWithValue("@jmbag", jmbag);
-                cmd.Parameters.AddWithValue("@password", HashString(pass, email));
-                cmd.Parameters.AddWithValue("@role", role);
-                cmd.Connection = conn;
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Account created!");
+                cmd.Parameters.AddWithValue("@pass", HashString(pass, email));
+                reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                    ret = reader.GetValue(0).ToString();
+
+                reader.Close();
+                cmd.Dispose();
             }
-            catch(Exception e)
+            catch (Exception ex)
             {
-                if(role != 3)
-                {
-                    MessageBox.Show(e.Message);
-                    return null;
-                }
+                Console.WriteLine(ex.Message);
             }
             finally
             {
                 conn.Close();
             }
-
-            return null;
+            return ret;
         }
 
-        public static string HashString(string passwordStr,string email)
+        public static string HashString(string passwordStr, string email)
         {
             string salt = CreateSalt(email);
             string saltAndPwd = String.Concat(passwordStr, salt);
@@ -91,14 +80,10 @@ namespace NTP_Projekt
             string salt;
             byte[] userBytes = ASCIIEncoding.ASCII.GetBytes(email);
             long XORED = 0x00;
-            Console.WriteLine(Encoding.Default.GetString(userBytes) + "<-- user bytes");
+
             foreach (int x in userBytes)
-            {
-                Console.WriteLine(XORED.ToString("X2") + "<-- XORED -- " + x.ToString("X2"));
                 XORED = XORED ^ x;
-            }
-                
-            
+
             Random rand = new Random(Convert.ToInt32(XORED));
             salt = rand.Next().ToString();
             salt += rand.Next().ToString();
@@ -107,6 +92,4 @@ namespace NTP_Projekt
             return salt;
         }
     }
-
-
 }

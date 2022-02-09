@@ -35,8 +35,8 @@ namespace NTP_Projekt
                 if (loginFlag)
                 {
                     Main mainForm = new Main();
+                    mainForm.Show();
                     this.Hide();
-                    mainForm.ShowDialog();
                 }
                 else
                 {
@@ -60,6 +60,8 @@ namespace NTP_Projekt
         {
 
             Logic.Appearance.RefreshForm(this);
+            loginEncrypt.RegisterInsertData("admin@gmail.com", "admin", "Admin", "Admin",
+               "Area 51", "HR", "Area 51", DateTime.Now.ToString(), "555566660", 3);
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -79,7 +81,7 @@ namespace NTP_Projekt
         {
             string testDate = DateTime.Now.ToString();
             loginEncrypt.RegisterInsertData(txtEmailReg.Text, txtPassReg.Text, txtFirstName.Text, txtLastName.Text, 
-                txtCity.Text, txtCountry.Text, txtAddress.Text, testDate, txtJmbag.Text);
+                txtCity.Text, txtCountry.Text, txtAddress.Text, testDate, RandomDigits(10), 1);
         }
 
         private void btnBackToLogin_Click(object sender, EventArgs e)
@@ -90,29 +92,30 @@ namespace NTP_Projekt
 
         private void btnSoap_Click(object sender, EventArgs e)
         {
-            //CountryInfoService.CountryInfoServiceSoapTypeClient client = new CountryInfoService.CountryInfoServiceSoapTypeClient();
-            //var response = client.CountryFlag("CRO");
+            CountryInfoService.CountryInfoServiceSoapTypeClient client = new CountryInfoService.CountryInfoServiceSoapTypeClient();
+            var response = client.CountryFlag("CRO");
+            Console.WriteLine(client.CountryFlag("CRO"));
 
-            NTPSoapService.NTPSoapSoapClient client = new NTPSoapService.NTPSoapSoapClient();
+            ////NTPSoapService.NTPSoapSoapClient client = new NTPSoapService.NTPSoapSoapClient();
 
-            //var response = client.ConvertXmlToJson("<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>");
-            string json = @"{
-                '@Id': 1,
-                'Email': 'james@example.com',
-                'Active': true,
-                'CreatedDate': '2013-01-20T00:00:00Z',
-                'Roles': [
-                'User',
-                'Admin'
-                ],
-                'Team': {
-                '@Id': 2,
-                'Name': 'Software Developers',
-                'Description': 'Creators of fine software products and services.'
-                }
-                }";
-            var response = client.ConvertJsonToXml(json);
-            MessageBox.Show(response);
+            ////var response = client.ConvertXmlToJson("<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>");
+            //string json = @"{
+            //    '@Id': 1,
+            //    'Email': 'james@example.com',
+            //    'Active': true,
+            //    'CreatedDate': '2013-01-20T00:00:00Z',
+            //    'Roles': [
+            //    'User',
+            //    'Admin'
+            //    ],
+            //    'Team': {
+            //    '@Id': 2,
+            //    'Name': 'Software Developers',
+            //    'Description': 'Creators of fine software products and services.'
+            //    }
+            //    }";
+            //var response = client.ConvertJsonToXml(json);
+            //MessageBox.Show(response);
         }
 
         private void btnRest_Click(object sender, EventArgs e)
@@ -161,6 +164,15 @@ namespace NTP_Projekt
             Main mainForm = new Main();
             this.Hide();
             mainForm.ShowDialog();
+        }
+
+        public string RandomDigits(int length)
+        {
+            var random = new Random(Guid.NewGuid().GetHashCode());
+            string s = string.Empty;
+            for (int i = 0; i < length; i++)
+                s = String.Concat(s, random.Next(10).ToString());
+            return s;
         }
     }
 }

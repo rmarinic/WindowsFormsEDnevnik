@@ -29,7 +29,7 @@ namespace NTP_Projekt.Logic
             using (FileStream fsCrypt = new FileStream(inputFile + ".aes", FileMode.Create))
             {
                 fsCrypt.Write(salt, 0, salt.Length);
-                using (CryptoStream cs = new CryptoStream(fsCrypt, AES.CreateEncryptor(), CryptoStreamMode.Write))
+                using (CryptoStream cs = new CryptoStream(fsCrypt, AES.CreateEncryptor(), CryptoStreamMode.Write, false))
                 {
                     using (FileStream fsIn = new FileStream(inputFile, FileMode.Open))
                     {
@@ -59,7 +59,7 @@ namespace NTP_Projekt.Logic
                 AES.IV = key.GetBytes(AES.BlockSize / 8);
                 AES.Padding = PaddingMode.PKCS7;
                 AES.Mode = CipherMode.CFB;
-                using (CryptoStream cryptoStream = new CryptoStream(fsCrypt, AES.CreateDecryptor(), CryptoStreamMode.Read))
+                using (CryptoStream cryptoStream = new CryptoStream(fsCrypt, AES.CreateDecryptor(), CryptoStreamMode.Read, false))
                 {
                     using (FileStream fsOut = new FileStream(outputFileName, FileMode.Create))
                     {
