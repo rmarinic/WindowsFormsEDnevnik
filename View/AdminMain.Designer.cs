@@ -1238,7 +1238,6 @@ namespace NTP_Projekt
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox28;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button23;

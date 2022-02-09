@@ -33,5 +33,6 @@ namespace NTP_Projekt
         public virtual DbSet<Students> Students { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Enrollments> Enrollments { get; set; }
     }
 }

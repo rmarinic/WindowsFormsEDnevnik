@@ -18,6 +18,7 @@ namespace NTP_Projekt
         public Students()
         {
             this.Grades = new HashSet<Grades>();
+            this.Enrollments = new HashSet<Enrollments>();
         }
     
         public string JMBAG { get; set; }
@@ -26,5 +27,7 @@ namespace NTP_Projekt
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Grades> Grades { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Enrollments> Enrollments { get; set; }
     }
 }

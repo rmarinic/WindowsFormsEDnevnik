@@ -19,6 +19,7 @@ namespace NTP_Projekt
         {
             this.Grades = new HashSet<Grades>();
             this.Professors = new HashSet<Professors>();
+            this.Enrollments = new HashSet<Enrollments>();
         }
     
         public int CourseID { get; set; }
@@ -29,5 +30,7 @@ namespace NTP_Projekt
         public virtual ICollection<Grades> Grades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Professors> Professors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Enrollments> Enrollments { get; set; }
     }
 }

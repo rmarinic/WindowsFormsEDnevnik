@@ -14,7 +14,6 @@ namespace NTP_Projekt
     {
         string fontMultiplier = "";
         bool contrast = false;
-        bool underlineLinks = false;
         IniFile ini = new IniFile("settings.ini");
 
         public Login MyParent { get; set; }

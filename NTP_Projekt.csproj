@@ -123,6 +123,9 @@
     <Compile Include="Courses.cs">
       <DependentUpon>ntpProjekt.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enrollments.cs">
+      <DependentUpon>ntpProjekt.tt</DependentUpon>
+    </Compile>
     <Compile Include="Grades.cs">
       <DependentUpon>ntpProjekt.tt</DependentUpon>
     </Compile>
@@ -264,6 +267,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\ProfMain.resx">
+      <DependentUpon>ProfMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
