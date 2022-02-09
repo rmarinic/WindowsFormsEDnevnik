@@ -23,17 +23,22 @@ namespace NTP_Projekt.View
         private void button1_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = null;
+            GradeAddPnl.Visible = true;
+            HidePnl.Visible = false;
             fetch_enrolled_students();
+            fill_combobox();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            HidePnl.Visible = false;
             GradeAddPnl.Visible = true;
             fill_combobox();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            HidePnl.Visible = true;
             GradeAddPnl.Visible = false;
             fetch_unenrolled_students();
         }

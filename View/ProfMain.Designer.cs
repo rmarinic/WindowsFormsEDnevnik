@@ -44,6 +44,7 @@ namespace NTP_Projekt.View
             this.ID = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.HidePnl = new System.Windows.Forms.Panel();
             this.GradeAddPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -189,11 +190,19 @@ namespace NTP_Projekt.View
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // HidePnl
+            // 
+            this.HidePnl.Location = new System.Drawing.Point(1001, 41);
+            this.HidePnl.Name = "HidePnl";
+            this.HidePnl.Size = new System.Drawing.Size(377, 645);
+            this.HidePnl.TabIndex = 5;
+            // 
             // ProfMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1387, 696);
+            this.Controls.Add(this.HidePnl);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.GradeAddPnl);
@@ -225,5 +234,6 @@ namespace NTP_Projekt.View
         private System.Windows.Forms.Label ID;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel HidePnl;
     }
 }
