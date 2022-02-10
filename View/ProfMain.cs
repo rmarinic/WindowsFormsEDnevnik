@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Spire.DataExport;
 
 namespace NTP_Projekt.View
 {
@@ -131,10 +133,10 @@ namespace NTP_Projekt.View
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     string stud_jmbag = row.Cells[0].Value.ToString();
-                    int first_exam_grade = do_tasks(stud_jmbag, "first_exam");
-                    int second_exam_grade = do_tasks(stud_jmbag, "second_exam");
-                    int third_exam_grade = do_tasks(stud_jmbag, "third_exam");
-                    int practical_exam_grade = do_tasks(stud_jmbag, "practical_exercise");
+                    int first_exam_grade = do_tasks(stud_jmbag, "first_exam", (int)professor.CourseID);
+                    int second_exam_grade = do_tasks(stud_jmbag, "second_exam", (int)professor.CourseID);
+                    int third_exam_grade = do_tasks(stud_jmbag, "third_exam", (int)professor.CourseID);
+                    int practical_exam_grade = do_tasks(stud_jmbag, "practical_exercise", (int)professor.CourseID);
                     row.Cells[4].Value = first_exam_grade;
                     row.Cells[5].Value = second_exam_grade;
                     row.Cells[6].Value = third_exam_grade;
@@ -146,38 +148,57 @@ namespace NTP_Projekt.View
 
         private void fetch_unenrolled_students()
         {
-            using (ntp_projektEntities1 db = new ntp_projektEntities1())
+            dataGridView1.DataSource = null;
+            string connectionString = Properties.Settings.Default.ntp_projektConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                dataGridView1.Columns.Clear();
-                var jmbag = Globals.USER_JMBAG;
-                var professor = db.Professors.SingleOrDefault(p => p.JMBAG == jmbag);
-                var query = from user in db.Users
-                            join students in db.Students
-                            on user.JMBAG equals students.JMBAG
-                            join enrollments in db.Enrollments
-                            on students.JMBAG equals enrollments.StudentJMBAG into enroll
-                            from enrollment in enroll.DefaultIfEmpty()
-                            where user.RoleID == 1 && enrollment.CourseID != professor.CourseID
-                            select new
-                            {
-                                user.JMBAG,
-                                user.FirstName,
-                                user.LastName,
-                                user.Email
-                            };
-                dataGridView1.DataSource = query.ToList();
+                try
+                {
+                    remove_columns_if_there();
+                    var jmbag = Globals.USER_JMBAG;
+                    ntp_projektEntities1 db = new ntp_projektEntities1();
+                    var professor = db.Professors.SingleOrDefault(p => p.JMBAG == jmbag);
+                    string sql = $@"SELECT Users.JMBAG, FirstName, LastName, Email from Users
+                    LEFT OUTER JOIN Students on Users.JMBAG = Students.JMBAG
+                    LEFT OUTER JOIN Enrollments on Enrollments.StudentJMBAG = Students.JMBAG
+                    LEFT OUTER JOIN Courses on Courses.CourseID = Enrollments.CourseID
+                    where Users.RoleID = 1 and Users.JMBAG not in(  SELECT Users.JMBAG from Users
+                    LEFT OUTER JOIN Students on Users.JMBAG = Students.JMBAG
+                    LEFT OUTER JOIN Enrollments on Enrollments.StudentJMBAG = Students.JMBAG
+                    LEFT OUTER JOIN Courses on Courses.CourseID = Enrollments.CourseID
+                    where Users.RoleID = 1 and Enrollments.CourseID = {professor.CourseID})";
+                    conn.Open();
+                    SqlDataAdapter adapter;
+                    adapter = new SqlDataAdapter(sql, connectionString);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                    dataGridView1.Columns[0].HeaderText = "JMBAG";
+                    dataGridView1.Columns[1].HeaderText = "First Name";
+                    dataGridView1.Columns[2].HeaderText = "Last Name";
+                    dataGridView1.Columns[3].HeaderText = "Email";
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), "ERROR Loading database.");
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
+
 
         }
 
-        public int do_tasks(string jmbag, string type)
+        public int do_tasks(string jmbag, string type, int course_id)
         {
             using (ntp_projektEntities1 db = new ntp_projektEntities1())
             {
                 Task<int> task = Task<int>.Factory.StartNew(() =>
                 {
                     var grade = from grades in db.Grades
-                                where grades.StudentJMBAG == jmbag && grades.Type == type
+                                where grades.StudentJMBAG == jmbag && grades.Type == type && grades.CourseID == course_id
                                 orderby grades.Score
                                 select new
                                 {
@@ -222,6 +243,26 @@ namespace NTP_Projekt.View
             practical_exercise.HeaderText = "Practical exercises";
             practical_exercise.CellTemplate = new DataGridViewTextBoxCell();
             dataGridView1.Columns.Insert(7, practical_exercise);
+        }
+        
+        private void remove_columns_if_there()
+        {
+            if (dataGridView1.Columns.Contains("firstExam"))
+            {
+                dataGridView1.Columns.Remove("firstExam");
+            }
+            if (dataGridView1.Columns.Contains("secondExam"))
+            {
+                dataGridView1.Columns.Remove("secondExam");
+            }
+            if (dataGridView1.Columns.Contains("thirdExam"))
+            {
+                dataGridView1.Columns.Remove("thirdExam");
+            }
+            if (dataGridView1.Columns.Contains("pracExercise"))
+            {
+                dataGridView1.Columns.Remove("pracExercise");
+            }
         }
 
         private void fill_combobox()

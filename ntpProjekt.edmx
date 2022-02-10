@@ -87,6 +87,7 @@
           <Property Name="RoleID" Type="int" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="256" />
+          <Property Name="Age" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6035: The relationship 'FK__Admins__59FA5E80' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
@@ -292,6 +293,7 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Roles" Relationship="Self.FK__Users__RoleID__44FF419A" FromRole="Users" ToRole="Roles" />
+          <Property Name="Age" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <Association Name="FK__Grades__CourseID__6383C8BA">
           <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
@@ -486,6 +488,7 @@ warning 6035: The relationship 'FK__Students__4AB81AF0' has columns that are not
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="ntp_projektModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="JMBAG" ColumnName="JMBAG" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />

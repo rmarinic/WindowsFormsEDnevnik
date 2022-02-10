@@ -13,7 +13,7 @@ namespace NTPRestProject
         public string LoginSelectData(string email, string pass)
         {
             string ret = "";
-            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-9N8RF1B\SQLEXPRESS;Initial Catalog=ntp_projekt;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-E0LVP3A;Initial Catalog=ntp_projekt;Integrated Security=True");
             conn.Open();
             try
             {
@@ -52,12 +52,6 @@ namespace NTPRestProject
             byte[] hashedDataBytes = sha256hasher.ComputeHash(encoder.GetBytes(saltAndPwd));
             string hashedPwd = String.Concat(byteArrayToString(hashedDataBytes), salt);
             return hashedPwd;
-
-
-            //StringBuilder sb = new StringBuilder();
-            //foreach (byte b in GetHash(passwordStr))
-            //    sb.Append(b.ToString("X3"));
-            //return sb.ToString();
         }
 
         public static string byteArrayToString(byte[] inputArray)

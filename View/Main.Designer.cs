@@ -60,7 +60,7 @@ namespace NTP_Projekt
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblAge = new System.Windows.Forms.Label();
             this.lblJMBAG = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
@@ -69,8 +69,12 @@ namespace NTP_Projekt
             this.lblCountry = new System.Windows.Forms.Label();
             this.lblDob = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.lblEnrollmentDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
+            this.lblAge2 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.button6 = new System.Windows.Forms.Button();
             this.pnlGrades.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlSubjects.SuspendLayout();
@@ -81,6 +85,7 @@ namespace NTP_Projekt
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlProfile.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // cbxGrades
@@ -101,8 +106,8 @@ namespace NTP_Projekt
             // pnlGrades
             // 
             this.pnlGrades.AutoSize = true;
-            this.pnlGrades.Controls.Add(this.dataGridView1);
             this.pnlGrades.Controls.Add(this.lblGradesTitle);
+            this.pnlGrades.Controls.Add(this.dataGridView1);
             this.pnlGrades.Location = new System.Drawing.Point(13, 39);
             this.pnlGrades.Name = "pnlGrades";
             this.pnlGrades.Size = new System.Drawing.Size(924, 566);
@@ -146,6 +151,10 @@ namespace NTP_Projekt
             // 
             // pnlAllGrades
             // 
+            this.pnlAllGrades.Controls.Add(this.button6);
+            this.pnlAllGrades.Controls.Add(this.radioButton2);
+            this.pnlAllGrades.Controls.Add(this.radioButton1);
+            this.pnlAllGrades.Controls.Add(this.dataGridView2);
             this.pnlAllGrades.Controls.Add(this.lblAllGradesTitle);
             this.pnlAllGrades.Location = new System.Drawing.Point(12, 40);
             this.pnlAllGrades.Name = "pnlAllGrades";
@@ -316,7 +325,7 @@ namespace NTP_Projekt
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.lblAge, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.lblJMBAG, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblFirstName, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblLastName, 1, 2);
@@ -325,7 +334,7 @@ namespace NTP_Projekt
             this.tableLayoutPanel1.Controls.Add(this.lblCountry, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.lblDob, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.lblEmail, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.lblEnrollmentDate, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.lblAge2, 1, 8);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(248, 70);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 9;
@@ -446,18 +455,18 @@ namespace NTP_Projekt
             this.label12.Text = "E-Mail:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label13
+            // lblAge
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(43, 377);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(128, 20);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "Enrollment Date:";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAge.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblAge.AutoSize = true;
+            this.lblAge.BackColor = System.Drawing.Color.Transparent;
+            this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAge.Location = new System.Drawing.Point(86, 377);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(42, 20);
+            this.lblAge.TabIndex = 8;
+            this.lblAge.Text = "Age:";
+            this.lblAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblJMBAG
             // 
@@ -555,20 +564,71 @@ namespace NTP_Projekt
             this.lblEmail.TabIndex = 16;
             this.lblEmail.Text = "label21";
             // 
-            // lblEnrollmentDate
-            // 
-            this.lblEnrollmentDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblEnrollmentDate.AutoSize = true;
-            this.lblEnrollmentDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblEnrollmentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblEnrollmentDate.Location = new System.Drawing.Point(290, 377);
-            this.lblEnrollmentDate.Name = "lblEnrollmentDate";
-            this.lblEnrollmentDate.Size = new System.Drawing.Size(60, 20);
-            this.lblEnrollmentDate.TabIndex = 17;
-            this.lblEnrollmentDate.Text = "label22";
-            // 
             // lblTime
             // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.lblTime.Location = new System.Drawing.Point(355, 9);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(221, 17);
+            this.lblTime.TabIndex = 12;
+            this.lblTime.Text = "Sign in time: 00/00/0000 00:00:00";
+            //
+            // lblAge2
+            // 
+            this.lblAge2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblAge2.AutoSize = true;
+            this.lblAge2.BackColor = System.Drawing.Color.Transparent;
+            this.lblAge2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblAge2.Location = new System.Drawing.Point(290, 377);
+            this.lblAge2.Name = "lblAge2";
+            this.lblAge2.Size = new System.Drawing.Size(60, 20);
+            this.lblAge2.TabIndex = 17;
+            this.lblAge2.Text = "label22";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(13, 58);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(662, 443);
+            this.dataGridView2.TabIndex = 1;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(712, 112);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(46, 17);
+            this.radioButton1.TabIndex = 2;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "PDF";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(712, 135);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(46, 17);
+            this.radioButton2.TabIndex = 3;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "RTF";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(712, 167);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(85, 32);
+            this.button6.TabIndex = 4;
+            this.button6.Text = "Export as..";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            //
+            //lblTime
+            //
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.lblTime.Location = new System.Drawing.Point(355, 9);
@@ -612,6 +672,7 @@ namespace NTP_Projekt
             this.pnlProfile.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -647,7 +708,7 @@ namespace NTP_Projekt
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblAge;
         private System.Windows.Forms.Button btnEditProfile;
         private System.Windows.Forms.Label lblJMBAG;
         private System.Windows.Forms.Label lblFirstName;
@@ -657,8 +718,12 @@ namespace NTP_Projekt
         private System.Windows.Forms.Label lblCountry;
         private System.Windows.Forms.Label lblDob;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblEnrollmentDate;
+        private System.Windows.Forms.Label lblAge2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }

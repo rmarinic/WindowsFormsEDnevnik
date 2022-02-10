@@ -41,6 +41,7 @@ namespace NTP_Projekt.Logic
                         user.RoleID = int.Parse(reader.GetValue(7).ToString().Trim());
                         user.Email = reader.GetValue(8).ToString().Trim();
                         user.Password = reader.GetValue(9).ToString().Trim();
+                        user.Age = Convert.ToInt32(reader.GetValue(10).ToString().Trim());
                     }
 
                     reader.Close();

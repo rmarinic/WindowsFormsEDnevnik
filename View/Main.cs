@@ -10,6 +10,7 @@ using RestSharp;
 using System.Data.SqlClient;
 using System.IO;
 using NTP_Projekt.View;
+using System.Linq;
 
 namespace NTP_Projekt
 {
@@ -39,6 +40,7 @@ namespace NTP_Projekt
                     break;
                 case 2:
                     HideAll();
+                    ShowAllGrades();
                     pnlAllGrades.Visible = true;
                     break;
                 case 3:
@@ -134,7 +136,51 @@ namespace NTP_Projekt
             }
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
+        private void ShowAllGrades()
+        {
+            using (ntp_projektEntities1 db = new ntp_projektEntities1())
+            {
+                create_allgrades_data();
+                user = Logic.DbHelper.GetUser(Globals.USER_JMBAG);
+                var query = from u in db.Users
+                            join s in db.Students
+                            on u.JMBAG equals s.JMBAG
+                            join e in db.Enrollments
+                            on s.JMBAG equals e.StudentJMBAG
+                            join c in db.Courses
+                            on e.CourseID equals c.CourseID
+                            where e.StudentJMBAG == user.JMBAG
+                            select new
+                            {
+                                c.CourseID,
+                                c.Name
+                            };
+
+                var courses = query.ToList();
+                foreach (var c in courses)
+                {
+                    int rowID = dataGridView2.Rows.Add();
+                    string course_id = extract_course_id(c.ToString());
+                    string course_name = extract_course_name(c.ToString());
+                    int int_course_id = Convert.ToInt32(course_id);
+                    int first_exam = extract_exam_score(int_course_id, "first_exam");
+                    int second_exam = extract_exam_score(int_course_id, "second_exam");
+                    int third_exam = extract_exam_score(int_course_id, "third_exam");
+                    int practical_exercise = extract_exam_score(int_course_id, "practical_exercise");
+                    int calculated = first_exam + second_exam + third_exam + practical_exercise;
+                    int avg = (calculated != 0 ? calculated / 4 : 0);
+                    DataGridViewRow row = dataGridView2.Rows[rowID];
+                    row.Cells[0].Value = course_name;
+                    row.Cells[1].Value = first_exam;
+                    row.Cells[2].Value = second_exam;
+                    row.Cells[3].Value = third_exam;
+                    row.Cells[4].Value = practical_exercise;
+                    row.Cells[5].Value = avg;
+                }
+            }
+        }
+
+         private void btnHome_Click(object sender, EventArgs e)
         {
             HideAll();
             DbHelper.LoadUserImage(pictureBox1);
@@ -163,6 +209,45 @@ namespace NTP_Projekt
             this.Close();
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            foreach (DataGridViewColumn column in dataGridView2.Columns)
+            {
+                dt.Columns.Add(column.HeaderText, System.Type.GetType("System.String"));
+            }
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                dt.Rows.Add();
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    dt.Rows[dt.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
+                }
+            }
+
+            user = Logic.DbHelper.GetUser(Globals.USER_JMBAG);
+            if (radioButton1.Checked)
+            {
+                Spire.DataExport.PDF.PDFExport PDFExport = new Spire.DataExport.PDF.PDFExport();
+                PDFExport.DataSource = Spire.DataExport.Common.ExportSource.DataTable;
+                PDFExport.DataTable = dt;
+                PDFExport.PDFOptions.PageOptions.Orientation = Spire.DataExport.Common.PageOrientation.Landscape;
+                PDFExport.ActionAfterExport = Spire.DataExport.Common.ActionType.OpenView;
+                PDFExport.FileName = $"{user.JMBAG}.pdf";
+                PDFExport.SaveToFile();
+            }
+            else if (radioButton2.Checked)
+            {
+                Spire.DataExport.RTF.RTFExport RTFExport = new Spire.DataExport.RTF.RTFExport();
+                RTFExport.DataSource = Spire.DataExport.Common.ExportSource.DataTable;
+                RTFExport.DataTable = dt;
+                RTFExport.RTFOptions.PageOrientation = Spire.DataExport.Common.PageOrientation.Landscape;
+                RTFExport.ActionAfterExport = Spire.DataExport.Common.ActionType.OpenView;
+                RTFExport.FileName = $"{user.JMBAG}.rtf";
+                RTFExport.SaveToFile();
+            }
+        }
+
         private void ShowProfile()
         {
             DateTime dt = (DateTime)user.DoB;
@@ -174,7 +259,7 @@ namespace NTP_Projekt
             lblCountry.Text = user.Country;
             lblEmail.Text = user.Email;
             lblDob.Text = dt.ToString("MM/dd/yyyy");
-            
+            lblAge2.Text = user.Age.ToString();
         }
 
 
@@ -188,7 +273,7 @@ namespace NTP_Projekt
 
         public void RefreshProfile()
         {
-            if(editReturnValue == 1)
+            if (editReturnValue == 1)
             {
                 user = DbHelper.GetUser(user.JMBAG);
                 ShowProfile();
@@ -198,7 +283,7 @@ namespace NTP_Projekt
             {
                 MessageBox.Show("Error updating user.");
             }
-            
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -225,6 +310,87 @@ namespace NTP_Projekt
         {
             DownloadTest dForm = new DownloadTest();
             dForm.ShowDialog();
+        }
+
+        private string extract_course_id(string course)
+        {
+            string[] strings;
+            strings = course.Split(' ');
+            string id = strings[3].Remove(1, 1);
+            return id;
+        }
+
+        private string extract_course_name(string course)
+        {
+            string[] strings;
+            strings = course.Split(' ');
+            string name = "";
+            for(int i = 6; i < strings.Length; i++)
+            {
+                if (strings[i] == "}")
+                    break;
+                name += " ";
+                name += strings[i];
+            }
+            return name;
+        }
+
+        private int extract_exam_score(int int_course_id, string type)
+        {
+            using(ntp_projektEntities1 db = new ntp_projektEntities1())
+            {
+                var exam = from g in db.Grades
+                           where g.CourseID == int_course_id && g.StudentJMBAG == user.JMBAG && g.Type == type
+                           orderby g.Score
+                           select new
+                           {
+                               g.Score
+                           };
+                bool has_score = exam.Any(c => c.Score != 0);
+                if (has_score)
+                {
+                    var best_grade = exam.ToList().First();
+                    return best_grade.Score;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        private void create_allgrades_data()
+        {
+            DataGridViewColumn course_name = new DataGridViewColumn();
+            DataGridViewColumn first_exam = new DataGridViewColumn();
+            DataGridViewColumn second_exam = new DataGridViewColumn();
+            DataGridViewColumn third_exam = new DataGridViewColumn();
+            DataGridViewColumn practical_exercise = new DataGridViewColumn();
+            DataGridViewColumn average = new DataGridViewColumn();
+            course_name.Name = "courseName";
+            course_name.HeaderText = "Course name";
+            course_name.CellTemplate = new DataGridViewTextBoxCell();
+            dataGridView2.Columns.Insert(0, course_name);
+            first_exam.Name = "firstExam";
+            first_exam.HeaderText = "First exam";
+            first_exam.CellTemplate = new DataGridViewTextBoxCell();
+            dataGridView2.Columns.Insert(1, first_exam);
+            second_exam.Name = "secondExam";
+            second_exam.HeaderText = "Second exam";
+            second_exam.CellTemplate = new DataGridViewTextBoxCell();
+            dataGridView2.Columns.Insert(2, second_exam);
+            third_exam.Name = "thirdExam";
+            third_exam.HeaderText = "Third exam";
+            third_exam.CellTemplate = new DataGridViewTextBoxCell();
+            dataGridView2.Columns.Insert(3, third_exam);
+            practical_exercise.Name = "pracExercise";
+            practical_exercise.HeaderText = "Practical exercises";
+            practical_exercise.CellTemplate = new DataGridViewTextBoxCell();
+            dataGridView2.Columns.Insert(4, practical_exercise);
+            average.Name = "avgGrade";
+            average.HeaderText = "Average Grade";
+            average.CellTemplate = new DataGridViewTextBoxCell();
+            dataGridView2.Columns.Insert(5, average);
         }
     }
 }

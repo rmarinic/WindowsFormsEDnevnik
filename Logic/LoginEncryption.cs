@@ -63,11 +63,6 @@ namespace NTP_Projekt
             string hashedPwd = String.Concat(byteArrayToString(hashedDataBytes), salt);
             return hashedPwd;
 
-
-            //StringBuilder sb = new StringBuilder();
-            //foreach (byte b in GetHash(passwordStr))
-            //    sb.Append(b.ToString("X3"));
-            //return sb.ToString();
         }
 
         public static string byteArrayToString(byte[] inputArray)
@@ -91,10 +86,8 @@ namespace NTP_Projekt
             string salt;
             byte[] userBytes = ASCIIEncoding.ASCII.GetBytes(email);
             long XORED = 0x00;
-            Console.WriteLine(Encoding.Default.GetString(userBytes) + "<-- user bytes");
             foreach (int x in userBytes)
             {
-                Console.WriteLine(XORED.ToString("X2") + "<-- XORED -- " + x.ToString("X2"));
                 XORED = XORED ^ x;
             }
                 

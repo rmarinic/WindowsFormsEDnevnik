@@ -495,7 +495,7 @@ namespace NTP_Projekt
                                 user.Country = textBox23.Text;
                                 if(textBox24.Text != "")
                                 {
-                                    user.Password = textBox24.Text;
+                                    user.Password = LoginEncryption.HashString(textBox24.Text, textBox20.Text);
                                 }
                                 professor.HireDate = DateTime.Parse(dateTimePicker6.Text);
                                 professor.CourseID = (int)courseCategory.SelectedValue;
@@ -503,6 +503,7 @@ namespace NTP_Projekt
                                 fetch_professors_from_db();
                             }
                         }
+                        button15_Click(sender, e);
                     }
                     else
                     {
@@ -817,7 +818,6 @@ namespace NTP_Projekt
                 dataGridView1.DataSource = students;
                 dataGridView1.Columns[4].HeaderText = "Date of birth";
                 dataGridView1.Columns[9].HeaderText = "Enrollment Date";
-               
             }
             catch (Exception ex)
             {
