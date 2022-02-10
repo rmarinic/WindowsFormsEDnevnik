@@ -32,11 +32,15 @@ namespace NTP_Projekt
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.cbxGrades = new System.Windows.Forms.ComboBox();
             this.pnlGrades = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblGradesTitle = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pnlSubjects = new System.Windows.Forms.Panel();
             this.lblSubjectsTitle = new System.Windows.Forms.Label();
             this.pnlAllGrades = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.lblAllGradesTitle = new System.Windows.Forms.Label();
             this.pnlHome = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -69,23 +73,19 @@ namespace NTP_Projekt
             this.lblCountry = new System.Windows.Forms.Label();
             this.lblDob = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.lblTime = new System.Windows.Forms.Label();
             this.lblAge2 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.button6 = new System.Windows.Forms.Button();
+            this.lblTime = new System.Windows.Forms.Label();
             this.pnlGrades.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlSubjects.SuspendLayout();
             this.pnlAllGrades.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.pnlHome.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlProfile.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // cbxGrades
@@ -114,14 +114,6 @@ namespace NTP_Projekt
             this.pnlGrades.TabIndex = 7;
             this.pnlGrades.Visible = false;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 76);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(886, 472);
-            this.dataGridView1.TabIndex = 1;
-            // 
             // lblGradesTitle
             // 
             this.lblGradesTitle.AutoSize = true;
@@ -130,6 +122,14 @@ namespace NTP_Projekt
             this.lblGradesTitle.Size = new System.Drawing.Size(85, 13);
             this.lblGradesTitle.TabIndex = 0;
             this.lblGradesTitle.Text = "Trenutne ocjene";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(19, 76);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(886, 472);
+            this.dataGridView1.TabIndex = 1;
             // 
             // pnlSubjects
             // 
@@ -161,6 +161,47 @@ namespace NTP_Projekt
             this.pnlAllGrades.Size = new System.Drawing.Size(925, 566);
             this.pnlAllGrades.TabIndex = 0;
             this.pnlAllGrades.Visible = false;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(712, 167);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(85, 32);
+            this.button6.TabIndex = 4;
+            this.button6.Text = "Export as..";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(712, 135);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(46, 17);
+            this.radioButton2.TabIndex = 3;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "RTF";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(712, 112);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(46, 17);
+            this.radioButton1.TabIndex = 2;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "PDF";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(13, 58);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(662, 443);
+            this.dataGridView2.TabIndex = 1;
             // 
             // lblAllGradesTitle
             // 
@@ -564,16 +605,6 @@ namespace NTP_Projekt
             this.lblEmail.TabIndex = 16;
             this.lblEmail.Text = "label21";
             // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblTime.Location = new System.Drawing.Point(355, 9);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(221, 17);
-            this.lblTime.TabIndex = 12;
-            this.lblTime.Text = "Sign in time: 00/00/0000 00:00:00";
-            //
             // lblAge2
             // 
             this.lblAge2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -586,49 +617,9 @@ namespace NTP_Projekt
             this.lblAge2.TabIndex = 17;
             this.lblAge2.Text = "label22";
             // 
-            // dataGridView2
+            // lblTime
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(13, 58);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(662, 443);
-            this.dataGridView2.TabIndex = 1;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(712, 112);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(46, 17);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "PDF";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(712, 135);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(46, 17);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "RTF";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(712, 167);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(85, 32);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "Export as..";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            //
-            //lblTime
-            //
+            this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.lblTime.Location = new System.Drawing.Point(355, 9);
@@ -662,6 +653,7 @@ namespace NTP_Projekt
             this.pnlSubjects.PerformLayout();
             this.pnlAllGrades.ResumeLayout(false);
             this.pnlAllGrades.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.pnlHome.ResumeLayout(false);
             this.pnlHome.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -672,7 +664,6 @@ namespace NTP_Projekt
             this.pnlProfile.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -10,7 +10,6 @@ namespace NTP_Projekt.Logic
 {
     class Appearance
     {
-
         public static void RefreshForm(Form form)
         {
             //Učitavanje iz .ini datoteke
@@ -38,7 +37,7 @@ namespace NTP_Projekt.Logic
 
             if (!String.IsNullOrEmpty(Globals.DARK_MODE))
             {
-                bool contrast = bool.Parse(ini.Read("Contrast"));
+                bool contrast = bool.Parse(Globals.DARK_MODE);
                 if (contrast)
                 {
                     form.BackColor = Color.FromArgb(255, 48, 48, 48);
@@ -50,6 +49,9 @@ namespace NTP_Projekt.Logic
                         (button as Button).FlatStyle = FlatStyle.Flat;
                         (button as Button).FlatAppearance.BorderColor = Color.FromArgb(255, 70, 70, 70);
                     }
+
+                    foreach (var gridView in GetAll(form, typeof(DataGridView)))
+                        gridView.ForeColor = Color.Black;
                 }
                 else
                 {
