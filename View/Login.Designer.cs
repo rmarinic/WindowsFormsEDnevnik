@@ -46,7 +46,6 @@ namespace NTP_Projekt
             this.lblPass = new System.Windows.Forms.Label();
             this.lblPass2 = new System.Windows.Forms.Label();
             this.txtCity = new System.Windows.Forms.TextBox();
-            this.txtDob = new System.Windows.Forms.TextBox();
             this.txtPassReg = new System.Windows.Forms.TextBox();
             this.txtPassReg2 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -62,6 +61,7 @@ namespace NTP_Projekt
             this.lblFirstName = new System.Windows.Forms.Label();
             this.btnBackToLogin = new System.Windows.Forms.Button();
             this.btnReg = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.pnlLogin.SuspendLayout();
             this.pnlRegister.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -145,9 +145,9 @@ namespace NTP_Projekt
             this.tableLayoutPanel2.Controls.Add(this.lblPass, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.lblPass2, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.txtCity, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txtDob, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtPassReg, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.txtPassReg2, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.dateTimePicker1, 1, 1);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
             // lblCity
@@ -174,11 +174,6 @@ namespace NTP_Projekt
             // 
             resources.ApplyResources(this.txtCity, "txtCity");
             this.txtCity.Name = "txtCity";
-            // 
-            // txtDob
-            // 
-            resources.ApplyResources(this.txtDob, "txtDob");
-            this.txtDob.Name = "txtDob";
             // 
             // txtPassReg
             // 
@@ -271,14 +266,19 @@ namespace NTP_Projekt
             this.btnReg.UseVisualStyleBackColor = true;
             this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
+            // dateTimePicker1
+            // 
+            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            // 
             // Login
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.pnlRegister);
+            this.Controls.Add(this.pnlLogin);
             this.Name = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.pnlLogin.ResumeLayout(false);
@@ -313,7 +313,6 @@ namespace NTP_Projekt
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblSurname;
         private System.Windows.Forms.Label lblFirstName;
-        private System.Windows.Forms.TextBox txtDob;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.TextBox txtCountry;
         private System.Windows.Forms.TextBox txtAddress;
@@ -328,6 +327,7 @@ namespace NTP_Projekt
         private System.Windows.Forms.Button btnBackToLogin;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 

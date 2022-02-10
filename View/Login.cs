@@ -90,9 +90,8 @@ namespace NTP_Projekt
 
         private void btnReg_Click(object sender, EventArgs e)
         {
-            string testDate = DateTime.Now.ToString();
             loginEncrypt.RegisterInsertData(txtEmailReg.Text, txtPassReg.Text, txtFirstName.Text, txtLastName.Text, 
-                txtCity.Text, txtCountry.Text, txtAddress.Text, testDate, RandomDigits(10), 1);
+                txtCity.Text, txtCountry.Text, txtAddress.Text, dateTimePicker1.Value.ToString(), RandomDigits(10), 1);
         }
 
         private void btnBackToLogin_Click(object sender, EventArgs e)
