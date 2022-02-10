@@ -258,6 +258,10 @@ namespace NTP_Projekt
             lblEmail.Text = user.Email;
             lblDob.Text = dt.ToString("MM/dd/yyyy");
             lblAge2.Text = user.Age.ToString();
+            CountryInfoService.CountryInfoServiceSoapTypeClient client = new CountryInfoService.CountryInfoServiceSoapTypeClient();
+            var response = client.CountryFlag(user.Country);
+            countryPictureBox.Load(response);
+            countryPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
 

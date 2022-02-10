@@ -112,13 +112,13 @@ namespace NTP_Projekt
             // 
             // pnlLogin
             // 
-            resources.ApplyResources(this.pnlLogin, "pnlLogin");
             this.pnlLogin.Controls.Add(this.btnRegister);
             this.pnlLogin.Controls.Add(this.lblEmailLogin);
             this.pnlLogin.Controls.Add(this.lblPasswordLogin);
             this.pnlLogin.Controls.Add(this.txtEmail);
             this.pnlLogin.Controls.Add(this.btnLogin);
             this.pnlLogin.Controls.Add(this.txtPassword);
+            resources.ApplyResources(this.pnlLogin, "pnlLogin");
             this.pnlLogin.Name = "pnlLogin";
             // 
             // btnRegister
@@ -130,11 +130,11 @@ namespace NTP_Projekt
             // 
             // pnlRegister
             // 
-            resources.ApplyResources(this.pnlRegister, "pnlRegister");
             this.pnlRegister.Controls.Add(this.tableLayoutPanel2);
             this.pnlRegister.Controls.Add(this.btnBackToLogin);
             this.pnlRegister.Controls.Add(this.btnReg);
             this.pnlRegister.Controls.Add(this.tableLayoutPanel1);
+            resources.ApplyResources(this.pnlRegister, "pnlRegister");
             this.pnlRegister.Name = "pnlRegister";
             // 
             // tableLayoutPanel2
@@ -273,8 +273,8 @@ namespace NTP_Projekt
             // 
             // Login
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlLogin);

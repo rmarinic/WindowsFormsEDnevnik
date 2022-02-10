@@ -73,6 +73,7 @@ namespace NTP_Projekt
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblAge2 = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
+            this.countryPictureBox = new System.Windows.Forms.PictureBox();
             this.pnlGrades.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlAllGrades.SuspendLayout();
@@ -83,6 +84,7 @@ namespace NTP_Projekt
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlProfile.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countryPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // cbxGrades
@@ -230,6 +232,7 @@ namespace NTP_Projekt
             // 
             // pnlProfile
             // 
+            this.pnlProfile.Controls.Add(this.countryPictureBox);
             this.pnlProfile.Controls.Add(this.btnEditProfile);
             this.pnlProfile.Controls.Add(this.tableLayoutPanel1);
             resources.ApplyResources(this.pnlProfile, "pnlProfile");
@@ -378,6 +381,12 @@ namespace NTP_Projekt
             resources.ApplyResources(this.lblTime, "lblTime");
             this.lblTime.Name = "lblTime";
             // 
+            // countryPictureBox
+            // 
+            resources.ApplyResources(this.countryPictureBox, "countryPictureBox");
+            this.countryPictureBox.Name = "countryPictureBox";
+            this.countryPictureBox.TabStop = false;
+            // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -386,10 +395,10 @@ namespace NTP_Projekt
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.cbxGrades);
+            this.Controls.Add(this.pnlProfile);
             this.Controls.Add(this.pnlHome);
             this.Controls.Add(this.pnlGrades);
             this.Controls.Add(this.pnlAllGrades);
-            this.Controls.Add(this.pnlProfile);
             this.Name = "Main";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
@@ -409,6 +418,7 @@ namespace NTP_Projekt
             this.pnlProfile.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countryPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -459,5 +469,6 @@ namespace NTP_Projekt
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.PictureBox countryPictureBox;
     }
 }
