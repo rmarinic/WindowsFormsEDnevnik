@@ -1,0 +1,69 @@
+{
+   "?xml":{
+      "@version":"1.0",
+      "@standalone":"yes"
+   },
+   "courses":{
+      "course":[
+         {
+            "CourseID":"1",
+            "Name":"Mathematics",
+            "Description":"Basic mathematics and algebra"
+         },
+         {
+            "CourseID":"2",
+            "Name":"Biology",
+            "Description":"Course about everything living that surrounds us."
+         },
+         {
+            "CourseID":"3",
+            "Name":"Sociology",
+            "Description":"Basic sociological principles."
+         },
+         {
+            "CourseID":"4",
+            "Name":"Basic programming",
+            "Description":"Programming for dummies."
+         },
+         {
+            "CourseID":"5",
+            "Name":"PE",
+            "Description":"PE needed to be a healthy human being."
+         },
+         {
+            "CourseID":"6",
+            "Name":"English",
+            "Description":"English poetry and literature."
+         },
+         {
+            "CourseID":"7",
+            "Name":"Information Technology",
+            "Description":"IT Stuff."
+         }
+      ],
+      "Signature":{
+         "@xmlns":"http://www.w3.org/2000/09/xmldsig#",
+         "SignedInfo":{
+            "CanonicalizationMethod":{
+               "@Algorithm":"http://www.w3.org/TR/2001/REC-xml-c14n-20010315"
+            },
+            "SignatureMethod":{
+               "@Algorithm":"http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
+            },
+            "Reference":{
+               "@URI":"",
+               "Transforms":{
+                  "Transform":{
+                     "@Algorithm":"http://www.w3.org/2000/09/xmldsig#enveloped-signature"
+                  }
+               },
+               "DigestMethod":{
+                  "@Algorithm":"http://www.w3.org/2001/04/xmlenc#sha256"
+               },
+               "DigestValue":"bqbhnIqa+F6LzfnSGy3iPE0d8jgVsF08bSQ3t1++N1Y="
+            }
+         },
+         "SignatureValue":"kfYX/PavRewe6zGESqAKqD7105PdFalDltZ2SVeLT+SSHF5pinopPcwWgFaxKcYbC8QCpDDlJ8yDgD+mJhDiBtyMu89ck3tY1GHqoNmcXX/sdzoqTFX2k6ktgfUyFik8hJp+DBW/le/Vaz+97pfrT3JsfrTCOSpeGasW08DWbdM="
+      }
+   }
+}

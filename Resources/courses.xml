@@ -1,13 +1,33 @@
 <?xml version="1.0" standalone="yes"?>
 <courses>
   <course>
-    <CourseID>3</CourseID>
-    <Name>Biology</Name>
-    <Description>Course about everything living that surrounds us. lol</Description>
-  </course>
-  <course>
-    <CourseID>4</CourseID>
+    <CourseID>1</CourseID>
     <Name>Mathematics</Name>
     <Description>Basic mathematics and algebra</Description>
   </course>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>Jc5kcpiM7BZnlJEYxJhiSLRjgghd8JLoQbQ3A7zX/ws=</DigestValue></Reference></SignedInfo><SignatureValue>luzZah9fd/E30wt0iiXQdPWtFIJrrrO047VT3BWl5sxB39QMzYpYAIZKPjH7BuHpnFxZEoW1+RIiwYlHtxiigyzhXf1+ElE1uz8cxIYavP0FFR7tXIe48RI8Cmyq1i0ZdB+yzmtyT58paz51bHBWd7UuXRgtT4B7mWyoOqfEsPg=</SignatureValue></Signature></courses>
+  <course>
+    <CourseID>2</CourseID>
+    <Name>Biology</Name>
+    <Description>Course about everything living that surrounds us.</Description>
+  </course>
+  <course>
+    <CourseID>3</CourseID>
+    <Name>Sociology</Name>
+    <Description>Basic sociological principles.</Description>
+  </course>
+  <course>
+    <CourseID>4</CourseID>
+    <Name>Basic programming</Name>
+    <Description>Programming for dummies.</Description>
+  </course>
+  <course>
+    <CourseID>5</CourseID>
+    <Name>PE</Name>
+    <Description>PE needed to be a healthy human being.</Description>
+  </course>
+  <course>
+    <CourseID>6</CourseID>
+    <Name>English</Name>
+    <Description>English poetry and literature.</Description>
+  </course>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>bqbhnIqa+F6LzfnSGy3iPE0d8jgVsF08bSQ3t1++N1Y=</DigestValue></Reference></SignedInfo><SignatureValue>kfYX/PavRewe6zGESqAKqD7105PdFalDltZ2SVeLT+SSHF5pinopPcwWgFaxKcYbC8QCpDDlJ8yDgD+mJhDiBtyMu89ck3tY1GHqoNmcXX/sdzoqTFX2k6ktgfUyFik8hJp+DBW/le/Vaz+97pfrT3JsfrTCOSpeGasW08DWbdM=</SignatureValue></Signature></courses>

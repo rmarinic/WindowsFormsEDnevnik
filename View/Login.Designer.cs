@@ -62,7 +62,6 @@ namespace NTP_Projekt
             this.lblFirstName = new System.Windows.Forms.Label();
             this.btnBackToLogin = new System.Windows.Forms.Button();
             this.btnReg = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlLogin.SuspendLayout();
             this.pnlRegister.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -88,6 +87,7 @@ namespace NTP_Projekt
             // 
             resources.ApplyResources(this.txtPassword, "txtPassword");
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
@@ -112,13 +112,13 @@ namespace NTP_Projekt
             // 
             // pnlLogin
             // 
-            resources.ApplyResources(this.pnlLogin, "pnlLogin");
             this.pnlLogin.Controls.Add(this.btnRegister);
             this.pnlLogin.Controls.Add(this.lblEmailLogin);
             this.pnlLogin.Controls.Add(this.lblPasswordLogin);
             this.pnlLogin.Controls.Add(this.txtEmail);
             this.pnlLogin.Controls.Add(this.btnLogin);
             this.pnlLogin.Controls.Add(this.txtPassword);
+            resources.ApplyResources(this.pnlLogin, "pnlLogin");
             this.pnlLogin.Name = "pnlLogin";
             // 
             // btnRegister
@@ -130,11 +130,11 @@ namespace NTP_Projekt
             // 
             // pnlRegister
             // 
-            resources.ApplyResources(this.pnlRegister, "pnlRegister");
             this.pnlRegister.Controls.Add(this.tableLayoutPanel2);
             this.pnlRegister.Controls.Add(this.tableLayoutPanel1);
             this.pnlRegister.Controls.Add(this.btnBackToLogin);
             this.pnlRegister.Controls.Add(this.btnReg);
+            resources.ApplyResources(this.pnlRegister, "pnlRegister");
             this.pnlRegister.Name = "pnlRegister";
             // 
             // tableLayoutPanel2
@@ -184,11 +184,13 @@ namespace NTP_Projekt
             // 
             resources.ApplyResources(this.txtPassReg, "txtPassReg");
             this.txtPassReg.Name = "txtPassReg";
+            this.txtPassReg.UseSystemPasswordChar = true;
             // 
             // txtPassReg2
             // 
             resources.ApplyResources(this.txtPassReg2, "txtPassReg2");
             this.txtPassReg2.Name = "txtPassReg2";
+            this.txtPassReg2.UseSystemPasswordChar = true;
             // 
             // tableLayoutPanel1
             // 
@@ -269,20 +271,14 @@ namespace NTP_Projekt
             this.btnReg.UseVisualStyleBackColor = true;
             this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // Login
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Controls.Add(this.label1);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pnlRegister);
             this.Controls.Add(this.pnlLogin);
+            this.Controls.Add(this.pnlRegister);
             this.Name = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.pnlLogin.ResumeLayout(false);
@@ -330,7 +326,6 @@ namespace NTP_Projekt
         private System.Windows.Forms.Label lblPass2;
         private System.Windows.Forms.Label lblPass;
         private System.Windows.Forms.Button btnBackToLogin;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }

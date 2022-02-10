@@ -55,6 +55,7 @@ namespace NTP_Projekt
             pnlSubjects.Visible = false;
             pnlAllGrades.Visible = false;
             pnlHome.Visible = false;
+            pnlProfile.Visible = false;
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -77,12 +78,13 @@ namespace NTP_Projekt
             {
                 this.Left = int.Parse(Globals.WINDOW_POS_LEFT);
                 this.Top = int.Parse(Globals.WINDOW_POS_TOP);
-                this.Width = int.Parse(Globals.WINDOW_HEIGHT);
-                this.Height = int.Parse(Globals.WINDOW_WIDTH);
+                this.Width = int.Parse(Globals.WINDOW_WIDTH);
+                this.Height = int.Parse(Globals.WINDOW_HEIGHT);
             }
             Logic.Appearance.RefreshForm(this);
             ShowCovidStatistics();
             DbHelper.LoadUserImage(pictureBox1);
+            RESTGetDateTime();
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
@@ -130,44 +132,6 @@ namespace NTP_Projekt
                     conn.Close();
                 }
             }
-        }
-
-
-
-
-        // ------------------------------ ENCRYPT / DECRYPT --------------------------
-        private void button1_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "All files|*.*" })
-            {
-                if (ofd.ShowDialog() == DialogResult.OK)
-                    txtFileName.Text = ofd.FileName;
-            }
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string password = "+9j?5DvJ2&Qq@Fkh";
-            GCHandle gCHandle = GCHandle.Alloc(password, GCHandleType.Pinned);
-            Logic.FileEncryption.FileEncrypt(txtFileName.Text, password);
-            Logic.FileEncryption.ZeroMemory(gCHandle.AddrOfPinnedObject(), password.Length * 2);
-            gCHandle.Free();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            string password = "+9j?5DvJ2&Qq@Fkh";
-            GCHandle gch = GCHandle.Alloc(password, GCHandleType.Pinned);
-            string outputFileName = txtFileName.Text;
-            outputFileName = outputFileName.Insert(txtFileName.Text.LastIndexOf('\\')+1, "decrypted_").Replace(".aes", "");
-            Logic.FileEncryption.FileDecrypt(txtFileName.Text, outputFileName, password);
-            Logic.FileEncryption.ZeroMemory(gch.AddrOfPinnedObject(), password.Length * 2);
-            gch.Free();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            DigitalSignature digitalSignature = new DigitalSignature();
-            digitalSignature.SignXml(txtFileName.Text);
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -240,6 +204,21 @@ namespace NTP_Projekt
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private string RESTGetDateTime()
+        {
+            RestClient client = new RestClient("https://localhost:44387/Api");
+            var request = new RestRequest("GetLocalDateTime");
+            var response = client.ExecuteAsync(request);
+
+            if (response.Result != null)
+            {
+                string rawResponse = response.Result.Content;
+                lblTime.Text = "Sign in time:" + rawResponse.Replace('"', ' ');
+                return rawResponse;
+            }
+            return null;
         }
 
         private void button5_Click(object sender, EventArgs e)

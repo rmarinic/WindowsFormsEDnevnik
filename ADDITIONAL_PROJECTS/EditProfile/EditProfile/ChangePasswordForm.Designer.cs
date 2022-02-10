@@ -32,8 +32,8 @@ namespace EditProfile
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -77,14 +77,6 @@ namespace EditProfile
             this.label2.TabIndex = 1;
             this.label2.Text = "Repeat password:";
             // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(212, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(146, 20);
-            this.textBox1.TabIndex = 2;
-            // 
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -92,6 +84,16 @@ namespace EditProfile
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(146, 20);
             this.textBox2.TabIndex = 3;
+            this.textBox2.UseSystemPasswordChar = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox1.Location = new System.Drawing.Point(212, 21);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(146, 20);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.UseSystemPasswordChar = true;
             // 
             // button1
             // 

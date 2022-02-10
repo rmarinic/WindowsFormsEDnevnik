@@ -79,7 +79,7 @@ namespace NTP_Projekt.View
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     pictureBox1.Image = Image.FromFile(ofd.FileName);
-                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
                     DbHelper.InsertImageToDb(pictureBox1);
                 }
                     

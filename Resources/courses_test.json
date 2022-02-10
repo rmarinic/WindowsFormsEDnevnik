@@ -1,0 +1,37 @@
+[
+  {
+    "CourseID": 1,
+    "Name": "Mathematics",
+    "Description": "Basic mathematics and algebra"
+  },
+  {
+    "CourseID": 2,
+    "Name": "Biology",
+    "Description": "Course about everything living that surrounds us."
+  },
+  {
+    "CourseID": 3,
+    "Name": "Sociology",
+    "Description": "Basic sociological principles."
+  },
+  {
+    "CourseID": 4,
+    "Name": "Basic programming",
+    "Description": "Programming for dummies."
+  },
+  {
+    "CourseID": 5,
+    "Name": "PE",
+    "Description": "PE needed to be a healthy human being."
+  },
+  {
+    "CourseID": 6,
+    "Name": "English",
+    "Description": "English poetry and literature."
+  },
+  {
+    "CourseID": 7,
+    "Name": "Information Technology",
+    "Description": "IT Stuff."
+  }
+]

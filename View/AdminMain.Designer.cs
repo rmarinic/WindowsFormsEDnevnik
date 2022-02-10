@@ -119,12 +119,12 @@ namespace NTP_Projekt
             this.surname = new System.Windows.Forms.Label();
             this.name = new System.Windows.Forms.Label();
             this.jmbag = new System.Windows.Forms.Label();
-            this.DBPnl = new System.Windows.Forms.Panel();
             this.JsonPnl = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.DBPnl = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.ntp_projektDataSet = new NTP_Projekt.Resources.ntp_projektDataSet();
@@ -141,6 +141,8 @@ namespace NTP_Projekt
             this.btnConvertToJson = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFile = new System.Windows.Forms.TextBox();
+            this.btnImportJson = new System.Windows.Forms.Button();
+            this.btnExportJson = new System.Windows.Forms.Button();
             this.pnlStud.SuspendLayout();
             this.CoursePnl.SuspendLayout();
             this.ProfPnl.SuspendLayout();
@@ -168,13 +170,13 @@ namespace NTP_Projekt
             // 
             // pnlStud
             // 
+            this.pnlStud.Controls.Add(this.JsonPnl);
+            this.pnlStud.Controls.Add(this.DBPnl);
+            this.pnlStud.Controls.Add(this.dataGridView1);
             this.pnlStud.Controls.Add(this.CoursePnl);
             this.pnlStud.Controls.Add(this.ProfPnl);
             this.pnlStud.Controls.Add(this.DB2Pnl);
             this.pnlStud.Controls.Add(this.Json2Pnl);
-            this.pnlStud.Controls.Add(this.JsonPnl);
-            this.pnlStud.Controls.Add(this.DBPnl);
-            this.pnlStud.Controls.Add(this.dataGridView1);
             this.pnlStud.Location = new System.Drawing.Point(12, 41);
             this.pnlStud.Name = "pnlStud";
             this.pnlStud.Size = new System.Drawing.Size(1368, 698);
@@ -182,6 +184,8 @@ namespace NTP_Projekt
             // 
             // CoursePnl
             // 
+            this.CoursePnl.Controls.Add(this.btnExportJson);
+            this.CoursePnl.Controls.Add(this.btnImportJson);
             this.CoursePnl.Controls.Add(this.button21);
             this.CoursePnl.Controls.Add(this.button20);
             this.CoursePnl.Controls.Add(this.button19);
@@ -201,7 +205,7 @@ namespace NTP_Projekt
             // button21
             // 
             this.button21.AutoSize = true;
-            this.button21.Location = new System.Drawing.Point(10, 518);
+            this.button21.Location = new System.Drawing.Point(8, 409);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(141, 23);
             this.button21.TabIndex = 10;
@@ -283,7 +287,7 @@ namespace NTP_Projekt
             // button18
             // 
             this.button18.AutoSize = true;
-            this.button18.Location = new System.Drawing.Point(10, 557);
+            this.button18.Location = new System.Drawing.Point(8, 454);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(141, 25);
             this.button18.TabIndex = 1;
@@ -294,7 +298,7 @@ namespace NTP_Projekt
             // button17
             // 
             this.button17.AutoSize = true;
-            this.button17.Location = new System.Drawing.Point(10, 599);
+            this.button17.Location = new System.Drawing.Point(8, 500);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(141, 23);
             this.button17.TabIndex = 0;
@@ -387,6 +391,7 @@ namespace NTP_Projekt
             this.textBox24.Name = "textBox24";
             this.textBox24.Size = new System.Drawing.Size(159, 20);
             this.textBox24.TabIndex = 41;
+            this.textBox24.UseSystemPasswordChar = true;
             // 
             // textBox23
             // 
@@ -637,6 +642,7 @@ namespace NTP_Projekt
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(159, 20);
             this.textBox16.TabIndex = 41;
+            this.textBox16.UseSystemPasswordChar = true;
             // 
             // textBox15
             // 
@@ -838,6 +844,7 @@ namespace NTP_Projekt
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(159, 20);
             this.textBox8.TabIndex = 41;
+            this.textBox8.UseSystemPasswordChar = true;
             // 
             // textBox7
             // 
@@ -993,13 +1000,6 @@ namespace NTP_Projekt
             this.jmbag.TabIndex = 22;
             this.jmbag.Text = "JMBAG";
             // 
-            // DBPnl
-            // 
-            this.DBPnl.Location = new System.Drawing.Point(3, 647);
-            this.DBPnl.Name = "DBPnl";
-            this.DBPnl.Size = new System.Drawing.Size(1067, 44);
-            this.DBPnl.TabIndex = 6;
-            // 
             // JsonPnl
             // 
             this.JsonPnl.Controls.Add(this.button2);
@@ -1054,6 +1054,13 @@ namespace NTP_Projekt
             this.button4.Text = "Delete Selected";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // DBPnl
+            // 
+            this.DBPnl.Location = new System.Drawing.Point(3, 647);
+            this.DBPnl.Name = "DBPnl";
+            this.DBPnl.Size = new System.Drawing.Size(1067, 44);
+            this.DBPnl.TabIndex = 6;
             // 
             // dataGridView1
             // 
@@ -1199,17 +1206,39 @@ namespace NTP_Projekt
             this.txtFile.Size = new System.Drawing.Size(421, 31);
             this.txtFile.TabIndex = 0;
             // 
+            // btnImportJson
+            // 
+            this.btnImportJson.AutoSize = true;
+            this.btnImportJson.Location = new System.Drawing.Point(8, 544);
+            this.btnImportJson.Name = "btnImportJson";
+            this.btnImportJson.Size = new System.Drawing.Size(141, 25);
+            this.btnImportJson.TabIndex = 11;
+            this.btnImportJson.Text = "Import courses from JSON";
+            this.btnImportJson.UseVisualStyleBackColor = true;
+            this.btnImportJson.Click += new System.EventHandler(this.btnImportJson_Click);
+            // 
+            // btnExportJson
+            // 
+            this.btnExportJson.AutoSize = true;
+            this.btnExportJson.Location = new System.Drawing.Point(8, 589);
+            this.btnExportJson.Name = "btnExportJson";
+            this.btnExportJson.Size = new System.Drawing.Size(141, 23);
+            this.btnExportJson.TabIndex = 12;
+            this.btnExportJson.Text = "Export courses to JSON";
+            this.btnExportJson.UseVisualStyleBackColor = true;
+            this.btnExportJson.Click += new System.EventHandler(this.btnExportJson_Click);
+            // 
             // AdminMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1389, 755);
-            this.Controls.Add(this.pnlConversion);
             this.Controls.Add(this.btnConversion);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.pnlStud);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.pnlConversion);
+            this.Controls.Add(this.pnlStud);
             this.Name = "AdminMain";
             this.Text = "AdminMain";
             this.Load += new System.EventHandler(this.AdminMain_Load);
@@ -1348,5 +1377,7 @@ namespace NTP_Projekt
         private System.Windows.Forms.Button btnConvertToJson;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFile;
+        private System.Windows.Forms.Button btnExportJson;
+        private System.Windows.Forms.Button btnImportJson;
     }
 }

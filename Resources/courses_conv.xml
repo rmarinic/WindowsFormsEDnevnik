@@ -1,0 +1,12 @@
+<Root>
+  <courses>
+    <CourseID>3</CourseID>
+    <Name>Biology</Name>
+    <Description>Course about everything living that surrounds us. lol</Description>
+  </courses>
+  <courses>
+    <CourseID>4</CourseID>
+    <Name>Mathematics</Name>
+    <Description>Basic mathematics and algebra</Description>
+  </courses>
+</Root>

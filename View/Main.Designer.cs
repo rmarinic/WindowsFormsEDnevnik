@@ -41,15 +41,10 @@ namespace NTP_Projekt
             this.pnlHome = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.lblCovid = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.txtFileName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.Button();
@@ -75,7 +70,7 @@ namespace NTP_Projekt
             this.lblDob = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblEnrollmentDate = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.lblTime = new System.Windows.Forms.Label();
             this.pnlGrades.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlSubjects.SuspendLayout();
@@ -172,12 +167,6 @@ namespace NTP_Projekt
             this.pnlHome.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlHome.AutoSize = true;
             this.pnlHome.Controls.Add(this.panel1);
-            this.pnlHome.Controls.Add(this.button4);
-            this.pnlHome.Controls.Add(this.button3);
-            this.pnlHome.Controls.Add(this.button2);
-            this.pnlHome.Controls.Add(this.txtFileName);
-            this.pnlHome.Controls.Add(this.label2);
-            this.pnlHome.Controls.Add(this.button1);
             this.pnlHome.Controls.Add(this.pictureBox1);
             this.pnlHome.Controls.Add(this.label1);
             this.pnlHome.Location = new System.Drawing.Point(12, 38);
@@ -205,6 +194,18 @@ namespace NTP_Projekt
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(501, 208);
             this.panel2.TabIndex = 13;
+            // 
+            // button5
+            // 
+            this.button5.AutoSize = true;
+            this.button5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button5.Location = new System.Drawing.Point(6, 98);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(137, 23);
+            this.button5.TabIndex = 14;
+            this.button5.Text = "Download video...";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label4
             // 
@@ -234,66 +235,6 @@ namespace NTP_Projekt
             this.label3.Size = new System.Drawing.Size(146, 18);
             this.label3.TabIndex = 8;
             this.label3.Text = "COVID-19 - Safety";
-            // 
-            // button4
-            // 
-            this.button4.AutoSize = true;
-            this.button4.Location = new System.Drawing.Point(836, 488);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.AutoSize = true;
-            this.button3.Location = new System.Drawing.Point(707, 537);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Decrypt";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.AutoSize = true;
-            this.button2.Location = new System.Drawing.Point(610, 538);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Encrypt";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // txtFileName
-            // 
-            this.txtFileName.Location = new System.Drawing.Point(510, 490);
-            this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(198, 20);
-            this.txtFileName.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(449, 490);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "File name:";
-            // 
-            // button1
-            // 
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(722, 490);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Browse...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -349,6 +290,7 @@ namespace NTP_Projekt
             this.pnlProfile.Name = "pnlProfile";
             this.pnlProfile.Size = new System.Drawing.Size(924, 567);
             this.pnlProfile.TabIndex = 11;
+            this.pnlProfile.Visible = false;
             // 
             // btnEditProfile
             // 
@@ -625,22 +567,21 @@ namespace NTP_Projekt
             this.lblEnrollmentDate.TabIndex = 17;
             this.lblEnrollmentDate.Text = "label22";
             // 
-            // button5
+            // lblTime
             // 
-            this.button5.AutoSize = true;
-            this.button5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button5.Location = new System.Drawing.Point(6, 98);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(137, 23);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Download video...";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.lblTime.Location = new System.Drawing.Point(355, 9);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(221, 17);
+            this.lblTime.TabIndex = 12;
+            this.lblTime.Text = "Sign in time: 00/00/0000 00:00:00";
             // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(949, 629);
+            this.Controls.Add(this.lblTime);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.cbxGrades);
@@ -688,12 +629,6 @@ namespace NTP_Projekt
         private System.Windows.Forms.Panel pnlHome;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtFileName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Label lblCovid;
         private System.Windows.Forms.Label label3;
@@ -724,5 +659,6 @@ namespace NTP_Projekt
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblEnrollmentDate;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label lblTime;
     }
 }

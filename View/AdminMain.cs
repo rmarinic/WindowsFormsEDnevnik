@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using NTPDynamicLibrary;
+using Newtonsoft.Json.Linq;
 
 namespace NTP_Projekt
 {
@@ -811,14 +812,12 @@ namespace NTP_Projekt
         {
             try
             {
-                Console.WriteLine(get_json_path());
                 string jsonString = Logic.FileEncryption.DecryptJson(get_json_path());
                 BindingList<Model.Student> students = JsonConvert.DeserializeObject<BindingList<Model.Student>>(jsonString);
                 dataGridView1.DataSource = students;
                 dataGridView1.Columns[4].HeaderText = "Date of birth";
                 dataGridView1.Columns[9].HeaderText = "Enrollment Date";
-                
-                File.Replace(get_json_path() + ".aes", get_json_path() + ".aes", get_json_path() + ".aes");
+               
             }
             catch (Exception ex)
             {
@@ -1070,7 +1069,12 @@ namespace NTP_Projekt
                 string xmlString = File.ReadAllText(txtFile.Text);
                 var response = client.ConvertXmlToJson(xmlString);
 
-                MessageBox.Show(response);
+                string workingDirectory = Environment.CurrentDirectory;
+                string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
+                string filepath = Path.Combine(projectDirectory, @"\Resources\", "courses_conv.json");
+                string filename = Path.GetFullPath(projectDirectory + filepath);
+
+                File.WriteAllText(filename, response);
             }
             else
                 MessageBox.Show("Invalid file type.");
@@ -1087,7 +1091,12 @@ namespace NTP_Projekt
                 Console.WriteLine(jsonString);
                 var response = client.ConvertJsonToXml(jsonString);
 
-                MessageBox.Show(response);
+                string workingDirectory = Environment.CurrentDirectory;
+                string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
+                string filepath = Path.Combine(projectDirectory, @"\Resources\", "courses_conv.xml");
+                string filename = Path.GetFullPath(projectDirectory + filepath);
+
+                File.WriteAllText(filename, response);
             }
             else
                 MessageBox.Show("Invalid file type.");
@@ -1096,7 +1105,47 @@ namespace NTP_Projekt
         private void btnConversion_Click(object sender, EventArgs e)
         {
             HideAll();
+            pnlConversion.BringToFront();
             pnlConversion.Visible = true;
+        }
+
+        private void btnImportJson_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "JSON Files|*.json" })
+                {
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        txtFile.Text = ofd.FileName;
+                    }
+                    string jsonString = File.ReadAllText(ofd.FileName);
+                    dynamic json = JsonConvert.DeserializeObject(jsonString);
+                    string completeJson = "[";
+                    foreach(var element in json["courses"]["course"])
+                        completeJson += element.ToString() + ",";
+                    completeJson.Remove(completeJson.Length - 1);
+                    completeJson += "]";
+                    BindingList<Model.Courses> courses = JsonConvert.DeserializeObject<BindingList<Model.Courses>>(completeJson);
+                    dataGridView1.DataSource = courses;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading JSON Courses" + ex.Message);
+            }
+        }
+
+        private void btnExportJson_Click(object sender, EventArgs e)
+        {
+            string output = JsonConvert.SerializeObject(this.dataGridView1.DataSource, Newtonsoft.Json.Formatting.Indented);
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
+            string filepath = Path.Combine(projectDirectory, @"\Resources\", "courses_test.json");
+            string filename = Path.GetFullPath(projectDirectory + filepath);
+
+            using (StreamWriter stream = new StreamWriter(filename))
+                stream.Write(output);
         }
     }
 }

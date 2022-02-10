@@ -134,6 +134,7 @@
       <DependentUpon>ntpProjekt.tt</DependentUpon>
     </Compile>
     <Compile Include="Logic\DbHelper.cs" />
+    <Compile Include="Model\Courses.cs" />
     <Compile Include="Model\Professor.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="ntpProjekt.Context.cs">
