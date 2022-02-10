@@ -90,8 +90,8 @@ namespace NTP_Projekt.Logic
             GCHandle gch = GCHandle.Alloc(password, GCHandleType.Pinned);
             string path = jsonPath + ".aes";
             string outputFileName = path.Replace(".aes", "");
-            Logic.FileEncryption.FileDecrypt(path, outputFileName, password);
-            Logic.FileEncryption.ZeroMemory(gch.AddrOfPinnedObject(), password.Length * 2);
+            FileDecrypt(path, outputFileName, password);
+            ZeroMemory(gch.AddrOfPinnedObject(), password.Length * 2);
             gch.Free();
             string jsonString = File.ReadAllText(outputFileName);
             File.Delete(outputFileName);
@@ -103,8 +103,8 @@ namespace NTP_Projekt.Logic
         {
             string password = "+9j?5DvJ2&Qq@Fkh";
             GCHandle gCHandle = GCHandle.Alloc(password, GCHandleType.Pinned);
-            Logic.FileEncryption.FileEncrypt(filepath, password);
-            Logic.FileEncryption.ZeroMemory(gCHandle.AddrOfPinnedObject(), password.Length * 2);
+            FileEncrypt(filepath, password);
+            ZeroMemory(gCHandle.AddrOfPinnedObject(), password.Length * 2);
             gCHandle.Free();
             File.Delete(filepath);
         }

@@ -29,120 +29,96 @@ namespace NTP_Projekt
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.chkFontSize = new System.Windows.Forms.CheckBox();
             this.chkDarkContrast = new System.Windows.Forms.CheckBox();
-            this.chkUnderline = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.cbxFont = new System.Windows.Forms.ComboBox();
             this.lblFont = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(40, 56);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Increase font size";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 97);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(237, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Contrast (dark background)";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(40, 135);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(134, 24);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Underline links";
             // 
             // chkFontSize
             // 
-            this.chkFontSize.AutoSize = true;
-            this.chkFontSize.Location = new System.Drawing.Point(325, 62);
+            resources.ApplyResources(this.chkFontSize, "chkFontSize");
             this.chkFontSize.Name = "chkFontSize";
-            this.chkFontSize.Size = new System.Drawing.Size(15, 14);
-            this.chkFontSize.TabIndex = 4;
             this.chkFontSize.UseVisualStyleBackColor = true;
             this.chkFontSize.CheckedChanged += new System.EventHandler(this.chkFontSize_CheckedChanged);
             // 
             // chkDarkContrast
             // 
-            this.chkDarkContrast.AutoSize = true;
-            this.chkDarkContrast.Location = new System.Drawing.Point(325, 103);
+            resources.ApplyResources(this.chkDarkContrast, "chkDarkContrast");
             this.chkDarkContrast.Name = "chkDarkContrast";
-            this.chkDarkContrast.Size = new System.Drawing.Size(15, 14);
-            this.chkDarkContrast.TabIndex = 5;
             this.chkDarkContrast.UseVisualStyleBackColor = true;
             this.chkDarkContrast.CheckedChanged += new System.EventHandler(this.chkDarkContrast_CheckedChanged);
             // 
-            // chkUnderline
-            // 
-            this.chkUnderline.AutoSize = true;
-            this.chkUnderline.Location = new System.Drawing.Point(325, 141);
-            this.chkUnderline.Name = "chkUnderline";
-            this.chkUnderline.Size = new System.Drawing.Size(15, 14);
-            this.chkUnderline.TabIndex = 7;
-            this.chkUnderline.UseVisualStyleBackColor = true;
-            // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(145, 310);
+            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // cbxFont
             // 
+            resources.ApplyResources(this.cbxFont, "cbxFont");
             this.cbxFont.FormattingEnabled = true;
-            this.cbxFont.Location = new System.Drawing.Point(219, 180);
             this.cbxFont.Name = "cbxFont";
-            this.cbxFont.Size = new System.Drawing.Size(121, 21);
-            this.cbxFont.TabIndex = 9;
             this.cbxFont.SelectedIndexChanged += new System.EventHandler(this.cbxFont_SelectedIndexChanged);
             // 
             // lblFont
             // 
-            this.lblFont.AutoSize = true;
-            this.lblFont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFont.Location = new System.Drawing.Point(40, 175);
+            resources.ApplyResources(this.lblFont, "lblFont");
             this.lblFont.Name = "lblFont";
-            this.lblFont.Size = new System.Drawing.Size(48, 24);
-            this.lblFont.TabIndex = 10;
-            this.lblFont.Text = "Font";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // button2
+            // 
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Settings
             // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(366, 372);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblFont);
             this.Controls.Add(this.cbxFont);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.chkUnderline);
             this.Controls.Add(this.chkDarkContrast);
             this.Controls.Add(this.chkFontSize);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Settings";
-            this.Text = "Settings";
             this.Load += new System.EventHandler(this.Settings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -153,12 +129,13 @@ namespace NTP_Projekt
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox chkFontSize;
         private System.Windows.Forms.CheckBox chkDarkContrast;
-        private System.Windows.Forms.CheckBox chkUnderline;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ComboBox cbxFont;
         private System.Windows.Forms.Label lblFont;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

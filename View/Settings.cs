@@ -1,8 +1,10 @@
-﻿using System;
+﻿using NTP_Projekt.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,11 +46,13 @@ namespace NTP_Projekt
             ini.Write("Contrast", contrast.ToString());
             ini.Write("FontFamily", cbxFont.SelectedItem.ToString());
             Logic.Appearance.RefreshForm(MyParent);
+            MyParent.ChangeLanguage();
             Logic.Appearance.RefreshForm(this);
         }
 
         private void Settings_Load(object sender, EventArgs e)
         {
+            ChangeLanguage();
             if (ini.Read("Contrast") == "True")
                 chkDarkContrast.Checked = true;
             if (ini.Read("FontMultiplier") == "1.5")
@@ -71,6 +75,27 @@ namespace NTP_Projekt
                 System.Drawing.FontStyle.Regular,
                 System.Drawing.GraphicsUnit.Point,
                 ((byte)(0)));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Globals.LANGUAGE = "en";
+            ChangeLanguage();
+        }
+
+        private void ChangeLanguage()
+        {
+            foreach (Control c in this.Controls)
+            {
+                ComponentResourceManager resources = new ComponentResourceManager(typeof(Settings));
+                resources.ApplyResources(c, c.Name, new CultureInfo(Globals.LANGUAGE));
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Globals.LANGUAGE = "hr";
+            ChangeLanguage();
         }
     }
 }

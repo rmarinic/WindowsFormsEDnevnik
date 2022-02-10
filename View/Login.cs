@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using RestSharp;
 using NTP_Projekt.View;
 using NTP_Projekt.Logic;
+using System.ComponentModel;
+using System.Globalization;
+using System.Collections.Generic;
 
 namespace NTP_Projekt
 {
@@ -70,6 +73,7 @@ namespace NTP_Projekt
 
         public void Login_Load(object sender, EventArgs e)
         {
+            ChangeLanguage();
             Logic.Appearance.RefreshForm(this);
             loginEncrypt.RegisterInsertData("admin@gmail.com", "admin", "Admin", "Admin",
                "Area 51", "HR", "Area 51", DateTime.Now.ToString(), "555566660", 3);
@@ -108,6 +112,24 @@ namespace NTP_Projekt
             for (int i = 0; i < length; i++)
                 s = String.Concat(s, random.Next(10).ToString());
             return s;
+        }
+
+        public void ChangeLanguage()
+        {
+            foreach (Control c in GetAll(this))
+            {
+                ComponentResourceManager resources = new ComponentResourceManager(typeof(Login));
+                resources.ApplyResources(c, c.Name, new CultureInfo(Globals.LANGUAGE));
+            }
+        }
+
+        public static IEnumerable<Control> GetAll(Control control)
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl))
+                                      .Concat(controls);
+                                      
         }
     }
 }

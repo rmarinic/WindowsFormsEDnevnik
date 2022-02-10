@@ -117,13 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblPasswordLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lblPasswordLogin.Text" xml:space="preserve">
+    <value>Lozinka</value>
+  </data>
   <data name="btnLogin.Text" xml:space="preserve">
     <value>Prijava</value>
   </data>
   <data name="button2.Text" xml:space="preserve">
     <value>Postavke</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnRegister.Text" xml:space="preserve">
+    <value>Registracija</value>
+  </data>
+  <data name="lblCity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 35</value>
+  </data>
+  <data name="lblCity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="lblCity.Text" xml:space="preserve">
+    <value>Grad</value>
+  </data>
+  <data name="lblDob.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 117</value>
+  </data>
+  <data name="lblDob.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="lblDob.Text" xml:space="preserve">
+    <value>Datum rođenja</value>
+  </data>
+  <data name="lblPass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 199</value>
+  </data>
+  <data name="lblPass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lblPass.Text" xml:space="preserve">
+    <value>Lozinka</value>
+  </data>
+  <data name="lblPass2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 283</value>
+  </data>
+  <data name="lblPass2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 13</value>
+  </data>
+  <data name="lblPass2.Text" xml:space="preserve">
+    <value>Ponovi lozinku</value>
+  </data>
+  <data name="btnBackToLogin.Text" xml:space="preserve">
+    <value>Nazad</value>
+  </data>
+  <data name="btnReg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 23</value>
+  </data>
+  <data name="btnReg.Text" xml:space="preserve">
+    <value>Registriraj se</value>
+  </data>
   <data name="lblSurname.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 93</value>
   </data>
@@ -141,6 +195,24 @@
   </data>
   <data name="lblEmail.Text" xml:space="preserve">
     <value>E-Pošta</value>
+  </data>
+  <data name="lblAddress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 225</value>
+  </data>
+  <data name="lblAddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="lblAddress.Text" xml:space="preserve">
+    <value>Adresa</value>
+  </data>
+  <data name="lblCountry.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 292</value>
+  </data>
+  <data name="lblCountry.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
+  </data>
+  <data name="lblCountry.Text" xml:space="preserve">
+    <value>Država</value>
   </data>
   <data name="lblFirstName.Location" type="System.Drawing.Point, System.Drawing">
     <value>55, 27</value>

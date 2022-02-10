@@ -16,5 +16,6 @@ namespace NTP_Projekt.Logic
         public static string FONT_NAME;
         public static string FONT_MULTIPLIER;
         public static string USER_JMBAG;
+        public static string LANGUAGE = "en";
     }
 }

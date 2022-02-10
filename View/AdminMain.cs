@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using NTPDynamicLibrary;
 using Newtonsoft.Json.Linq;
+using System.Globalization;
+using NTP_Projekt.Logic;
 
 namespace NTP_Projekt
 {
@@ -22,6 +24,7 @@ namespace NTP_Projekt
             InitializeComponent();
             HideAll();
             pnlStud.Visible = true;
+            ChangeLanguage();
         }
         private void HideAll()
         {
@@ -1146,6 +1149,24 @@ namespace NTP_Projekt
 
             using (StreamWriter stream = new StreamWriter(filename))
                 stream.Write(output);
+        }
+
+        public void ChangeLanguage()
+        {
+            foreach (Control c in GetAll(this))
+            {
+                ComponentResourceManager resources = new ComponentResourceManager(typeof(AdminMain));
+                resources.ApplyResources(c, c.Name, new CultureInfo(Globals.LANGUAGE));
+            }
+        }
+
+        public static IEnumerable<Control> GetAll(Control control)
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl))
+                                      .Concat(controls);
+
         }
     }
 }

@@ -34,8 +34,6 @@ namespace NTP_Projekt
             this.pnlGrades = new System.Windows.Forms.Panel();
             this.lblGradesTitle = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pnlSubjects = new System.Windows.Forms.Panel();
-            this.lblSubjectsTitle = new System.Windows.Forms.Label();
             this.pnlAllGrades = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -77,7 +75,6 @@ namespace NTP_Projekt
             this.lblTime = new System.Windows.Forms.Label();
             this.pnlGrades.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.pnlSubjects.SuspendLayout();
             this.pnlAllGrades.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.pnlHome.SuspendLayout();
@@ -92,62 +89,30 @@ namespace NTP_Projekt
             // 
             this.cbxGrades.FormattingEnabled = true;
             this.cbxGrades.Items.AddRange(new object[] {
-            "All grades",
-            "List of courses",
-            "Grades by course",
-            "Profile"});
-            this.cbxGrades.Location = new System.Drawing.Point(12, 12);
+            resources.GetString("cbxGrades.Items"),
+            resources.GetString("cbxGrades.Items1"),
+            resources.GetString("cbxGrades.Items2")});
+            resources.ApplyResources(this.cbxGrades, "cbxGrades");
             this.cbxGrades.Name = "cbxGrades";
-            this.cbxGrades.Size = new System.Drawing.Size(121, 21);
-            this.cbxGrades.TabIndex = 6;
-            this.cbxGrades.Text = "Select...";
             this.cbxGrades.SelectedIndexChanged += new System.EventHandler(this.cbxGrades_SelectedIndexChanged);
             // 
             // pnlGrades
             // 
-            this.pnlGrades.AutoSize = true;
+            resources.ApplyResources(this.pnlGrades, "pnlGrades");
             this.pnlGrades.Controls.Add(this.lblGradesTitle);
             this.pnlGrades.Controls.Add(this.dataGridView1);
-            this.pnlGrades.Location = new System.Drawing.Point(13, 39);
             this.pnlGrades.Name = "pnlGrades";
-            this.pnlGrades.Size = new System.Drawing.Size(924, 566);
-            this.pnlGrades.TabIndex = 7;
-            this.pnlGrades.Visible = false;
             // 
             // lblGradesTitle
             // 
-            this.lblGradesTitle.AutoSize = true;
-            this.lblGradesTitle.Location = new System.Drawing.Point(409, 28);
+            resources.ApplyResources(this.lblGradesTitle, "lblGradesTitle");
             this.lblGradesTitle.Name = "lblGradesTitle";
-            this.lblGradesTitle.Size = new System.Drawing.Size(85, 13);
-            this.lblGradesTitle.TabIndex = 0;
-            this.lblGradesTitle.Text = "Trenutne ocjene";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 76);
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(886, 472);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // pnlSubjects
-            // 
-            this.pnlSubjects.Controls.Add(this.lblSubjectsTitle);
-            this.pnlSubjects.Location = new System.Drawing.Point(12, 39);
-            this.pnlSubjects.Name = "pnlSubjects";
-            this.pnlSubjects.Size = new System.Drawing.Size(925, 567);
-            this.pnlSubjects.TabIndex = 1;
-            this.pnlSubjects.Visible = false;
-            // 
-            // lblSubjectsTitle
-            // 
-            this.lblSubjectsTitle.AutoSize = true;
-            this.lblSubjectsTitle.Location = new System.Drawing.Point(335, 28);
-            this.lblSubjectsTitle.Name = "lblSubjectsTitle";
-            this.lblSubjectsTitle.Size = new System.Drawing.Size(80, 13);
-            this.lblSubjectsTitle.TabIndex = 1;
-            this.lblSubjectsTitle.Text = "Popis predmeta";
             // 
             // pnlAllGrades
             // 
@@ -156,179 +121,110 @@ namespace NTP_Projekt
             this.pnlAllGrades.Controls.Add(this.radioButton1);
             this.pnlAllGrades.Controls.Add(this.dataGridView2);
             this.pnlAllGrades.Controls.Add(this.lblAllGradesTitle);
-            this.pnlAllGrades.Location = new System.Drawing.Point(12, 40);
+            resources.ApplyResources(this.pnlAllGrades, "pnlAllGrades");
             this.pnlAllGrades.Name = "pnlAllGrades";
-            this.pnlAllGrades.Size = new System.Drawing.Size(925, 566);
-            this.pnlAllGrades.TabIndex = 0;
-            this.pnlAllGrades.Visible = false;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(712, 167);
+            resources.ApplyResources(this.button6, "button6");
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(85, 32);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "Export as..";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // radioButton2
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(712, 135);
+            resources.ApplyResources(this.radioButton2, "radioButton2");
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(46, 17);
-            this.radioButton2.TabIndex = 3;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "RTF";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(712, 112);
+            resources.ApplyResources(this.radioButton1, "radioButton1");
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(46, 17);
-            this.radioButton1.TabIndex = 2;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "PDF";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(13, 58);
+            resources.ApplyResources(this.dataGridView2, "dataGridView2");
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(662, 443);
-            this.dataGridView2.TabIndex = 1;
             // 
             // lblAllGradesTitle
             // 
-            this.lblAllGradesTitle.AutoSize = true;
-            this.lblAllGradesTitle.Location = new System.Drawing.Point(343, 15);
+            resources.ApplyResources(this.lblAllGradesTitle, "lblAllGradesTitle");
             this.lblAllGradesTitle.Name = "lblAllGradesTitle";
-            this.lblAllGradesTitle.Size = new System.Drawing.Size(61, 13);
-            this.lblAllGradesTitle.TabIndex = 0;
-            this.lblAllGradesTitle.Text = "Sve ocjene";
             // 
             // pnlHome
             // 
-            this.pnlHome.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pnlHome.AutoSize = true;
+            resources.ApplyResources(this.pnlHome, "pnlHome");
             this.pnlHome.Controls.Add(this.panel1);
             this.pnlHome.Controls.Add(this.pictureBox1);
             this.pnlHome.Controls.Add(this.label1);
-            this.pnlHome.Location = new System.Drawing.Point(12, 38);
             this.pnlHome.Name = "pnlHome";
-            this.pnlHome.Size = new System.Drawing.Size(914, 564);
-            this.pnlHome.TabIndex = 8;
             // 
             // panel1
             // 
-            this.panel1.AutoSize = true;
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(17, 231);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(882, 256);
-            this.panel1.TabIndex = 10;
             // 
             // panel2
             // 
-            this.panel2.AutoSize = true;
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.lblCovid);
-            this.panel2.Location = new System.Drawing.Point(14, 45);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(501, 208);
-            this.panel2.TabIndex = 13;
             // 
             // button5
             // 
-            this.button5.AutoSize = true;
-            this.button5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button5.Location = new System.Drawing.Point(6, 98);
+            resources.ApplyResources(this.button5, "button5");
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(137, 23);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Download video...";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 8);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(411, 52);
-            this.label4.TabIndex = 10;
-            this.label4.Text = resources.GetString("label4.Text");
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // lblCovid
             // 
-            this.lblCovid.AutoSize = true;
-            this.lblCovid.Location = new System.Drawing.Point(3, 153);
+            resources.ApplyResources(this.lblCovid, "lblCovid");
             this.lblCovid.Name = "lblCovid";
-            this.lblCovid.Size = new System.Drawing.Size(177, 26);
-            this.lblCovid.TabIndex = 9;
-            this.lblCovid.Text = "New cases in the last 24h: 0000000\r\nNew deaths in the last 24h: 0000";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 13);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 18);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "COVID-19 - Safety";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(406, 92);
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(98, 101);
-            this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(318, 30);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(276, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Dobrodošli u NTP Ednevnik";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnHome
             // 
-            this.btnHome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHome.AutoSize = true;
-            this.btnHome.Location = new System.Drawing.Point(780, 12);
+            resources.ApplyResources(this.btnHome, "btnHome");
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(75, 23);
-            this.btnHome.TabIndex = 9;
-            this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnLogOut
             // 
-            this.btnLogOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLogOut.AutoSize = true;
-            this.btnLogOut.Location = new System.Drawing.Point(861, 12);
+            resources.ApplyResources(this.btnLogOut, "btnLogOut");
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(75, 23);
-            this.btnLogOut.TabIndex = 10;
-            this.btnLogOut.Text = "Log out";
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
@@ -336,28 +232,19 @@ namespace NTP_Projekt
             // 
             this.pnlProfile.Controls.Add(this.btnEditProfile);
             this.pnlProfile.Controls.Add(this.tableLayoutPanel1);
-            this.pnlProfile.Location = new System.Drawing.Point(12, 39);
+            resources.ApplyResources(this.pnlProfile, "pnlProfile");
             this.pnlProfile.Name = "pnlProfile";
-            this.pnlProfile.Size = new System.Drawing.Size(924, 567);
-            this.pnlProfile.TabIndex = 11;
-            this.pnlProfile.Visible = false;
             // 
             // btnEditProfile
             // 
-            this.btnEditProfile.Location = new System.Drawing.Point(380, 506);
+            resources.ApplyResources(this.btnEditProfile, "btnEditProfile");
             this.btnEditProfile.Name = "btnEditProfile";
-            this.btnEditProfile.Size = new System.Drawing.Size(162, 29);
-            this.btnEditProfile.TabIndex = 1;
-            this.btnEditProfile.Text = "Edit...";
             this.btnEditProfile.UseVisualStyleBackColor = true;
             this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 2);
@@ -376,281 +263,139 @@ namespace NTP_Projekt
             this.tableLayoutPanel1.Controls.Add(this.lblDob, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.lblEmail, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.lblAge2, 1, 8);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(248, 70);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(427, 414);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label5
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
+            resources.ApplyResources(this.label5, "label5");
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(72, 13);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 20);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "JMBAG:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
+            resources.ApplyResources(this.label6, "label6");
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(62, 58);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "First Name:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
+            resources.ApplyResources(this.label7, "label7");
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(62, 103);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 20);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Last Name:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.AutoSize = true;
+            resources.ApplyResources(this.label8, "label8");
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(71, 148);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 20);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Address:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label9.AutoSize = true;
+            resources.ApplyResources(this.label9, "label9");
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(87, 193);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 20);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "City:";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label10.AutoSize = true;
+            resources.ApplyResources(this.label10, "label10");
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(73, 238);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 20);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Country:";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label11
             // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label11.AutoSize = true;
+            resources.ApplyResources(this.label11, "label11");
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(55, 283);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(103, 20);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Date of Birth:";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
             // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label12.AutoSize = true;
+            resources.ApplyResources(this.label12, "label12");
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(78, 328);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(57, 20);
-            this.label12.TabIndex = 7;
-            this.label12.Text = "E-Mail:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblAge
             // 
-            this.lblAge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblAge.AutoSize = true;
+            resources.ApplyResources(this.lblAge, "lblAge");
             this.lblAge.BackColor = System.Drawing.Color.Transparent;
-            this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAge.Location = new System.Drawing.Point(86, 377);
             this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(42, 20);
-            this.lblAge.TabIndex = 8;
-            this.lblAge.Text = "Age:";
-            this.lblAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblJMBAG
             // 
-            this.lblJMBAG.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblJMBAG.AutoSize = true;
+            resources.ApplyResources(this.lblJMBAG, "lblJMBAG");
             this.lblJMBAG.BackColor = System.Drawing.Color.Transparent;
-            this.lblJMBAG.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblJMBAG.Location = new System.Drawing.Point(290, 13);
             this.lblJMBAG.Name = "lblJMBAG";
-            this.lblJMBAG.Size = new System.Drawing.Size(60, 20);
-            this.lblJMBAG.TabIndex = 9;
-            this.lblJMBAG.Text = "label14";
             // 
             // lblFirstName
             // 
-            this.lblFirstName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblFirstName.AutoSize = true;
+            resources.ApplyResources(this.lblFirstName, "lblFirstName");
             this.lblFirstName.BackColor = System.Drawing.Color.Transparent;
-            this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblFirstName.Location = new System.Drawing.Point(290, 58);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(60, 20);
-            this.lblFirstName.TabIndex = 10;
-            this.lblFirstName.Text = "label15";
             // 
             // lblLastName
             // 
-            this.lblLastName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblLastName.AutoSize = true;
+            resources.ApplyResources(this.lblLastName, "lblLastName");
             this.lblLastName.BackColor = System.Drawing.Color.Transparent;
-            this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblLastName.Location = new System.Drawing.Point(290, 103);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(60, 20);
-            this.lblLastName.TabIndex = 11;
-            this.lblLastName.Text = "label16";
             // 
             // lblAddress
             // 
-            this.lblAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblAddress.AutoSize = true;
+            resources.ApplyResources(this.lblAddress, "lblAddress");
             this.lblAddress.BackColor = System.Drawing.Color.Transparent;
-            this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblAddress.Location = new System.Drawing.Point(290, 148);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(60, 20);
-            this.lblAddress.TabIndex = 12;
-            this.lblAddress.Text = "label17";
             // 
             // lblCity
             // 
-            this.lblCity.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCity.AutoSize = true;
+            resources.ApplyResources(this.lblCity, "lblCity");
             this.lblCity.BackColor = System.Drawing.Color.Transparent;
-            this.lblCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblCity.Location = new System.Drawing.Point(290, 193);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(60, 20);
-            this.lblCity.TabIndex = 13;
-            this.lblCity.Text = "label18";
             // 
             // lblCountry
             // 
-            this.lblCountry.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCountry.AutoSize = true;
+            resources.ApplyResources(this.lblCountry, "lblCountry");
             this.lblCountry.BackColor = System.Drawing.Color.Transparent;
-            this.lblCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblCountry.Location = new System.Drawing.Point(290, 238);
             this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(60, 20);
-            this.lblCountry.TabIndex = 14;
-            this.lblCountry.Text = "label19";
             // 
             // lblDob
             // 
-            this.lblDob.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDob.AutoSize = true;
+            resources.ApplyResources(this.lblDob, "lblDob");
             this.lblDob.BackColor = System.Drawing.Color.Transparent;
-            this.lblDob.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblDob.Location = new System.Drawing.Point(290, 283);
             this.lblDob.Name = "lblDob";
-            this.lblDob.Size = new System.Drawing.Size(60, 20);
-            this.lblDob.TabIndex = 15;
-            this.lblDob.Text = "label20";
             // 
             // lblEmail
             // 
-            this.lblEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblEmail.AutoSize = true;
+            resources.ApplyResources(this.lblEmail, "lblEmail");
             this.lblEmail.BackColor = System.Drawing.Color.Transparent;
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblEmail.Location = new System.Drawing.Point(290, 328);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(60, 20);
-            this.lblEmail.TabIndex = 16;
-            this.lblEmail.Text = "label21";
             // 
             // lblAge2
             // 
-            this.lblAge2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblAge2.AutoSize = true;
+            resources.ApplyResources(this.lblAge2, "lblAge2");
             this.lblAge2.BackColor = System.Drawing.Color.Transparent;
-            this.lblAge2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblAge2.Location = new System.Drawing.Point(290, 377);
             this.lblAge2.Name = "lblAge2";
-            this.lblAge2.Size = new System.Drawing.Size(60, 20);
-            this.lblAge2.TabIndex = 17;
-            this.lblAge2.Text = "label22";
             // 
             // lblTime
             // 
-            this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblTime.Location = new System.Drawing.Point(355, 9);
+            resources.ApplyResources(this.lblTime, "lblTime");
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(221, 17);
-            this.lblTime.TabIndex = 12;
-            this.lblTime.Text = "Sign in time: 00/00/0000 00:00:00";
             // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(949, 629);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.cbxGrades);
             this.Controls.Add(this.pnlHome);
             this.Controls.Add(this.pnlGrades);
-            this.Controls.Add(this.pnlSubjects);
             this.Controls.Add(this.pnlAllGrades);
             this.Controls.Add(this.pnlProfile);
-            this.MinimumSize = new System.Drawing.Size(965, 668);
             this.Name = "Main";
-            this.Text = "E-Dnevnik";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.pnlGrades.ResumeLayout(false);
             this.pnlGrades.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.pnlSubjects.ResumeLayout(false);
-            this.pnlSubjects.PerformLayout();
             this.pnlAllGrades.ResumeLayout(false);
             this.pnlAllGrades.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -674,9 +419,7 @@ namespace NTP_Projekt
         private System.Windows.Forms.ComboBox cbxGrades;
         private System.Windows.Forms.Panel pnlGrades;
         private System.Windows.Forms.Label lblGradesTitle;
-        private System.Windows.Forms.Panel pnlSubjects;
         private System.Windows.Forms.Panel pnlAllGrades;
-        private System.Windows.Forms.Label lblSubjectsTitle;
         private System.Windows.Forms.Label lblAllGradesTitle;
         private System.Windows.Forms.Panel pnlHome;
         private System.Windows.Forms.PictureBox pictureBox1;

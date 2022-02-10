@@ -4,6 +4,10 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using EditProfile;
 using System.Drawing;
+using System.Globalization;
+using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NTP_Projekt.View
 {
@@ -20,6 +24,7 @@ namespace NTP_Projekt.View
 
         private void EditStudent_Load(object sender, EventArgs e)
         {
+            ChangeLanguage();
             user = DbHelper.GetUser(USER_JMBAG);
             txtJmbag.Text = user.JMBAG;
             txtFirstName.Text = user.FirstName;
@@ -84,6 +89,24 @@ namespace NTP_Projekt.View
                 }
                     
             }
+        }
+
+        public void ChangeLanguage()
+        {
+            foreach (Control c in GetAll(this))
+            {
+                ComponentResourceManager resources = new ComponentResourceManager(typeof(EditStudent));
+                resources.ApplyResources(c, c.Name, new CultureInfo(Globals.LANGUAGE));
+            }
+        }
+
+        public static IEnumerable<Control> GetAll(Control control)
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl))
+                                      .Concat(controls);
+
         }
     }
 }

@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Spire.DataExport;
+using System.Globalization;
 
 namespace NTP_Projekt.View
 {
@@ -20,6 +21,7 @@ namespace NTP_Projekt.View
         {
             InitializeComponent();
             GradeAddPnl.Visible = false;
+            ChangeLanguage();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -302,6 +304,24 @@ namespace NTP_Projekt.View
             textBox2.Text = null;
             textBox3.Text = null;
             comboBox1.SelectedIndex = 0;
+        }
+
+        public void ChangeLanguage()
+        {
+            foreach (Control c in GetAll(this))
+            {
+                ComponentResourceManager resources = new ComponentResourceManager(typeof(ProfMain));
+                resources.ApplyResources(c, c.Name, new CultureInfo(Globals.LANGUAGE));
+            }
+        }
+
+        public static IEnumerable<Control> GetAll(Control control)
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl))
+                                      .Concat(controls);
+
         }
     }
 }

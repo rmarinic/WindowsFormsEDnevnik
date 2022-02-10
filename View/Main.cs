@@ -11,6 +11,9 @@ using System.Data.SqlClient;
 using System.IO;
 using NTP_Projekt.View;
 using System.Linq;
+using System.Globalization;
+using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace NTP_Projekt
 {
@@ -35,15 +38,10 @@ namespace NTP_Projekt
                     break;
                 case 1:
                     HideAll();
-                    ShowCourses();
-                    pnlSubjects.Visible = true;
-                    break;
-                case 2:
-                    HideAll();
                     ShowAllGrades();
                     pnlAllGrades.Visible = true;
                     break;
-                case 3:
+                case 2:
                     HideAll();
                     pnlProfile.Visible = true;
                     ShowProfile();
@@ -54,7 +52,6 @@ namespace NTP_Projekt
         private void HideAll()
         {
             pnlGrades.Visible = false;
-            pnlSubjects.Visible = false;
             pnlAllGrades.Visible = false;
             pnlHome.Visible = false;
             pnlProfile.Visible = false;
@@ -62,6 +59,7 @@ namespace NTP_Projekt
 
         private void Main_Load(object sender, EventArgs e)
         {
+            ChangeLanguage();
             user = Logic.DbHelper.GetUser(Globals.USER_JMBAG);
             label1.Text = "Dobrodošli u NTP Ednevnik\n" + user.FirstName + " " + user.LastName;
             label1.TextAlign = ContentAlignment.TopCenter;
@@ -391,6 +389,24 @@ namespace NTP_Projekt
             average.HeaderText = "Average Grade";
             average.CellTemplate = new DataGridViewTextBoxCell();
             dataGridView2.Columns.Insert(5, average);
+        }
+
+        public void ChangeLanguage()
+        {
+            foreach (Control c in GetAll(this))
+            {
+                ComponentResourceManager resources = new ComponentResourceManager(typeof(Main));
+                resources.ApplyResources(c, c.Name, new CultureInfo(Globals.LANGUAGE));
+            }
+        }
+
+        public static IEnumerable<Control> GetAll(Control control)
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl))
+                                      .Concat(controls);
+
         }
     }
 }
